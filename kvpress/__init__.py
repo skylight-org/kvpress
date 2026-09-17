@@ -2,10 +2,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 
+from kvpress.adapters import LlamaLikeAdapter, Qwen3_5Adapter, get_adapter
 from kvpress.attention_patch import patch_attention_functions
 from kvpress.pipeline import KVPressTextGenerationPipeline
 from kvpress.presses.adakv_press import AdaKVPress
-from kvpress.presses.base_press import SUPPORTED_MODELS, BasePress
+from kvpress.presses.base_press import BasePress
 from kvpress.presses.block_press import BlockPress
 from kvpress.presses.cam_press import CAMPress
 from kvpress.presses.cap_press import CapPress
@@ -58,6 +59,9 @@ __all__ = [
     "CURPress",
     "AdaKVPress",
     "BasePress",
+    "LlamaLikeAdapter",
+    "Qwen3_5Adapter",
+    "get_adapter",
     "ComposedPress",
     "ScorerPress",
     "ExpectedAttentionPress",

@@ -54,6 +54,30 @@ answer = pipe(context, question=question, press=press)["answer"]
 
 In the snippet above, the compression is only applied on the context tokens so that you can evaluate the compression for different questions. Check the [Wikipedia notebook demo](notebooks/wikipedia_demo.ipynb) for a more detailed example (also available on Colab [here](https://colab.research.google.com/drive/1JNvaTKuuAHrl49dYB9-mdEH_y52Ib-NP)).
 
+### OpenAI-compatible server
+
+If you already evaluate against a vLLM OpenAI endpoint (`http://localhost:8000/v1`), you can serve the same API from KVPress and keep the evaluation client unchanged:
+
+```bash
+uv sync --extra serve
+python -m kvpress.serve \
+  --model Qwen/Qwen3-4B-Instruct-2507 \
+  --press knorm \
+  --compression-ratio 0.5 \
+  --host 0.0.0.0 \
+  --port 8000
+```
+
+Then point evaluation at this process the same way you would at `vllm serve`:
+
+```bash
+# agentic-longcontext RLM / baselines
+python evaluation/rlm/run_benchmark.py --base-url http://localhost:8000/v1 --root-model Qwen/Qwen3-4B-Instruct-2507 ...
+python baselines/run_benchmark.py --endpoint http://localhost:8000/v1 --model Qwen/Qwen3-4B-Instruct-2507 ...
+```
+
+`--press` uses the same names as `evaluation/evaluate_registry.py` (`knorm`, `snapkv`, `kvzip`, `no_press`, `decoding_knorm`, ...). The server implements `GET /v1/models` and `POST /v1/chat/completions`, including `extra_body.chat_template_kwargs.enable_thinking` from the OpenAI client. Requests are serialized on one GPU lock (no continuous batching). Streaming is not supported.
+
 <details><summary>
 Decoding Compression
 </summary>
@@ -207,6 +231,10 @@ If you use KVPress in your research, please cite our paper:
 </summary>
 
 Some presses depend on the model architecture (_e.g._ `ExpectedAttentionPress` or `SnapKVPress`) hence they might not work with all models. We tested support for `LlamaForCausalLM`, `MistralForCausalLM`, `Phi3ForCausalLM`, `Qwen2ForCausalLM`, `Qwen3ForCausalLM`, and `Gemma3ForCausalLM` but many other models might be supported out of the box because their implementation is often similar in transformers.
+
+Architecture-specific details (which layers hold a KV cache, how to read and write it, and how queries and keys are projected) live in `kvpress/adapters/`. Models without a registered adapter fall back to `LlamaLikeAdapter`. To support a new architecture, register a `ModelAdapter` subclass with `@register_adapter("<config.model_type>")`.
+
+Qwen3.5 (`Qwen3_5ForCausalLM`) is supported through `Qwen3_5Adapter`. It is a hybrid stack, so only its periodic `full_attention` layers hold a KV cache and can be compressed; the `linear_attention` (Gated DeltaNet) layers keep a fixed-size recurrent state instead. Two consequences are worth knowing: a compression ratio applies to that smaller set of layers rather than to every layer, and a prefilled cache cannot be reused across several questions, because the recurrent state absorbs the generated answer and cannot be rewound the way a KV cache can be truncated.
 </details>
 
 <details><summary> 

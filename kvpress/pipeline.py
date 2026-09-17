@@ -7,10 +7,11 @@ import logging
 from typing import Optional
 
 import torch
-from transformers import AutoModelForCausalLM, Cache, DynamicCache, Pipeline, QuantizedCache
+from transformers import AutoModelForCausalLM, Cache, Pipeline
 from transformers.pipelines import PIPELINE_REGISTRY
 from transformers.pipelines.base import GenericTensor
 
+from kvpress.adapters import get_adapter
 from kvpress.presses.base_press import BasePress
 from kvpress.presses.decoding_press import DecodingPress
 from kvpress.presses.dms_press import DMSPress
@@ -209,7 +210,7 @@ class KVPressTextGenerationPipeline(Pipeline):
 
         # Prefilling using the press on the context
         if cache is None:
-            cache = DynamicCache()
+            cache = get_adapter(self.model).make_cache(self.model)
 
         # We only perform prefill compression if the press is a prefill press
         perform_prefill_compression = press is not None and not isinstance(press, DecodingPress)
@@ -250,19 +251,7 @@ class KVPressTextGenerationPipeline(Pipeline):
         return answers
 
     def _remove_answer_from_cache(self, cache: Cache, cache_seq_lengths: list[int]):
-
-        for layer_idx, sequence_length in enumerate(cache_seq_lengths):
-            cache.layers[layer_idx].keys = cache.layers[layer_idx].keys[:, :, :sequence_length]
-            cache.layers[layer_idx].values = cache.layers[layer_idx].values[:, :, :sequence_length]
-
-        if isinstance(cache, QuantizedCache):
-            for layer_idx, sequence_length in enumerate(cache_seq_lengths):
-                cache.layers[layer_idx]._quantized_keys = cache.layers[layer_idx]._quantized_keys[
-                    :, :, :sequence_length
-                ]
-                cache.layers[layer_idx]._quantized_values = cache.layers[layer_idx]._quantized_values[
-                    :, :, :sequence_length
-                ]
+        get_adapter(self.model).rewind_cache(cache, cache_seq_lengths)
 
     def generate_answer(
         self, question_ids: torch.Tensor, cache: Cache, context_length: int, max_new_tokens: int
@@ -290,13 +279,26 @@ class KVPressTextGenerationPipeline(Pipeline):
             context_length, context_length + question_ids.shape[1], device=self.model.device
         ).unsqueeze(0)
 
+        adapter = get_adapter(self.model)
+        question_ids = question_ids.to(self.model.device)
+
         # if the user doesn't provide a question, skip forward pass
-        outputs = self.model(
-            input_ids=question_ids.to(self.model.device),
-            past_key_values=cache,
-            position_ids=position_ids,
-            logits_to_keep=1,
-        )
+        if adapter.supports_multi_token_continuation():
+            outputs = self.model(
+                input_ids=question_ids,
+                past_key_values=cache,
+                position_ids=position_ids,
+                logits_to_keep=1,
+            )
+        else:
+            # Recurrent architectures only extend their state one token at a time.
+            for i in range(question_ids.shape[1]):
+                outputs = self.model(
+                    input_ids=question_ids[:, i : i + 1],
+                    past_key_values=cache,
+                    position_ids=position_ids[:, i : i + 1],
+                    logits_to_keep=1,
+                )
 
         position_ids = position_ids[:, -1:] + 1
         generated_ids = [outputs.logits[0, -1].argmax()]

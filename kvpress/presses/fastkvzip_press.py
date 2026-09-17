@@ -13,10 +13,10 @@ import numpy as np
 import torch
 from huggingface_hub import hf_hub_download
 from torch import nn
-from transformers import AutoConfig, Gemma3ForConditionalGeneration, PreTrainedModel
+from transformers import AutoConfig, PreTrainedModel
 from transformers.models.qwen3.modeling_qwen3 import Qwen3RMSNorm
 
-from kvpress.presses.base_press import SUPPORTED_MODELS, BasePress, is_prefilling
+from kvpress.presses.base_press import BasePress, is_prefilling
 
 logger = logging.getLogger(__name__)
 
@@ -202,27 +202,13 @@ class FastKVzipPress(BasePress):
         1. First yield: allows initial prefilling with context and KV importance scoring via gates
         2. After yield: performs KV eviction based on the importance scores
         """
-        if not isinstance(model, SUPPORTED_MODELS):
-            logger.warning(f"Model {type(model)} not tested, supported models: {SUPPORTED_MODELS}")
-
+        self.warn_unsupported_model(model)
         self.post_init_from_model(model)
-        hooks = []
-        try:
-            self.score_val = [None for _ in range(len(model.model.layers))]  # reset every prefilling
-            language_model = model.model.language_model if hasattr(model.model, "language_model") else model.model
-            for layer in language_model.layers:
-                if isinstance(model, Gemma3ForConditionalGeneration) and layer.self_attn.is_sliding:
-                    # Skip layers with sliding window attention, only for Gemma3
-                    continue
-                layer.self_attn.rotary_emb = language_model.rotary_emb
-                hooks.append(layer.self_attn.register_forward_hook(self.forward_hook, with_kwargs=True))
+        self.score_val = [None for _ in range(len(model.model.layers))]  # reset every prefilling
+
+        with self.hook_scope(model):
             yield
-
             self.compress_post(model)  # Perform compression
-
-        finally:
-            for hook in hooks:
-                hook.remove()
 
     def forward_hook(self, module: nn.Module, input: list[torch.Tensor], kwargs: dict, output: list):
         """
