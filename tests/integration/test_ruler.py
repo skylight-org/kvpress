@@ -6,10 +6,10 @@ import os
 import datasets
 import pytest
 import torch
-from transformers import DynamicCache, QuantizedCache
+from transformers import DynamicCache, QuantizedCache, pipeline
 from transformers.utils import is_flash_attn_2_available, is_optimum_quanto_available
 
-from kvpress import KVComposePress, QFilterPress
+from kvpress import BernoulliPress, CompactorPress, KVComposePress, KVzipPress, QFilterPress
 from tests.default_presses import default_presses
 from tests.fixtures import kv_press_llama3_2_flash_attn_pipeline, kv_press_qwen3_flash_attn_pipeline  # noqa: F401
 
@@ -60,6 +60,8 @@ class TestRuler:
         if isinstance(press, QFilterPress):
             # QFilterPress doesn't support Qwen3 4B. Will be tested in the next test class.
             return
+        elif isinstance(press, BernoulliPress):
+            pytest.skip("BernoulliPress requires sdpa attention, see TestRulerForBernoulli")
         elif isinstance(press, KVComposePress) and os.getenv("GITHUB_ACTIONS") == "true":
             pytest.skip("KVComposePress RULER test exceeds GitHub Actions GPU memory")
         else:
@@ -107,4 +109,41 @@ class TestRulerForQFilter:
         pred_answer = kv_press_llama3_2_flash_attn_pipeline(context, question=question, press=press, cache=cache)[
             "answer"
         ]
+        assert true_answer in pred_answer
+
+
+@pytest.fixture(scope="class")
+def kv_press_qwen3_sdpa_pipeline():
+    pipe = pipeline(
+        "kv-press-text-generation",
+        model="Qwen/Qwen3-4B-Instruct-2507",
+        device="cuda:0",
+        model_kwargs={"attn_implementation": "sdpa", "dtype": torch.bfloat16},
+    )
+    yield pipe
+    del pipe
+    torch.cuda.empty_cache()
+
+
+class TestRulerForBernoulli:
+    @pytest.mark.skipif(not torch.cuda.is_available(), reason="GPU is not available")
+    @pytest.mark.parametrize("cache", ["dynamic", "quantized"])
+    @pytest.mark.parametrize("compression_ratio", [0, 0.1])
+    @pytest.mark.parametrize("scorer_cls", [KVzipPress, CompactorPress])
+    def test_ruler_is_correct_for_bernoulli(
+        self, kv_press_qwen3_sdpa_pipeline, df_ruler, cache, compression_ratio, scorer_cls
+    ):
+        press = BernoulliPress(press=scorer_cls(compression_ratio=compression_ratio))
+        if cache == "dynamic":
+            cache = DynamicCache()
+        elif is_optimum_quanto_available():
+            cache = QuantizedCache(backend="quanto", config=kv_press_qwen3_sdpa_pipeline.model.config, nbits=4)
+        else:
+            pytest.skip("Quanto is not installed")
+
+        idx = 6  # same sample as TestRuler
+        context = df_ruler.iloc[idx]["context"]
+        question = df_ruler.iloc[idx]["question"]
+        true_answer = df_ruler.iloc[idx]["answer"][0]
+        pred_answer = kv_press_qwen3_sdpa_pipeline(context, question=question, press=press, cache=cache)["answer"]
         assert true_answer in pred_answer

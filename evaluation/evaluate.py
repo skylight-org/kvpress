@@ -21,6 +21,7 @@ from tqdm import tqdm
 from transformers import FineGrainedFP8Config, Pipeline, pipeline
 
 from kvpress import (
+    BernoulliPress,
     ComposedPress,
     DecodingPress,
     DMSPress,
@@ -375,6 +376,9 @@ class EvaluationRunner:
         if isinstance(self.press, ObservedAttentionPress):
             model_kwargs["attn_implementation"] = "eager"
             logger.info("ObservedAttentionPress detected, setting attn_implementation to 'eager'.")
+        elif isinstance(self.press, BernoulliPress):
+            model_kwargs["attn_implementation"] = "sdpa"
+            logger.info("BernoulliPress detected, setting attn_implementation to 'sdpa'.")
         else:
             try:
                 import flash_attn  # noqa: F401

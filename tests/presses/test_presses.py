@@ -9,6 +9,7 @@ from transformers import DynamicCache
 
 from kvpress import (
     AdaKVPress,
+    BernoulliPress,
     ChunkKVPress,
     ChunkPress,
     ComposedPress,
@@ -86,8 +87,8 @@ def test_presses_run(unit_test_model, press_dict, wrapper_press):  # noqa: F811
             if hasattr(press, "post_init_from_model"):
                 press.post_init_from_model(unit_test_model)
             if issubclass(wrapper_press, ComposedPress):
-                if isinstance(press, (KVzipPress, FastKVzipPress, KVComposePress)):
-                    # KVzipPress, FastKVzipPress and KVComposePress are currently not compatible with ComposedPress
+                if isinstance(press, (KVzipPress, FastKVzipPress, KVComposePress, BernoulliPress)):
+                    # these presses are currently not compatible with ComposedPress
                     return
                 press = ComposedPress(presses=[press])
             elif not isinstance(press, ScorerPress):  # remaining wrapper presses only support ScorerPress

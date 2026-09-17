@@ -40,11 +40,64 @@ def search_hyperplane(X, max_iter: int = 1000):
     raise ValueError("Could not find fake keys such that for every query q, exp(<q, k>) = 0")
 
 
+def add_attention_bias(module, query, key, attention_mask):
+    """
+    Add module.attention_bias to the attention mask of the first context positions.
+
+    attention_bias has shape (bsz, num_key_value_heads, ctx_len): an additive logit bias per KV pair, with
+    -inf for dropped pairs (see BernoulliPress). It is repeated across the query heads of each KV group.
+    Keys past ctx_len (question and generated tokens) get no bias.
+
+    Parameters
+    ----------
+    module : nn.Module
+        Attention module carrying the attention_bias attribute.
+    query : torch.Tensor
+        Query tensor with shape (bsz, num_heads, q_len, head_dim).
+    key : torch.Tensor
+        Key tensor with shape (bsz, num_key_value_heads, k_len, head_dim).
+    attention_mask : torch.Tensor or None
+        Mask passed to the attention function: None, boolean (True means attend) or additive.
+
+    Returns
+    -------
+    torch.Tensor
+        Additive attention mask with shape broadcastable to (bsz, num_heads, q_len, k_len).
+    """
+    bias = module.attention_bias
+    q_len, k_len = query.shape[2], key.shape[2]
+    bsz, num_key_value_heads, ctx_len = bias.shape
+    if ctx_len > k_len:
+        raise ValueError(f"attention_bias covers {ctx_len} keys but only {k_len} are present (stale bias?)")
+
+    num_groups = query.shape[1] // num_key_value_heads
+    full = torch.zeros((bsz, query.shape[1], q_len, k_len), dtype=query.dtype, device=query.device)
+    full[..., :ctx_len] = bias.repeat_interleave(num_groups, dim=1)[:, :, None, :].to(query.dtype)
+
+    if attention_mask is None:
+        # SDPA only applies causal masking when no mask is given, so once a mask is passed the causal structure
+        # must be written into it. The queries are the last q_len positions of the k_len keys.
+        if q_len > 1:
+            positions = torch.arange(k_len, device=query.device)
+            future = positions[None, :] > (torch.arange(q_len, device=query.device)[:, None] + (k_len - q_len))
+            full = full.masked_fill(future[None, None], -float("inf"))
+        return full
+    if attention_mask.dtype == torch.bool:
+        # Boolean masks (True means attend) must be converted to additive form first: adding a float tensor to a
+        # boolean one would turn True and False into 1.0 and 0.0 and silently remove the masking.
+        attention_mask = torch.zeros_like(attention_mask, dtype=query.dtype).masked_fill_(
+            ~attention_mask, -float("inf")
+        )
+    return attention_mask + full
+
+
 def attention_patch(func):
     """
     Decorator to update the keys before the attention computation at the indices provided in module.masked_key_indices
     The keys are updated with a fake key k such that exp(<q, k>) = 0 to fake head-wise compression
     This solution is not optimal as it does not reduce peak memory and slightly increases runtime
+
+    It also adds module.attention_bias, when set, to the attention mask after pre-filling (see add_attention_bias).
 
     Parameters
     ----------
@@ -62,6 +115,12 @@ def attention_patch(func):
         if query.shape[2] == key.shape[2]:
             # Prefilling
             module.masked_key_indices = None
+            if getattr(module, "attention_bias", None) is not None:
+                module.attention_bias = None
+        elif getattr(module, "attention_bias", None) is not None:
+            if module.config._attn_implementation != "sdpa":
+                raise ValueError("attention_bias is only supported with attn_implementation='sdpa'")
+            attention_mask = add_attention_bias(module, query, key, attention_mask)
         elif getattr(module, "masked_key_indices", None) is not None:
             # Decoding: build fake keys k s.t. exp(<q, k>) = 0
             bsz, num_heads, seq_len, head_dim = query.shape

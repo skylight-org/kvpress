@@ -14,6 +14,7 @@ from benchmarks.zero_scrolls.calculate_metrics import calculate_metrics as zero_
 
 from kvpress import (
     AdaKVPress,
+    BernoulliPress,
     BlockPress,
     CAMPress,
     ChunkKVPress,
@@ -79,6 +80,8 @@ SCORER_REGISTRY = {
 
 PRESS_REGISTRY = {
     "adakv_snapkv": AdaKVPress(SnapKVPress()),
+    "bernoulli_compactor": BernoulliPress(press=CompactorPress()),
+    "bernoulli_kvzip": BernoulliPress(press=KVzipPress()),
     "block_keydiff": BlockPress(press=KeyDiffPress(), block_size=128),
     "chunkkv": ChunkKVPress(press=SnapKVPress(), chunk_length=20),
     "critical_adakv_expected_attention": CriticalAdaKVPress(ExpectedAttentionPress(use_vnorm=False)),
