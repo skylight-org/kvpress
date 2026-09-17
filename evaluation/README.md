@@ -50,6 +50,7 @@ At the moment, we support the following standard popular benchmarks:
 - [longbench](benchmarks/longbench/README.md)([hf link](https://huggingface.co/datasets/Xnhyacinth/LongBench))
 - [longbench-v2](benchmarks/longbenchv2/README.md)([hf link](https://huggingface.co/datasets/simonjegou/LongBench-v2))
 - [Needle in a Haystack](benchmarks/needle_in_haystack/README.md)([hf link][Paul Graham's essays](https://huggingface.co/datasets/alessiodevoto/paul_graham_essays))
+- [SCBench](benchmarks/scbench/README.md)([hf link](https://huggingface.co/datasets/microsoft/SCBench)), the shared context setting: one long context per sample, answered over several turns from a single compressed cache
 
 Each dataset directory is structured as follows:
 

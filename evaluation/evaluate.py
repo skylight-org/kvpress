@@ -14,6 +14,8 @@ import pandas as pd
 import torch
 import yaml
 from benchmarks.needle_in_haystack.utils import insert_needle_in_haystack
+from benchmarks.scbench.utils import flatten_multi_turns
+from benchmarks.scbench.utils import normalize_task as normalize_scbench_task
 from datasets import load_dataset
 from evaluate_registry import DATASET_REGISTRY, PRESS_REGISTRY, SCORER_REGISTRY
 from fire import Fire
@@ -108,6 +110,11 @@ class EvaluationConfig:
         if self.dataset == "needle_in_haystack":
             assert self.needle_depth is not None, "needle_depth must be set for needle_in_haystack"
             assert self.max_context_length is not None, "max_context_length must be set for needle_in_haystack"
+
+        if self.dataset == "scbench":
+            # fails here rather than after the model is loaded, and normalizing the task once keeps its
+            # spelling out of the results directory name, so "vt" and "scbench_vt" resolve to one run
+            self.data_dir = normalize_scbench_task(self.data_dir)
 
     def get_results_dir(self, output_dir: Path) -> Path:
         """
@@ -324,8 +331,15 @@ class EvaluationRunner:
         data_dir = str(self.config.data_dir) if self.config.data_dir else None
         fraction = self.config.fraction
 
-        logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (data_dir: {data_dir})")
-        df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir=data_dir, split="test").to_pandas()
+        if dataset_name == "scbench":
+            # scbench publishes its tasks as dataset configs, so the task, already normalized by the config,
+            # is passed as the config name and not as data_dir: a config can be resolved from a local cache
+            # without reaching the hub, which a data_dir cannot.
+            logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (config: {data_dir})")
+            df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir, split="test").to_pandas()
+        else:
+            logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (data_dir: {data_dir})")
+            df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir=data_dir, split="test").to_pandas()
 
         if fraction < 1.0:
             original_len = len(df)
@@ -338,6 +352,16 @@ class EvaluationRunner:
         if self.config.dataset == "needle_in_haystack":
             df = insert_needle_in_haystack(
                 df, self.pipeline.tokenizer, self.config.max_context_length, self.config.needle_depth
+            )
+
+        # scbench ships one shared context plus several follow-up turns per sample: expand it to one row per
+        # turn, after sampling, so that fraction selects whole contexts
+        if self.config.dataset == "scbench":
+            df = flatten_multi_turns(
+                df,
+                task=data_dir,
+                tokenizer=self.pipeline.tokenizer,
+                max_context_length=self.config.max_context_length,
             )
 
         if isinstance(self.press, FinchPress):
