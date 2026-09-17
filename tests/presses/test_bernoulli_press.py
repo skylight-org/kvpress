@@ -14,7 +14,7 @@ import kvpress.attention_patch as attention_patch_module
 import kvpress.presses.bernoulli_press as bernoulli_module
 from kvpress import BernoulliPress, CompactorPress, ComposedPress, KnormPress, KVzipPress
 from kvpress.attention_patch import attention_patch
-from kvpress.utils import compute_n_kept
+from kvpress.utils import compute_n_kept, get_cache_metadata
 from tests.fixtures import kv_press_unit_test_pipeline, unit_test_model, unit_test_model_output_attention  # noqa: F401
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -30,6 +30,7 @@ class FakeAttention(nn.Module):
     def __init__(self, attn_implementation="sdpa"):
         super().__init__()
         self.config = SimpleNamespace(_attn_implementation=attn_implementation)
+        self.layer_idx = 0
         self.num_key_value_groups = NUM_HEADS // NUM_KV_HEADS
         self.is_causal = True
 
@@ -49,6 +50,10 @@ def random_bias(ctx_len, seed=0):
     keep = torch.rand(1, NUM_KV_HEADS, ctx_len, generator=g) < 0.6
     keep[..., 0] = True
     return torch.where(keep, -torch.log(r), torch.tensor(-float("inf")))
+
+
+def bias_metadata(bias):
+    return {"attention_bias": {0: bias}}
 
 
 def reference_attention(query, key, value, bias, ctx_len):
@@ -88,12 +93,13 @@ def test_attention_bias_matches_reference(q_len, mask_kind):
     query, key, value = random_qkv(q_len, k_len)
     bias = random_bias(ctx_len)
     module = FakeAttention()
-    module.attention_bias = bias
 
     # With mask None and q_len > 1 the patch must build the causal mask itself, since SDPA drops is_causal once a
     # mask is passed. The reference applies causal masking in every case.
     mask = causal_masks(q_len, k_len)[mask_kind]
-    out, _ = attention_patch(sdpa_attention_forward)(module, query, key, value, mask, 0.0)
+    out, _ = attention_patch(sdpa_attention_forward)(
+        module, query, key, value, mask, 0.0, kvpress_metadata=bias_metadata(bias)
+    )
     expected = reference_attention(query, key, value, bias, ctx_len)
     torch.testing.assert_close(out, expected, atol=1e-5, rtol=1e-5)
 
@@ -115,8 +121,10 @@ def test_zero_attention_bias_is_identity(q_len, mask_kind):
         expected, _ = attention_patch(sdpa_attention_forward)(FakeAttention(), query, key, value, mask, 0.0)
 
     biased = FakeAttention()
-    biased.attention_bias = torch.zeros(1, NUM_KV_HEADS, ctx_len)
-    out, _ = attention_patch(sdpa_attention_forward)(biased, query, key, value, mask, 0.0)
+    bias = torch.zeros(1, NUM_KV_HEADS, ctx_len)
+    out, _ = attention_patch(sdpa_attention_forward)(
+        biased, query, key, value, mask, 0.0, kvpress_metadata=bias_metadata(bias)
+    )
     torch.testing.assert_close(out, expected, atol=1e-6, rtol=1e-6)
 
 
@@ -134,34 +142,26 @@ def test_attention_patch_unchanged_without_bias(q_len):
         assert not hasattr(module, "attention_bias")
 
 
-def test_attention_bias_cleared_on_prefill():
-    query, key, value = random_qkv(6, 6)
-    func, calls = capture_call()
-    module = FakeAttention()
-    module.attention_bias = random_bias(6)
-    attention_patch(func)(module, query, key, value, None, 0.0)
-    assert module.attention_bias is None
-    assert calls[0]["attention_mask"] is None
-
-
 def test_attention_bias_takes_precedence_over_masked_key_indices():
     """BernoulliPress resets masked_key_indices; the patch must not also apply fake keys when a bias is set."""
     q_len, k_len, ctx_len = 1, 12, 9
     query, key, value = random_qkv(q_len, k_len)
     func, calls = capture_call()
     module = FakeAttention()
-    module.attention_bias = random_bias(ctx_len)
+    bias = random_bias(ctx_len)
     module.masked_key_indices = (torch.tensor([0]), torch.tensor([0]), torch.tensor([3]))
-    attention_patch(func)(module, query, key, value, None, 0.0)
+    attention_patch(func)(module, query, key, value, None, 0.0, kvpress_metadata=bias_metadata(bias))
     torch.testing.assert_close(calls[0]["key"], key, atol=0, rtol=0)
 
 
 def test_stale_attention_bias_raises():
     query, key, value = random_qkv(1, 8)
     module = FakeAttention()
-    module.attention_bias = random_bias(10)
+    bias = random_bias(10)
     with pytest.raises(ValueError, match="stale"):
-        attention_patch(sdpa_attention_forward)(module, query, key, value, None, 0.0)
+        attention_patch(sdpa_attention_forward)(
+            module, query, key, value, None, 0.0, kvpress_metadata=bias_metadata(bias)
+        )
 
 
 @pytest.mark.parametrize("attn_implementation", ["flash_attention_2", "flex_attention"])
@@ -169,9 +169,39 @@ def test_attention_bias_requires_sdpa(attn_implementation):
     query, key, value = random_qkv(1, 12)
     func, _ = capture_call()
     module = FakeAttention(attn_implementation)
-    module.attention_bias = random_bias(9)
+    bias = random_bias(9)
     with pytest.raises(ValueError, match="sdpa"):
-        attention_patch(func)(module, query, key, value, None, 0.0)
+        attention_patch(func)(module, query, key, value, None, 0.0, kvpress_metadata=bias_metadata(bias))
+
+
+def test_attention_patch_ignores_stale_module_attribute():
+    """Bias left on the module from the old API must not leak into attention."""
+    query, key, value = random_qkv(1, 12)
+    func, calls = capture_call()
+    module = FakeAttention()
+    module.attention_bias = random_bias(9)
+    attention_patch(func)(module, query, key, value, None, 0.0)
+    assert calls[0]["attention_mask"] is None
+
+
+def test_attention_patch_ignores_bias_for_other_layers():
+    query, key, value = random_qkv(1, 12)
+    func, calls = capture_call()
+    module = FakeAttention()
+    module.layer_idx = 1
+    attention_patch(func)(module, query, key, value, None, 0.0, kvpress_metadata=bias_metadata(random_bias(9)))
+    assert calls[0]["attention_mask"] is None
+
+
+def test_get_cache_metadata_binds_caller_dict():
+    cache = DynamicCache()
+    provided = {}
+    assert get_cache_metadata(cache, provided) is provided
+    assert cache.kvpress_metadata is provided
+    assert get_cache_metadata(cache) is provided
+    other = {"attention_bias": {}}
+    assert get_cache_metadata(cache, other) is other
+    assert cache.kvpress_metadata is other
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -225,16 +255,25 @@ CTX_LEN = 256
 
 @pytest.fixture
 def clean_model(unit_test_model):  # noqa: F811
-    """Remove any attention_bias after the test so the shared session model is left as found."""
     yield unit_test_model
-    for layer in unit_test_model.model.layers:
-        layer.self_attn.attention_bias = None
+
+
+def prefill_with_press(model, press, input_ids):
+    cache = DynamicCache()
+    metadata = get_cache_metadata(cache)
+    with press(model):
+        model(input_ids, past_key_values=cache, kvpress_metadata=metadata)
+    return cache, metadata
 
 
 def run_press(model, press, input_ids):
-    with press(model):
-        model(input_ids, past_key_values=DynamicCache())
-    return [layer.self_attn.attention_bias for layer in model.model.layers]
+    _, metadata = prefill_with_press(model, press, input_ids)
+    return [metadata.get("attention_bias", {}).get(int(module.layer_idx)) for module in press._attention_modules(model)]
+
+
+def assert_no_module_attention_bias(model):
+    for layer in model.model.layers:
+        assert getattr(layer.self_attn, "attention_bias", None) is None
 
 
 def random_input(model, seed=0, length=CTX_LEN):
@@ -313,7 +352,6 @@ def test_bernoulli_press_zero_compression_is_identity(clean_model):
     with press(clean_model):
         logits = clean_model(input_ids, past_key_values=DynamicCache()).logits
     torch.testing.assert_close(logits, expected)
-    assert all(layer.self_attn.attention_bias is None for layer in clean_model.model.layers)
 
 
 def test_bernoulli_press_compression_ratio_delegates():
@@ -334,18 +372,120 @@ def test_bernoulli_press_restores_inner_press(clean_model):
     assert clean_model.model.layers[0].self_attn.masked_key_indices is not None
 
 
+@pytest.mark.parametrize("scorer_cls", [KVzipPress, CompactorPress])
+def test_bernoulli_press_stores_bias_on_cache_not_modules(clean_model, scorer_cls):
+    press = BernoulliPress(press=scorer_cls(compression_ratio=0.5))
+    cache, metadata = prefill_with_press(clean_model, press, random_input(clean_model))
+    assert_no_module_attention_bias(clean_model)
+    assert metadata is cache.kvpress_metadata
+    biases = metadata["attention_bias"]
+    modules = press._attention_modules(clean_model)
+    assert set(biases) == {int(module.layer_idx) for module in modules}
+    for module in modules:
+        bias = biases[int(module.layer_idx)]
+        assert bias.shape == (1, clean_model.config.num_key_value_heads, CTX_LEN)
+        assert torch.isfinite(bias).any()
+
+
+@pytest.mark.parametrize("scorer_cls", [KVzipPress, CompactorPress])
+def test_bernoulli_press_cache_metadata_is_isolated(clean_model, scorer_cls):
+    input_ids = random_input(clean_model)
+    cache_a, meta_a = prefill_with_press(
+        clean_model, BernoulliPress(press=scorer_cls(compression_ratio=0.5), seed=1), input_ids
+    )
+    cache_b, meta_b = prefill_with_press(
+        clean_model, BernoulliPress(press=scorer_cls(compression_ratio=0.5), seed=2), input_ids
+    )
+    assert meta_a is not meta_b
+    assert cache_a.kvpress_metadata is meta_a
+    assert cache_b.kvpress_metadata is meta_b
+    layer_idx = int(clean_model.model.layers[0].self_attn.layer_idx)
+    snapshot_b = meta_b["attention_bias"][layer_idx].clone()
+    meta_a["attention_bias"][layer_idx].zero_()
+    torch.testing.assert_close(meta_b["attention_bias"][layer_idx], snapshot_b, atol=0, rtol=0)
+
+
+@pytest.mark.parametrize("scorer_cls", [KVzipPress, CompactorPress])
+def test_bernoulli_press_decode_applies_bias_only_with_metadata(clean_model, monkeypatch, scorer_cls):
+    press = BernoulliPress(press=scorer_cls(compression_ratio=0.5))
+    cache, metadata = prefill_with_press(clean_model, press, random_input(clean_model))
+    position_ids = torch.tensor([[CTX_LEN]], device=clean_model.device)
+    token = random_input(clean_model, seed=1, length=1)
+    calls = []
+    original = attention_patch_module.add_attention_bias
+
+    def spy(bias, query, key, attention_mask):
+        calls.append(bias)
+        return original(bias, query, key, attention_mask)
+
+    monkeypatch.setattr(attention_patch_module, "add_attention_bias", spy)
+    clean_model(token, past_key_values=cache, position_ids=position_ids)
+    assert calls == []
+    clean_model(token, past_key_values=cache, position_ids=position_ids, kvpress_metadata=metadata)
+    n_layers = clean_model.config.num_hidden_layers
+    assert len(calls) == n_layers
+    for module, bias in zip(press._attention_modules(clean_model), calls):
+        torch.testing.assert_close(bias, metadata["attention_bias"][int(module.layer_idx)], atol=0, rtol=0)
+
+
+@pytest.mark.parametrize("scorer_cls", [KVzipPress, CompactorPress])
+def test_bernoulli_press_prefill_drops_stale_cache_bias(clean_model, monkeypatch, scorer_cls):
+    """A leftover bias on the cache metadata must not be applied during the next prefill."""
+    cache = DynamicCache()
+    metadata = get_cache_metadata(cache)
+    n_kv = clean_model.config.num_key_value_heads
+    stale = torch.full((1, n_kv, CTX_LEN), 7.0, device=clean_model.device)
+    metadata["attention_bias"] = {int(layer.self_attn.layer_idx): stale.clone() for layer in clean_model.model.layers}
+    applied = []
+    original = attention_patch_module.add_attention_bias
+
+    def spy(bias, query, key, attention_mask):
+        applied.append(bias)
+        return original(bias, query, key, attention_mask)
+
+    monkeypatch.setattr(attention_patch_module, "add_attention_bias", spy)
+    press = BernoulliPress(press=scorer_cls(compression_ratio=0.5))
+    with press(clean_model):
+        clean_model(random_input(clean_model), past_key_values=cache, kvpress_metadata=metadata)
+    assert applied == []
+    written = metadata["attention_bias"][int(clean_model.model.layers[0].self_attn.layer_idx)]
+    assert not torch.equal(written, stale)
+
+
+def test_pipeline_stores_bias_on_provided_cache(kv_press_unit_test_pipeline):  # noqa: F811
+    cache = DynamicCache()
+    press = BernoulliPress(press=KVzipPress(compression_ratio=0.5))
+    kv_press_unit_test_pipeline(
+        "This is a test article. It was written on 2022-01-01. " * 20,
+        question="When was this article written?",
+        press=press,
+        cache=cache,
+        max_new_tokens=2,
+    )
+    metadata = get_cache_metadata(cache)
+    model = kv_press_unit_test_pipeline.model
+    assert_no_module_attention_bias(model)
+    assert set(metadata["attention_bias"]) == {int(module.layer_idx) for module in press._attention_modules(model)}
+
+
 def test_bernoulli_press_requires_sdpa(unit_test_model_output_attention):  # noqa: F811
     model = unit_test_model_output_attention
     inner = KVzipPress(compression_ratio=0.5)
     with pytest.raises(ValueError, match="sdpa"):
         run_press(model, BernoulliPress(press=inner), random_input(model))
     assert "compress_post" not in vars(inner)
-    assert all(getattr(layer.self_attn, "attention_bias", None) is None for layer in model.model.layers)
 
 
 def test_bernoulli_press_requires_supported_scorer():
     with pytest.raises(AssertionError):
         BernoulliPress(press=KnormPress(compression_ratio=0.5))
+
+
+def test_bernoulli_press_warns_on_layerwise_kvzip(caplog):
+    with caplog.at_level("WARNING"):
+        press = BernoulliPress(press=KVzipPress(compression_ratio=0.5, layerwise=True))
+    assert any("layerwise" in record.message for record in caplog.records)
+    assert press.press.layerwise is True
 
 
 @pytest.mark.parametrize("scorer_cls", [KVzipPress, CompactorPress])
@@ -362,9 +502,9 @@ def test_bernoulli_press_bias_live_during_generation(
     calls = []
     original = attention_patch_module.add_attention_bias
 
-    def spy(module, query, key, attention_mask):
+    def spy(bias, query, key, attention_mask):
         calls.append((query.shape[2], key.shape[2]))
-        return original(module, query, key, attention_mask)
+        return original(bias, query, key, attention_mask)
 
     monkeypatch.setattr(attention_patch_module, "add_attention_bias", spy)
     press = BernoulliPress(press=scorer_cls(compression_ratio=0.5))
@@ -379,8 +519,6 @@ def test_bernoulli_press_bias_live_during_generation(
     assert all(q_len < k_len for q_len, k_len in calls)
     # one question prefill plus at least one decoding step, in every layer
     assert len(calls) >= 2 * n_layers
-    for layer in model.model.layers:
-        layer.self_attn.attention_bias = None
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -466,7 +604,6 @@ def test_bernoulli_compactor_zero_compression_is_identity(clean_model):
     with BernoulliPress(press=CompactorPress(compression_ratio=0.0))(clean_model):
         logits = clean_model(input_ids, past_key_values=DynamicCache()).logits
     torch.testing.assert_close(logits, expected)
-    assert all(layer.self_attn.attention_bias is None for layer in clean_model.model.layers)
 
 
 def test_bernoulli_compactor_masking_matches_pruning(clean_model, monkeypatch):
@@ -484,9 +621,15 @@ def test_bernoulli_compactor_masking_matches_pruning(clean_model, monkeypatch):
 
     def answer_logits(press):
         cache = DynamicCache()
+        metadata = get_cache_metadata(cache)
         with press(clean_model):
-            clean_model.model(input_ids=input_ids, past_key_values=cache)
-        return clean_model(input_ids=question, past_key_values=cache, position_ids=position_ids).logits
+            clean_model.model(input_ids=input_ids, past_key_values=cache, kvpress_metadata=metadata)
+        return clean_model(
+            input_ids=question,
+            past_key_values=cache,
+            position_ids=position_ids,
+            kvpress_metadata=metadata,
+        ).logits
 
     pruned = answer_logits(CompactorPress(compression_ratio=compression_ratio, blending=0.0))
     monkeypatch.setattr(bernoulli_module, "_per_head_keep_prob", top_k_indicator)
@@ -500,4 +643,3 @@ def test_bernoulli_compactor_requires_sdpa(unit_test_model_output_attention):  #
         run_press(model, BernoulliPress(press=CompactorPress(compression_ratio=0.5)), random_input(model))
     for layer in model.model.layers:
         assert len(layer.self_attn._forward_hooks) == 0
-        layer.self_attn.attention_bias = None

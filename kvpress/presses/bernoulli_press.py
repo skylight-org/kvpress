@@ -16,7 +16,7 @@ from kvpress.adapters import get_adapter
 from kvpress.presses.base_press import BasePress
 from kvpress.presses.compactor_press import CompactorPress
 from kvpress.presses.kvzip_press import KVzipPress
-from kvpress.utils import compute_n_kept
+from kvpress.utils import compute_n_kept, get_cache_metadata
 
 logger = logging.getLogger(__name__)
 
@@ -163,6 +163,11 @@ class BernoulliPress(BasePress):
         assert isinstance(
             self.press, (KVzipPress, CompactorPress)
         ), "BernoulliPress requires a KVzipPress or a CompactorPress as input"
+        if isinstance(self.press, KVzipPress) and self.press.layerwise:
+            logger.warning(
+                "BernoulliPress ignores KVzipPress.layerwise and still draws from a single global keep-probability "
+                "across layers (the same budget as KVzip's default global top-k)."
+            )
         self._context_crc = None
 
     def post_init_from_model(self, model):
@@ -200,35 +205,35 @@ class BernoulliPress(BasePress):
         """
         Run the wrapped press's scoring with this press's selection step in place of its top-k.
 
-        Any bias left by a previous call is cleared on entry. It is deliberately not cleared on exit:
-        the kvpress pipeline generates answers after this context has closed, and the bias must stay
-        active for that. kvpress's attention patch also clears it on the next prefill.
+        The sampled attention bias is stored in metadata owned by the KV cache. Callers must pass that
+        dictionary as ``kvpress_metadata`` on subsequent model calls using the cache.
         """
-        for module in self._attention_modules(model):
-            module.attention_bias = None
-
-        if isinstance(self.press, KVzipPress):
-            # Instance attribute override: KVzipPress calls self.compress_post(model) once its scores are ready.
-            setattr(self.press, "compress_post", self.compress_post)
-            try:
-                with self.press(model):
-                    yield
-            finally:
-                delattr(self.press, "compress_post")
-        else:
-            self.warn_unsupported_model(model)
-            self.post_init_from_model(model)
-            language_model = get_adapter(model).language_model(model)
-            pre_hook = language_model.register_forward_pre_hook(self._capture_context, with_kwargs=True)
-            try:
+        language_model = get_adapter(model).language_model(model)
+        pre_hook = language_model.register_forward_pre_hook(self._capture_context, with_kwargs=True)
+        try:
+            if isinstance(self.press, KVzipPress):
+                # Instance attribute override: KVzipPress calls self.compress_post(model) once its scores are ready.
+                setattr(self.press, "compress_post", self.compress_post)
+                try:
+                    with self.press(model):
+                        yield
+                finally:
+                    delattr(self.press, "compress_post")
+            else:
+                self.warn_unsupported_model(model)
+                self.post_init_from_model(model)
                 with self.hook_scope(model):
                     yield
-            finally:
-                pre_hook.remove()
+        finally:
+            pre_hook.remove()
 
     def _capture_context(self, module: nn.Module, args, kwargs):
         input_ids = kwargs.get("input_ids", args[0] if args else None)
         self._context_crc = zlib.crc32(input_ids.detach().cpu().numpy().tobytes())
+        cache = kwargs.get("past_key_values")
+        if cache is not None:
+            metadata = get_cache_metadata(cache, kwargs.get("kvpress_metadata"))
+            metadata.pop("attention_bias", None)
 
     def compress(
         self,
@@ -259,7 +264,8 @@ class BernoulliPress(BasePress):
         bias = torch.where(keep, -torch.log(r.clamp_min(1e-300)), torch.tensor(-float("inf"), device=device))
 
         # bias: [bsz, n_kv_heads, ctx_len]. Please refer to attention_patch.py for how it is used
-        module.attention_bias = bias.float()
+        metadata = get_cache_metadata(kwargs["past_key_values"])
+        metadata.setdefault("attention_bias", {})[layer_idx] = bias.float()
         module.masked_key_indices = None
         return keys, values  # dropped pairs are masked through the bias, not removed
 
@@ -309,11 +315,13 @@ class BernoulliPress(BasePress):
         r = r.view(n_layers, 1, n_kv_heads, ctx_len)
         bias = torch.where(keep, -torch.log(r.clamp_min(1e-300)), torch.tensor(-float("inf"), device=device))
 
+        metadata = get_cache_metadata(self.press._cache)
+        attention_bias = metadata.setdefault("attention_bias", {})
         rows = self.press._score_row_by_layer
         for module in self._attention_modules(model):
             row = rows[int(module.layer_idx)]
             # bias[row]: [bsz, n_kv_heads, ctx_len]. Please refer to attention_patch.py for how it is used
-            module.attention_bias = bias[row].float()
+            attention_bias[int(module.layer_idx)] = bias[row].float()
             module.masked_key_indices = None
 
         logger.debug(f"BernoulliPress: c={c:.4g}, kept fraction {keep.double().mean().item():.4f}")

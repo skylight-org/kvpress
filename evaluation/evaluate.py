@@ -14,7 +14,7 @@ import pandas as pd
 import torch
 import yaml
 from benchmarks.needle_in_haystack.utils import insert_needle_in_haystack
-from datasets import load_dataset
+from datasets import load_dataset, load_from_disk
 from evaluate_registry import DATASET_REGISTRY, PRESS_REGISTRY, SCORER_REGISTRY
 from fire import Fire
 from tqdm import tqdm
@@ -52,7 +52,10 @@ class EvaluationConfig:
 
     # Dataset and generation parameters
     fraction: float = 1.0
+    n_samples: Optional[int] = None
+    dataset_path: Optional[str] = None
     max_new_tokens: Optional[int] = None
+    min_context_length: Optional[int] = None
     max_context_length: Optional[int] = None
     query_aware: bool = False
     needle_depth: Optional[int] = None
@@ -101,6 +104,14 @@ class EvaluationConfig:
 
         # Validate fraction
         assert 0.0 < self.fraction <= 1.0, f"fraction must be between 0.0 and 1.0, got {self.fraction}"
+        if self.n_samples is not None:
+            assert self.n_samples > 0, f"n_samples must be positive, got {self.n_samples}"
+        if self.min_context_length is not None:
+            assert self.min_context_length > 0, f"min_context_length must be positive, got {self.min_context_length}"
+            if self.max_context_length is not None:
+                assert (
+                    self.min_context_length <= self.max_context_length
+                ), "min_context_length must be <= max_context_length"
 
         # Initialize model_kwargs if None
         if self.model_kwargs is None:
@@ -137,8 +148,14 @@ class EvaluationConfig:
             components[-1] = f"{self.threshold:.2f}"
         elif self.head_compression_ratio is not None:
             components[-1] = f"{self.head_compression_ratio:.2f}"
-        if self.fraction < 1.0:
+        if self.dataset_path is not None:
+            components.append(Path(self.dataset_path).name)
+        if self.n_samples is not None:
+            components.append(f"nsamples{self.n_samples}")
+        elif self.fraction < 1.0:
             components.append(f"fraction{self.fraction:.3f}")
+        if self.min_context_length is not None:
+            components.append(f"min_context{self.min_context_length}")
         if self.max_context_length is not None:
             components.append(f"max_context{self.max_context_length}")
         if self.query_aware:
@@ -317,6 +334,49 @@ class EvaluationRunner:
         self.config.press_init_command = str(press)
         logger.info(f"KV Press '{press_name}' setup.")
 
+    def _filter_by_context_length(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Keep rows whose tokenized context length is in [min_context_length, max_context_length]."""
+        min_len = self.config.min_context_length
+        max_len = self.config.max_context_length
+        assert min_len is not None
+        tokenizer = self.pipeline.tokenizer  # type: ignore[union-attr]
+        cap = (max_len + 1) if max_len is not None else min_len
+        lengths: list[int] = []
+        for text in tqdm(df["context"], desc="Filtering by context length"):
+            n_tokens = len(
+                tokenizer.encode(
+                    text,
+                    add_special_tokens=False,
+                    truncation=True,
+                    max_length=cap,
+                )
+            )
+            lengths.append(n_tokens)
+        token_counts = pd.Series(lengths, index=df.index)
+        mask = token_counts >= min_len
+        if max_len is not None:
+            mask &= token_counts <= max_len
+        filtered = df.loc[mask]
+        upper = max_len if max_len is not None else "inf"
+        logger.info(f"Kept {len(filtered)}/{len(df)} samples with context tokens in [{min_len}, {upper}].")
+        if len(filtered) == 0:
+            raise ValueError(f"No samples remain after filtering context tokens to [{min_len}, {upper}].")
+        return filtered
+
+    def _load_local_dataset(self, path: Path) -> pd.DataFrame:
+        """Load a previously saved evaluation subset from disk or a parquet file."""
+        logger.info(f"Loading local dataset from {path}")
+        if path.is_file() and path.suffix == ".parquet":
+            df = pd.read_parquet(path)
+        else:
+            ds = load_from_disk(str(path))
+            if hasattr(ds, "keys") and "test" in ds:
+                df = ds["test"].to_pandas()
+            else:
+                df = ds.to_pandas()
+        logger.info(f"Loaded {len(df)} local samples.")
+        return df
+
     def _load_and_prepare_dataset(self):
         """
         Loads the dataset specified in the config and applies sampling/filtering.
@@ -325,10 +385,25 @@ class EvaluationRunner:
         data_dir = str(self.config.data_dir) if self.config.data_dir else None
         fraction = self.config.fraction
 
-        logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (data_dir: {data_dir})")
-        df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir=data_dir, split="test").to_pandas()
+        if self.config.dataset_path:
+            df = self._load_local_dataset(Path(self.config.dataset_path))
+        else:
+            logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (data_dir: {data_dir})")
+            df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir=data_dir, split="test").to_pandas()
 
-        if fraction < 1.0:
+            if self.config.min_context_length is not None:
+                df = self._filter_by_context_length(df)
+
+        if self.config.n_samples is not None:
+            original_len = len(df)
+            n = min(self.config.n_samples, original_len)
+            if n < self.config.n_samples:
+                logger.warning(
+                    f"Requested {self.config.n_samples} samples but only {original_len} remain; using {n}."
+                )
+            df = df.sample(n=n, random_state=self.config.seed)
+            logger.info(f"Sampled {len(df)} of {original_len} remaining samples.")
+        elif fraction < 1.0:
             original_len = len(df)
             df = df.sample(frac=fraction, random_state=self.config.seed)
             logger.info(f"Sampled {len(df)} samples ({fraction:.2f}) from original {original_len} samples.")

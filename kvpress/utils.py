@@ -6,6 +6,15 @@ from torch import nn
 from transformers import Cache, QuantizedCache
 
 
+def get_cache_metadata(cache, metadata: dict | None = None) -> dict:
+    """Return metadata owned by ``cache``, optionally binding a caller-provided dictionary to it."""
+    if metadata is not None:
+        cache.kvpress_metadata = metadata
+    if not hasattr(cache, "kvpress_metadata"):
+        cache.kvpress_metadata = {}
+    return cache.kvpress_metadata
+
+
 def get_prerope_query_states(module: nn.Module, hidden_states: torch.Tensor) -> torch.Tensor:
     """Extract pre-RoPE query states; dispatched through the model adapter."""
     from kvpress.adapters import get_adapter_from_module

@@ -40,9 +40,9 @@ def search_hyperplane(X, max_iter: int = 1000):
     raise ValueError("Could not find fake keys such that for every query q, exp(<q, k>) = 0")
 
 
-def add_attention_bias(module, query, key, attention_mask):
+def add_attention_bias(bias, query, key, attention_mask):
     """
-    Add module.attention_bias to the attention mask of the first context positions.
+    Add a cache-owned attention bias to the attention mask of the first context positions.
 
     attention_bias has shape (bsz, num_key_value_heads, ctx_len): an additive logit bias per KV pair, with
     -inf for dropped pairs (see BernoulliPress). It is repeated across the query heads of each KV group.
@@ -50,8 +50,8 @@ def add_attention_bias(module, query, key, attention_mask):
 
     Parameters
     ----------
-    module : nn.Module
-        Attention module carrying the attention_bias attribute.
+    bias : torch.Tensor
+        Additive bias with shape (bsz, num_key_value_heads, ctx_len).
     query : torch.Tensor
         Query tensor with shape (bsz, num_heads, q_len, head_dim).
     key : torch.Tensor
@@ -64,7 +64,6 @@ def add_attention_bias(module, query, key, attention_mask):
     torch.Tensor
         Additive attention mask with shape broadcastable to (bsz, num_heads, q_len, k_len).
     """
-    bias = module.attention_bias
     q_len, k_len = query.shape[2], key.shape[2]
     bsz, num_key_value_heads, ctx_len = bias.shape
     if ctx_len > k_len:
@@ -97,7 +96,7 @@ def attention_patch(func):
     The keys are updated with a fake key k such that exp(<q, k>) = 0 to fake head-wise compression
     This solution is not optimal as it does not reduce peak memory and slightly increases runtime
 
-    It also adds module.attention_bias, when set, to the attention mask after pre-filling (see add_attention_bias).
+    It also adds a cache-owned attention bias supplied through ``kvpress_metadata`` (see add_attention_bias).
 
     Parameters
     ----------
@@ -113,14 +112,13 @@ def attention_patch(func):
 
     def wrapper(module, query, key, value, attention_mask, dropout, **kwargs):
         if query.shape[2] == key.shape[2]:
-            # Prefilling
             module.masked_key_indices = None
-            if getattr(module, "attention_bias", None) is not None:
-                module.attention_bias = None
-        elif getattr(module, "attention_bias", None) is not None:
+        metadata = kwargs.pop("kvpress_metadata", None)
+        attention_bias = None if metadata is None else metadata.get("attention_bias", {}).get(int(module.layer_idx))
+        if attention_bias is not None:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("attention_bias is only supported with attn_implementation='sdpa'")
-            attention_mask = add_attention_bias(module, query, key, attention_mask)
+            attention_mask = add_attention_bias(attention_bias, query, key, attention_mask)
         elif getattr(module, "masked_key_indices", None) is not None:
             # Decoding: build fake keys k s.t. exp(<q, k>) = 0
             bsz, num_heads, seq_len, head_dim = query.shape

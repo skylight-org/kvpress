@@ -4,14 +4,11 @@
 import pytest
 import torch
 from transformers.models.qwen3_5.configuration_qwen3_5 import Qwen3_5TextConfig
-from transformers.models.qwen3_5.modeling_qwen3_5 import (
-    Qwen3_5DynamicCache,
-    Qwen3_5ForCausalLM,
-    apply_rotary_pos_emb,
-)
+from transformers.models.qwen3_5.modeling_qwen3_5 import Qwen3_5DynamicCache, Qwen3_5ForCausalLM, apply_rotary_pos_emb
 
 from kvpress import BernoulliPress, KnormPress, KVzipPress, SnapKVPress
 from kvpress.adapters import Qwen3_5Adapter, get_adapter, get_adapter_from_module, has_adapter
+from kvpress.utils import get_cache_metadata
 from tests.fixtures import get_device
 
 FULL_ATTENTION_LAYERS = [1, 3]
@@ -162,9 +159,7 @@ def test_sequential_continuation_matches_a_single_pass(tiny_qwen3_5_model):
         with torch.no_grad():
             logits = tiny_qwen3_5_model(input_ids=prefill_ids, past_key_values=cache).logits
             for i in range(0, continuation_ids.shape[1], step):
-                logits = tiny_qwen3_5_model(
-                    input_ids=continuation_ids[:, i : i + step], past_key_values=cache
-                ).logits
+                logits = tiny_qwen3_5_model(input_ids=continuation_ids[:, i : i + step], past_key_values=cache).logits
         return cache.recurrent_states[0], logits[0, -1]
 
     reference_state, reference_logits = recurrent_state(ids, ids[:, :0], 1)
@@ -212,13 +207,15 @@ def test_bernoulli_bias_rows_follow_compressible_layers(tiny_qwen3_5_model, monk
     press.press.score_val = torch.stack([high, low]).to(model.device)
     press.press._score_row_by_layer = {int(m.layer_idx): row for row, m in enumerate(modules)}
     press.press._context_ids = torch.arange(n_ctx)[None]
+    press.press._cache = get_adapter(model).make_cache(model)
     try:
         press.compress_post(model)
-        full, linear_like = modules
-        assert full.attention_bias.shape == (1, n_kv, n_ctx)
-        assert linear_like.attention_bias.shape == (1, n_kv, n_ctx)
-        assert torch.isfinite(full.attention_bias).float().mean() > 0.6
-        kept_low = torch.isfinite(linear_like.attention_bias)
+        biases = get_cache_metadata(press.press._cache)["attention_bias"]
+        full, linear_like = (biases[int(module.layer_idx)] for module in modules)
+        assert full.shape == (1, n_kv, n_ctx)
+        assert linear_like.shape == (1, n_kv, n_ctx)
+        assert torch.isfinite(full).float().mean() > 0.6
+        kept_low = torch.isfinite(linear_like)
         assert kept_low[..., : press.press.n_sink].all()
         assert not kept_low[..., press.press.n_sink :].any()
         for idx, layer in enumerate(model.model.layers):
@@ -226,5 +223,4 @@ def test_bernoulli_bias_rows_follow_compressible_layers(tiny_qwen3_5_model, monk
                 assert not hasattr(layer, "self_attn")
     finally:
         for m in modules:
-            m.attention_bias = None
             m.masked_key_indices = None
