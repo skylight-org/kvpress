@@ -198,6 +198,24 @@ def test_solve_c_budget_above_positive_count():
     torch.testing.assert_close(r, torch.tensor([0.0, 0.0, 1.0, 1.0, 1.0], dtype=torch.float64))
 
 
+def test_transform_scores_for_sampling_keeps_unit_interval():
+    scores = torch.tensor([[0.0, 0.3, 1.0], [0.2, 0.2, 0.5]])
+    torch.testing.assert_close(bernoulli_module.transform_scores_for_sampling(scores), scores)
+
+
+@pytest.mark.parametrize(
+    "scores",
+    [
+        torch.tensor([-0.1, 0.3, 0.5]),
+        torch.tensor([0.2, 1.5]),
+        torch.randn(2, 8, generator=torch.Generator().manual_seed(0)),
+    ],
+)
+def test_transform_scores_for_sampling_softmax_outside_unit_interval(scores):
+    got = bernoulli_module.transform_scores_for_sampling(scores)
+    torch.testing.assert_close(got, torch.softmax(scores, dim=-1))
+
+
 # ---------------------------------------------------------------------------------------------------------------------
 # BernoulliPress on a model
 # ---------------------------------------------------------------------------------------------------------------------
@@ -387,10 +405,8 @@ def test_per_head_keep_prob_meets_budget(n, compression_ratio):
         # the protected positions use the whole budget
         assert (r.sum(-1) == n_protected).all()
         return
-    # the head minimum maps to 0, so only positions with a positive shifted score can be sampled
-    n_sampleable = ((scores - scores.amin(-1, keepdim=True)).masked_fill(protected, 0) > 0).sum(-1).double()
-    expected = torch.clamp(n_sampleable + n_protected, max=n_kept)
-    torch.testing.assert_close(r.sum(-1), expected, atol=1e-6, rtol=0)
+    # softmax maps every free position to a positive weight, so the full per-head budget is used
+    torch.testing.assert_close(r.sum(-1), torch.full((1, 3), float(n_kept), dtype=torch.float64), atol=1e-6, rtol=0)
 
 
 def test_per_head_keep_prob_is_monotone_in_score():

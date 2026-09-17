@@ -21,6 +21,17 @@ from kvpress.utils import compute_n_kept
 logger = logging.getLogger(__name__)
 
 
+def transform_scores_for_sampling(scores: torch.Tensor, dim: int = -1) -> torch.Tensor:
+    """Map scores to non-negative sampling weights.
+
+    Values already in [0, 1] are left unchanged (KVzip-style masses). Otherwise they are treated as
+    logits and softmax-normalised along ``dim`` (Compactor-style z-scores).
+    """
+    if scores.numel() > 0 and bool((scores >= 0).all()) and bool((scores <= 1).all()):
+        return scores
+    return torch.softmax(scores, dim=dim)
+
+
 def _keep_prob(scores: torch.Tensor, c: float) -> torch.Tensor:
     """Keep probability r_i = min(1, c * s_i)."""
     return (c * scores).clamp(max=1.0)
@@ -81,13 +92,12 @@ def _per_head_keep_prob(scores: torch.Tensor, compression_ratio: float, start: i
     """
     Keep probabilities [bsz, H, n] for scores that are only comparable within a head (CompactorPress).
 
-    Scores are z-scores and can be negative, so each head is shifted by its minimum first, which keeps
-    the ranking and the gaps. Every head then keeps compute_n_kept(n, compression_ratio) pairs in
+    Scores are mapped with ``transform_scores_for_sampling`` along the sequence (softmax when they are
+    not already in [0, 1]). Every head then keeps compute_n_kept(n, compression_ratio) pairs in
     expectation, the same count as CompactorPress's top-k, with the protected positions at r = 1.
     """
     bsz, n_heads, n = scores.shape
-    s = scores.double()
-    s = s - s.amin(-1, keepdim=True)
+    s = transform_scores_for_sampling(scores.double(), dim=-1)
     protected = _protected_mask(n, start, end, s.device)
     n_protected = int(protected.sum())
     n_kept = compute_n_kept(n, compression_ratio)
@@ -108,23 +118,25 @@ class BernoulliPress(BasePress):
     Instead of keeping the top-k KV pairs, every KV pair i is kept independently with probability
     r_i = min(1, c * s_i), where s_i is its importance score and c is chosen so that the expected number of
     kept pairs matches the compression ratio. Pairs with c * s_i >= 1 are always kept; the rest are
-    sampled. Each kept pair then receives an additive attention logit bias of log(1 / r_i), which makes the
-    compressed attention an unbiased estimate of the full one (Horvitz-Thompson reweighting). Dropped
-    pairs receive -inf.
+    sampled. Each kept pair then receives an additive attention logit bias of log(1 / r_i) (dropped pairs
+    receive -inf). Softmax is a ratio: that bias makes the unnormalised weight of every pair, and therefore
+    both the numerator and the denominator of softmax, Horvitz-Thompson unbiased estimates of their full-cache
+    counterparts. The ratio itself (the attention weights) is not unbiased.
 
     The scores come from the wrapped press, which is used unchanged. This press replaces only its
     selection step (top-k) with sampling. Two scorers are supported:
 
-    - KVzipPress: its scores are comparable across layers and heads, so a single c is shared by all of
-      them, exactly like KVzip's global top-k. Its n_sink first tokens are always kept.
-    - CompactorPress: its scores are z-scores normalised within each head, so each head is shifted by its
-      minimum and gets its own c, keeping the same number of pairs per head as Compactor's top-k (in
+    - KVzipPress: its scores are comparable across layers and heads and already lie in [0, 1], so they are
+      used as sampling weights with a single c shared by all of them, exactly like KVzip's global top-k.
+      Its n_sink first tokens are always kept.
+    - CompactorPress: its scores are z-scores and are softmax-normalised within each head before sampling.
+      Each head gets its own c, keeping the same number of pairs per head as Compactor's top-k (in
       expectation). Its protected first and last tokens are always kept. Compactor's leverage sketch is
       seeded from the context and the layer, so a given (context, seed) pair is reproducible and the
       global random state is left untouched.
 
-    Forced keeps are paid for out of the same budget. Raising any r_i above min(1, c * s_i) keeps the
-    estimator unbiased.
+    Forced keeps are paid for out of the same budget. Raising any r_i above min(1, c * s_i) and weighting
+    by 1 / r_i keeps the numerator and denominator estimates unbiased.
 
     Limitations:
     - Only the "sdpa" attention implementation is supported. The bias is added to the attention mask
@@ -262,7 +274,7 @@ class BernoulliPress(BasePress):
         assert scores.shape[1] == 1, "BernoulliPress only supports batch size 1"
         n_layers, _, n_kv_heads, ctx_len = scores.shape
         n_sink = self.press.n_sink
-        flat = scores.reshape(-1).double().clamp_min(0.0)
+        flat = transform_scores_for_sampling(scores.reshape(-1).double())
         budget = (1.0 - self.compression_ratio) * flat.numel()
 
         c = _solve_c(flat, budget)
