@@ -45,11 +45,18 @@ At the moment, we support the following standard popular benchmarks:
 
 - [Loogle](benchmarks/loogle/README.md) ([hf link](https://huggingface.co/datasets/simonjegou/loogle))
 - [RULER](benchmarks/ruler/README.md) ([hf link](https://huggingface.co/datasets/simonjegou/ruler))
+- [RULER 16k](benchmarks/ruler16k/README.md) ([hf link](https://huggingface.co/datasets/xAlg-AI/att-hub-ruler-16k))
+- [RULER 32k](benchmarks/ruler32k/README.md) ([hf link](https://huggingface.co/datasets/xAlg-AI/att-hub-ruler-32k))
+- [RULER 64k](benchmarks/ruler64k/README.md) ([hf link](https://huggingface.co/datasets/SaylorTwift/RULER-65536-llama-3.2-tokenizer))
+- [RULER 128k](benchmarks/ruler128k/README.md) ([hf link](https://huggingface.co/datasets/SaylorTwift/RULER-131072-llama-3.2-tokenizer))
+- [LOFT RAG](benchmarks/loft/README.md)
 - [Zero Scrolls](benchmarks/zero_scrolls/README.md) ([hf link](https://huggingface.co/datasets/simonjegou/zero_scrolls))
 - [Infinitebench](benchmarks/infinite_bench/README.md) ([hf link](https://huggingface.co/datasets/MaxJeblick/InfiniteBench))
 - [longbench](benchmarks/longbench/README.md)([hf link](https://huggingface.co/datasets/Xnhyacinth/LongBench))
 - [longbench-v2](benchmarks/longbenchv2/README.md)([hf link](https://huggingface.co/datasets/simonjegou/LongBench-v2))
 - [Needle in a Haystack](benchmarks/needle_in_haystack/README.md)([hf link][Paul Graham's essays](https://huggingface.co/datasets/alessiodevoto/paul_graham_essays))
+- [AIME 2024](benchmarks/aime2024/README.md) ([hf link](https://huggingface.co/datasets/xAlg-AI/att-hub-aime2024))
+- [AIME 2025](benchmarks/aime2025/README.md) ([hf link](https://huggingface.co/datasets/xAlg-AI/att-hub-aime2025))
 
 Each dataset directory is structured as follows:
 

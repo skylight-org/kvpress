@@ -13,6 +13,14 @@ import numpy as np
 import pandas as pd
 import torch
 import yaml
+from benchmarks.dataset_loaders import (
+    AIME_CONFIGS,
+    RULER_CONFIG_SPLIT,
+    RULER_RAW_SPLIT,
+    load_aime_dataset,
+    load_loft_dataset,
+    load_ruler_length_dataset,
+)
 from benchmarks.needle_in_haystack.utils import insert_needle_in_haystack
 from datasets import load_dataset, load_from_disk
 from evaluate_registry import DATASET_REGISTRY, PRESS_REGISTRY, SCORER_REGISTRY
@@ -120,6 +128,9 @@ class EvaluationConfig:
         if self.dataset == "needle_in_haystack":
             assert self.needle_depth is not None, "needle_depth must be set for needle_in_haystack"
             assert self.max_context_length is not None, "max_context_length must be set for needle_in_haystack"
+
+        if self.dataset in (*RULER_CONFIG_SPLIT, *RULER_RAW_SPLIT, "loft"):
+            assert self.data_dir is not None, f"data_dir must be set for {self.dataset}"
 
     def get_results_dir(self, output_dir: Path) -> Path:
         """
@@ -387,6 +398,12 @@ class EvaluationRunner:
 
         if self.config.dataset_path:
             df = self._load_local_dataset(Path(self.config.dataset_path))
+        elif dataset_name in (*RULER_CONFIG_SPLIT, *RULER_RAW_SPLIT):
+            df = load_ruler_length_dataset(dataset_name, data_dir)
+        elif dataset_name == "loft":
+            df = load_loft_dataset(data_dir)
+        elif dataset_name in AIME_CONFIGS:
+            df = load_aime_dataset(dataset_name)
         else:
             logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (data_dir: {data_dir})")
             df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir=data_dir, split="test").to_pandas()
