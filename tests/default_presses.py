@@ -31,6 +31,7 @@ from kvpress import (
     StreamingLLMPress,
     ThinKPress,
     TOVAPress,
+    VKvWRPress,
 )
 from kvpress.presses.fastkvzip_press import FastKVzipGate
 from kvpress.presses.kvzap_press import KVzapConfig, KVzapModel
@@ -194,6 +195,13 @@ default_presses = [
             {"press": KVzipPress(compression_ratio=0.8), "seed": 1},
             {"press": CompactorPress(compression_ratio=0.5)},
             {"press": CompactorPress(compression_ratio=0.8), "seed": 1},
+        ],
+    },
+    {
+        "cls": VKvWRPress,
+        "kwargs": [
+            {"press": KVzipPress(compression_ratio=0.5)},
+            {"press": CompactorPress(compression_ratio=0.5), "seed": 1},
         ],
     },
 ]

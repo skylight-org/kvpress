@@ -38,6 +38,7 @@ from kvpress import (
     ObservedAttentionPress,
     ScorerPress,
     ThinKPress,
+    VKvWRPress,
 )
 
 logger = logging.getLogger(__name__)
@@ -468,9 +469,9 @@ class EvaluationRunner:
         if isinstance(self.press, ObservedAttentionPress):
             model_kwargs["attn_implementation"] = "eager"
             logger.info("ObservedAttentionPress detected, setting attn_implementation to 'eager'.")
-        elif isinstance(self.press, BernoulliPress):
+        elif isinstance(self.press, (BernoulliPress, VKvWRPress)):
             model_kwargs["attn_implementation"] = "sdpa"
-            logger.info("BernoulliPress detected, setting attn_implementation to 'sdpa'.")
+            logger.info(f"{type(self.press).__name__} detected, setting attn_implementation to 'sdpa'.")
         else:
             try:
                 import flash_attn  # noqa: F401
