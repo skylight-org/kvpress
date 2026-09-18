@@ -151,7 +151,17 @@ class BasePress:
 
         adapter = get_adapter_from_module(module)
         keys, values = adapter.get_keys_values(cache, module)
+        seq_len_before = keys.shape[2]
         keys, values = self.compress(module, hidden_states, keys, values, output[1], kwargs)
+        if keys.shape[2] < seq_len_before:
+            from kvpress.metric_logging import cache_sparsity, maybe_log_sparsity
+
+            maybe_log_sparsity(
+                cache_sparsity(seq_len_before, keys.shape[2]),
+                layer_idx=int(module.layer_idx),
+                k_len=seq_len_before,
+                source="cache",
+            )
         adapter.set_keys_values(cache, module, keys, values)
 
         return output

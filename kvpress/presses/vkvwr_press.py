@@ -126,23 +126,32 @@ def importance_sample_bias_from_base(
     delta: float,
     generator: torch.Generator,
     max_m: Optional[int] = None,
-) -> tuple[torch.Tensor, int]:
+) -> tuple[torch.Tensor, int, float, float]:
     """
     Using a prefill base sample and decode-time magnitudes ``a``, choose ``m`` via CLT and build the bias.
 
     Forced positions get bias 0. Sampled residual positions get ``log(I_i / (m * s_i))``. Others get -inf.
+
+    Returns
+    -------
+    bias, m, d_hat, d_true
+        ``d_hat`` is the base-sample IS estimate of the residual denominator
+        ``D = Σ_{s_i > 0} a_i``; ``d_true`` is that exact sum.
     """
     n = s.numel()
     device = s.device
     bias = torch.full((n,), -float("inf"), dtype=torch.float64, device=device)
     bias = bias.masked_fill(forced, 0.0)
 
-    m0 = int(base_idx.numel())
-    if m0 <= 0 or float(s.sum()) <= 0:
-        return bias, 0
-
     a = a.double()
     s = s.double()
+    support = s > 0
+    d_true = float(a[support].sum().item()) if bool(support.any()) else 0.0
+
+    m0 = int(base_idx.numel())
+    if m0 <= 0 or float(s.sum()) <= 0:
+        return bias, 0, 0.0, d_true
+
     inv_s = 1.0 / s[base_idx].clamp_min(1e-300)
     weights = a[base_idx] * inv_s
     d_hat = weights.mean().item()
@@ -162,7 +171,7 @@ def importance_sample_bias_from_base(
     counts = torch.bincount(idx_all, minlength=n).double()
     kept = (~forced) & (counts > 0)
     bias[kept] = torch.log(counts[kept] / (m * s[kept].clamp_min(1e-300)))
-    return bias, m
+    return bias, m, float(d_hat), d_true
 
 
 def decode_attention_bias(query: torch.Tensor, key: torch.Tensor, state: dict[str, Any]) -> torch.Tensor:
@@ -170,6 +179,7 @@ def decode_attention_bias(query: torch.Tensor, key: torch.Tensor, state: dict[st
     Build a per-layer attention bias from stored ``π`` / base sample and the current query.
 
     ``state`` is the per-layer dict written at prefill (see ``VKvWRPress._store_layer_state``).
+    When denominator micro-metrics are enabled, also logs mean ``|D̂ - D| / D`` over KV heads.
     """
     pi = state["pi"]  # [1, H_kv, ctx]
     forced = state["forced"]
@@ -181,11 +191,18 @@ def decode_attention_bias(query: torch.Tensor, key: torch.Tensor, state: dict[st
     n_kv = pi.shape[1]
     max_m = state["max_m"]
     bias = torch.empty_like(pi, dtype=torch.float64)
+
+    from kvpress.metric_logging import maybe_log_denominator_error, want_denominator_error
+
+    log_denom = want_denominator_error()
+    d_hats: list[float] = []
+    d_trues: list[float] = []
+
     for h in range(n_kv):
         generator = torch.Generator(device=device if device.type == "cuda" else "cpu")
         generator.manual_seed(int(state["seed"]) ^ (h * 104_729))
         idx_h = base_idx[h]
-        bias[0, h], _ = importance_sample_bias_from_base(
+        bias[0, h], _, d_hat, d_true = importance_sample_bias_from_base(
             s[0, h],
             forced[0, h],
             a[0, h],
@@ -195,6 +212,32 @@ def decode_attention_bias(query: torch.Tensor, key: torch.Tensor, state: dict[st
             generator,
             max_m=max_m,
         )
+        if log_denom:
+            d_hats.append(d_hat)
+            d_trues.append(d_true)
+
+    if log_denom and d_hats:
+        from kvpress.metric_logging import relative_denominator_error
+
+        rels = [
+            relative_denominator_error(d_hat, d_true)
+            for d_hat, d_true in zip(d_hats, d_trues)
+            if d_true > 0.0
+        ]
+        rels = [r for r in rels if math.isfinite(r)]
+        d_hat_mean = sum(d_hats) / len(d_hats)
+        d_true_mean = sum(d_trues) / len(d_trues)
+        maybe_log_denominator_error(
+            d_hat_mean,
+            d_true_mean,
+            layer_idx=int(state.get("layer_idx", -1)),
+            q_len=int(query.shape[2]),
+            k_len=int(key.shape[2]),
+            source="vkvwr_bias",
+            error=(sum(rels) / len(rels)) if rels else None,
+            n_heads=len(rels) if rels else 0,
+        )
+
     return bias.float()
 
 
@@ -342,6 +385,7 @@ class VKvWRPress(BasePress):
             "delta": self.delta,
             "max_m": int(self.max_sample_frac * n),
             "seed": int(seed) & 0x7FFFFFFF,
+            "layer_idx": int(layer_idx),
         }
 
     def compress(

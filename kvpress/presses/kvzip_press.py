@@ -60,13 +60,15 @@ class KVzipPress(BasePress):
             "This significantly increases the overall prefilling time compared to other compression methods, "
             "which is inherent to the KVzip algorithm design."
         )
+        self._tokenizer: PreTrainedTokenizer | None = None
+        self._tokenizer_name: str | None = None
+        self.prefix_length = 0
+        self._suffix_ids = None
         self._reset_internal_parameters()
 
     def _reset_internal_parameters(self):
+        """Clear per-forward scoring state. Tokenizer / chat affixes are cached across calls."""
         self.context_length = 0
-        self.prefix_length = 0
-
-        self._suffix_ids = None
         self._context_ids = None
         self._cache = None
 
@@ -75,6 +77,44 @@ class KVzipPress(BasePress):
         self.causal_mask_score = None
         self.start_idx = 0
         self.end_idx = 0
+
+    def _get_tokenizer(self, model: PreTrainedModel) -> PreTrainedTokenizer:
+        """Load the tokenizer once per model id; prefer local cache to avoid Hub round-trips."""
+        name = model.config.name_or_path
+        if self._tokenizer is not None and self._tokenizer_name == name:
+            return self._tokenizer
+        try:
+            tokenizer = AutoTokenizer.from_pretrained(name, local_files_only=True)
+        except (OSError, ValueError):
+            tokenizer = AutoTokenizer.from_pretrained(name)
+        self._tokenizer = tokenizer
+        self._tokenizer_name = name
+        self.prefix_length = 0
+        self._suffix_ids = None
+        return tokenizer
+
+    def _ensure_chat_affixes(self, tokenizer: PreTrainedTokenizer) -> None:
+        """Compute prefix/suffix token ids once (they depend only on the chat template)."""
+        if self._suffix_ids is not None:
+            return
+        if tokenizer.chat_template is None:
+            prefix_text = ""
+            suffix_text = "\n"  # Default suffix for models without chat template
+        else:
+            # Use a dummy context to extract the question suffix from chat template
+            dummy_context = "dummy context"
+            separator = "\n" + "#" * len(dummy_context)
+            temp_context = tokenizer.apply_chat_template(
+                [{"role": "user", "content": dummy_context + separator}],
+                add_generation_prompt=True,
+                tokenize=False,
+                enable_thinking=False,
+            )
+            context, suffix_text = temp_context.split(separator)
+            prefix_text = context.split(dummy_context)[0]
+
+        self.prefix_length = tokenizer.encode(prefix_text, return_tensors="pt", add_special_tokens=False).shape[-1]
+        self._suffix_ids = tokenizer.encode(suffix_text, return_tensors="pt", add_special_tokens=False)
 
     @contextmanager
     def __call__(self, model: PreTrainedModel) -> Generator:
@@ -92,29 +132,8 @@ class KVzipPress(BasePress):
 
         self.post_init_from_model(model)
 
-        # Store model reference for later use
-        tokenizer = AutoTokenizer.from_pretrained(model.config.name_or_path)
-
-        # Get suffix_ids directly using tokenizer's chat template (do this once, not in hook)
-        if tokenizer.chat_template is None:
-            prefix_text = ""
-            suffix_text = "\n"  # Default suffix for models without chat template
-        else:
-            # Use a dummy context to extract the question suffix from chat template
-            dummy_context = "dummy context"
-            separator = "\n" + "#" * len(dummy_context)
-            temp_context = tokenizer.apply_chat_template(
-                [{"role": "user", "content": dummy_context + separator}],
-                add_generation_prompt=True,
-                tokenize=False,
-                enable_thinking=False,
-            )
-            context, suffix_text = temp_context.split(separator)
-            prefix_text = context.split(dummy_context)[0]
-
-        # Tokenize suffix directly to ids
-        self.prefix_length = tokenizer.encode(prefix_text, return_tensors="pt", add_special_tokens=False).shape[-1]
-        self._suffix_ids = tokenizer.encode(suffix_text, return_tensors="pt", add_special_tokens=False)
+        tokenizer = self._get_tokenizer(model)
+        self._ensure_chat_affixes(tokenizer)
 
         # Register hook to store the pointer for past_key_values
         original_forward = model.model.forward

@@ -1,6 +1,8 @@
 # SPDX-FileCopyrightText: Copyright (c) 1993-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 
+import json
+
 import pytest
 import torch
 from transformers import DynamicCache
@@ -69,7 +71,7 @@ def test_importance_sample_bias_from_base_forced_and_is_weights():
     s, _ = vkvwr_module.residual_sampling_probs(pi, forced)
     base_idx = vkvwr_module.draw_base_sample(s, ~forced, 8, torch.Generator().manual_seed(1))
     a = torch.rand(n, generator=g, dtype=torch.float64) + 0.1
-    bias, m = vkvwr_module.importance_sample_bias_from_base(
+    bias, m, d_hat, d_true = vkvwr_module.importance_sample_bias_from_base(
         s, forced, a, base_idx, epsilon=0.2, delta=0.1, generator=torch.Generator().manual_seed(2), max_m=n
     )
     assert m >= 8
@@ -77,6 +79,8 @@ def test_importance_sample_bias_from_base_forced_and_is_weights():
     kept = torch.isfinite(bias)
     assert kept[:2].all() and kept[-2:].all()
     assert (bias[~kept] == -float("inf")).all()
+    assert d_true == pytest.approx(float(a[s > 0].sum().item()), rel=1e-6)
+    assert d_hat > 0.0
 
 
 def test_importance_sample_draws_extra_when_clt_requires_it(monkeypatch):
@@ -88,12 +92,14 @@ def test_importance_sample_draws_extra_when_clt_requires_it(monkeypatch):
     s, residual = vkvwr_module.residual_sampling_probs(pi, forced)
     base_idx = vkvwr_module.draw_base_sample(s, residual, 5, torch.Generator().manual_seed(0))
     a = torch.ones(n, dtype=torch.float64)
-    bias, m = vkvwr_module.importance_sample_bias_from_base(
+    bias, m, d_hat, d_true = vkvwr_module.importance_sample_bias_from_base(
         s, forced, a, base_idx, 0.1, 0.05, torch.Generator().manual_seed(1), max_m=n
     )
     assert m == 20
     assert torch.isfinite(bias).sum() >= 1
-
+    assert d_true == pytest.approx(float(a[s > 0].sum().item()), rel=1e-6)
+    # uniform a and s ⇒ D̂ should match D exactly on any sample
+    assert d_hat == pytest.approx(d_true, rel=1e-6)
 
 def test_vkvwr_fracs_from_compression_ratio():
     press = VKvWRPress(press=KVzipPress(compression_ratio=0.5))
@@ -161,6 +167,47 @@ def test_vkvwr_decode_applies_bias_from_query(clean_model, monkeypatch, scorer_c
     assert calls == []  # no metadata → no bias
     clean_model(token, past_key_values=cache, position_ids=position_ids, kvpress_metadata=metadata)
     assert len(calls) == clean_model.config.num_hidden_layers
+
+
+def test_vkvwr_decode_logs_sparsity(clean_model, tmp_path):
+    from kvpress.metric_logging import ATTENTION_SPARSITY, MicroMetricLogger
+
+    MicroMetricLogger.reset_for_testing()
+    MicroMetricLogger().configure_logging(log_path=str(tmp_path), enabled_metrics=[ATTENTION_SPARSITY])
+
+    press = VKvWRPress(press=KVzipPress(compression_ratio=0.5))
+    cache, metadata = prefill_with_press(clean_model, press, random_input(clean_model))
+    position_ids = torch.tensor([[CTX_LEN]], device=clean_model.device)
+    token = random_input(clean_model, seed=1, length=1)
+    clean_model(token, past_key_values=cache, position_ids=position_ids, kvpress_metadata=metadata)
+    MicroMetricLogger().flush()
+
+    events = [json.loads(line) for line in (tmp_path / "micro_metrics.jsonl").read_text().splitlines()]
+    assert len(events) == clean_model.config.num_hidden_layers
+    assert all(e["metric"] == ATTENTION_SPARSITY for e in events)
+    assert all(e["metadata"]["source"] == "vkvwr_bias" for e in events)
+    assert all(0.0 <= e["value"] <= 1.0 for e in events)
+
+
+def test_vkvwr_decode_logs_denominator_error(clean_model, tmp_path):
+    from kvpress.metric_logging import DENOMINATOR_ERROR, MicroMetricLogger
+
+    MicroMetricLogger.reset_for_testing()
+    MicroMetricLogger().configure_logging(log_path=str(tmp_path), enabled_metrics=[DENOMINATOR_ERROR])
+
+    press = VKvWRPress(press=KVzipPress(compression_ratio=0.5))
+    cache, metadata = prefill_with_press(clean_model, press, random_input(clean_model))
+    position_ids = torch.tensor([[CTX_LEN]], device=clean_model.device)
+    token = random_input(clean_model, seed=1, length=1)
+    clean_model(token, past_key_values=cache, position_ids=position_ids, kvpress_metadata=metadata)
+    MicroMetricLogger().flush()
+
+    events = [json.loads(line) for line in (tmp_path / "micro_metrics.jsonl").read_text().splitlines()]
+    assert len(events) == clean_model.config.num_hidden_layers
+    assert all(e["metric"] == DENOMINATOR_ERROR for e in events)
+    assert all(e["metadata"]["source"] == "vkvwr_bias" for e in events)
+    assert all("d_hat" in e["metadata"] and "d_true" in e["metadata"] for e in events)
+    assert all(e["value"] >= 0.0 for e in events)
 
 
 @pytest.mark.parametrize("scorer_cls", [KVzipPress, CompactorPress])

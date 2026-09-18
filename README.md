@@ -185,6 +185,7 @@ We provide a simple CLI to evaluate the performance of different presses on seve
 
 - Accuracy: Test your method on popular benchmarks directly using our CLI. 
 - Speed and Memory: The [speed_and_memory](notebooks/speed_and_memory.ipynb) notebook can help you measure peak memory usage and total time gain.
+- Micro-metrics: pass `--enable_micro_metrics` to log per-layer `attention_sparsity`, `attention_output_error`, and (for VKvWR) `denominator_error` into `micro_metrics.jsonl` (sparsity from cache eviction, attention bias, or masked keys; relative output error when the full KV is still present; IS residual-denominator `|D̂ - D| / D` with `d_hat` / `d_true` in metadata).
 
 Please refer to the [evaluation](evaluation/README.md) directory in this repo for more details and results. 
 
