@@ -77,6 +77,9 @@ class EvaluationConfig:
     # Output and logging
     output_dir: str = "./results"
     log_level: str = "INFO"
+    enable_micro_metrics: bool = False
+    micro_metrics_max_records: Optional[int] = None
+    micro_metrics_sampling_factor: float = 1.0
 
     # Model-specific parameters
     model_kwargs: Optional[Dict[str, Any]] = None
@@ -268,6 +271,31 @@ class EvaluationRunner:
         handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
         logger.addHandler(handler)
         logger.setLevel(log_level)
+
+    def _configure_micro_metrics(self, results_dir: Path) -> None:
+        """Optionally enable VKvWR sparsity / relative attention-error logging."""
+        if not self.config.enable_micro_metrics:
+            return
+        from kvpress.metric_logging import DEFAULT_MICRO_METRICS, MicroMetricLogger
+
+        MicroMetricLogger().configure_logging(
+            log_path=str(results_dir),
+            enabled_metrics=list(DEFAULT_MICRO_METRICS),
+            max_records=self.config.micro_metrics_max_records,
+            sampling_factor=self.config.micro_metrics_sampling_factor,
+        )
+        logger.info(
+            "Micro-metric logging enabled (%s) → %s/micro_metrics.jsonl",
+            ", ".join(DEFAULT_MICRO_METRICS),
+            results_dir,
+        )
+
+    def _flush_micro_metrics(self) -> None:
+        if not self.config.enable_micro_metrics:
+            return
+        from kvpress.metric_logging import MicroMetricLogger
+
+        MicroMetricLogger().flush()
 
     def _setup_directories(self) -> Path:
         """
@@ -618,11 +646,13 @@ class EvaluationRunner:
         self._setup_press()
         self._setup_model_pipeline()
         self._load_and_prepare_dataset()
+        self._configure_micro_metrics(results_dir)
 
         self._run_inference()
         self._save_results(predictions_filename)
         self._calculate_and_save_metrics(metrics_filename)
         self.config.save_config(config_filename)
+        self._flush_micro_metrics()
         logger.info("Evaluation run completed successfully.")
 
 
