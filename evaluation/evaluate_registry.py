@@ -1,8 +1,11 @@
 # SPDX-FileCopyrightText: Copyright (c) 1993-2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0
 
+from benchmarks.aime2024.calculate_metrics import calculate_metrics as aime2024_scorer
+from benchmarks.aime2025.calculate_metrics import calculate_metrics as aime2025_scorer
 from benchmarks.aime25.calculate_metrics import calculate_metrics as aime25_scorer
 from benchmarks.infinite_bench.calculate_metrics import calculate_metrics as infinite_bench_scorer
+from benchmarks.loft.calculate_metrics import calculate_metrics as loft_scorer
 from benchmarks.longbench.calculate_metrics import calculate_metrics as longbench_scorer
 from benchmarks.longbench.calculate_metrics import calculate_metrics_e as longbench_scorer_e
 from benchmarks.longbenchv2.calculate_metrics import calculate_metrics as longbenchv2_scorer
@@ -53,6 +56,11 @@ from kvpress import (
 DATASET_REGISTRY = {
     "loogle": "simonjegou/loogle",
     "ruler": "simonjegou/ruler",
+    "ruler16k": "xAlg-AI/att-hub-ruler-16k",
+    "ruler32k": "xAlg-AI/att-hub-ruler-32k",
+    "ruler64k": "SaylorTwift/RULER-65536-llama-3.2-tokenizer",
+    "ruler128k": "SaylorTwift/RULER-131072-llama-3.2-tokenizer",
+    "loft": "f20180301/loft-rag",
     "zero_scrolls": "simonjegou/zero_scrolls",
     "infinitebench": "MaxJeblick/InfiniteBench",
     "longbench": "Xnhyacinth/LongBench",
@@ -61,12 +69,19 @@ DATASET_REGISTRY = {
     "needle_in_haystack": "alessiodevoto/paul_graham_essays",
     # Datasets used to be used for decoding compression
     "aime25": "alessiodevoto/aime25",
+    "aime2024": "xAlg-AI/att-hub-aime2024",
+    "aime2025": "xAlg-AI/att-hub-aime2025",
     "math500": "alessiodevoto/math500",
 }
 
 SCORER_REGISTRY = {
     "loogle": loogle_scorer,
     "ruler": ruler_scorer,
+    "ruler16k": ruler_scorer,
+    "ruler32k": ruler_scorer,
+    "ruler64k": ruler_scorer,
+    "ruler128k": ruler_scorer,
+    "loft": loft_scorer,
     "zero_scrolls": zero_scrolls_scorer,
     "infinitebench": infinite_bench_scorer,
     "longbench": longbench_scorer,
@@ -74,6 +89,8 @@ SCORER_REGISTRY = {
     "longbench-v2": longbenchv2_scorer,
     "needle_in_haystack": needle_in_haystack_scorer,
     "aime25": aime25_scorer,
+    "aime2024": aime2024_scorer,
+    "aime2025": aime2025_scorer,
     "math500": math500_scorer,
 }
 
