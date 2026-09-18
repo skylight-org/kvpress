@@ -256,7 +256,8 @@ class VKvWRPress(BasePress):
         bound, draw any extra residual samples, and apply an IS attention bias
         ``log(I_i / (m * s_i))`` (forced tokens contribute with weight 1).
 
-    ``topk_frac = base_sample_frac = (1 - compression_ratio) / 2.1``.
+    By default ``topk_frac = base_sample_frac = (1 - compression_ratio) / 2.1``. Optional
+    ``topk_frac_override`` / ``base_sample_frac_override`` replace those formulas when set.
 
     Limitations: ``attn_implementation="sdpa"``, batch size 1, pairs are masked rather than removed.
     """
@@ -268,6 +269,8 @@ class VKvWRPress(BasePress):
     delta: float = 0.05
     max_sample_frac: float = 1.0
     seed: int = 0
+    topk_frac_override: Optional[float] = None
+    base_sample_frac_override: Optional[float] = None
 
     def __post_init__(self):
         assert isinstance(
@@ -277,6 +280,10 @@ class VKvWRPress(BasePress):
         assert 0 < self.delta < 1, "delta must be in (0, 1)"
         assert 0 < self.max_sample_frac <= 1, "max_sample_frac must be in (0, 1]"
         assert self.sink >= 0 and self.local >= 0
+        if self.topk_frac_override is not None:
+            assert 0 <= self.topk_frac_override <= 1, "topk_frac_override must be in [0, 1]"
+        if self.base_sample_frac_override is not None:
+            assert 0 < self.base_sample_frac_override <= 1, "base_sample_frac_override must be in (0, 1]"
         if isinstance(self.press, KVzipPress) and self.press.layerwise:
             logger.warning(
                 "VKvWRPress ignores KVzipPress.layerwise and samples independently per layer/head at decode."
@@ -296,12 +303,16 @@ class VKvWRPress(BasePress):
 
     @property
     def topk_frac(self) -> float:
-        """Fraction of positions forced kept as top-k: ``(1 - compression_ratio) / 2.1``."""
+        """Fraction of positions forced kept as top-k: override or ``(1 - compression_ratio) / 2.1``."""
+        if self.topk_frac_override is not None:
+            return float(self.topk_frac_override)
         return (1.0 - self.compression_ratio) / 2.1
 
     @property
     def base_sample_frac(self) -> float:
-        """Pilot sample size as a fraction of length: ``(1 - compression_ratio) / 2.1``."""
+        """Pilot sample size as a fraction of length: override or ``(1 - compression_ratio) / 2.1``."""
+        if self.base_sample_frac_override is not None:
+            return float(self.base_sample_frac_override)
         return (1.0 - self.compression_ratio) / 2.1
 
     @staticmethod
