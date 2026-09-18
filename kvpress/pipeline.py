@@ -19,6 +19,7 @@ from kvpress.presses.finch_press import FinchPress
 from kvpress.presses.key_rerotation_press import KeyRerotationPress
 from kvpress.presses.prefill_decoding_press import PrefillDecodingPress
 from kvpress.presses.restorekv_press import RestoreKVPress
+from kvpress.utils import get_cache_metadata
 
 logger = logging.getLogger(__name__)
 
@@ -211,6 +212,7 @@ class KVPressTextGenerationPipeline(Pipeline):
         # Prefilling using the press on the context
         if cache is None:
             cache = get_adapter(self.model).make_cache(self.model)
+        kvpress_metadata = get_cache_metadata(cache)
 
         # We only perform prefill compression if the press is a prefill press
         perform_prefill_compression = press is not None and not isinstance(press, DecodingPress)
@@ -219,6 +221,7 @@ class KVPressTextGenerationPipeline(Pipeline):
             self.model.model(
                 input_ids=context_ids,
                 past_key_values=cache,
+                kvpress_metadata=kvpress_metadata,
             )
 
             logger.debug(f"Context Length: {context_length}")
@@ -244,6 +247,7 @@ class KVPressTextGenerationPipeline(Pipeline):
                     cache=cache,
                     context_length=context_length,
                     max_new_tokens=max_new_tokens,
+                    kvpress_metadata=kvpress_metadata,
                 )
                 self._remove_answer_from_cache(cache, cache_seq_lengths)
 
@@ -254,7 +258,12 @@ class KVPressTextGenerationPipeline(Pipeline):
         get_adapter(self.model).rewind_cache(cache, cache_seq_lengths)
 
     def generate_answer(
-        self, question_ids: torch.Tensor, cache: Cache, context_length: int, max_new_tokens: int
+        self,
+        question_ids: torch.Tensor,
+        cache: Cache,
+        context_length: int,
+        max_new_tokens: int,
+        kvpress_metadata: Optional[dict] = None,
     ) -> str:
         """
         Generate an answer to a question using greedy decoding.
@@ -275,6 +284,8 @@ class KVPressTextGenerationPipeline(Pipeline):
         str
             The generated answer.
         """
+        if kvpress_metadata is None:
+            kvpress_metadata = get_cache_metadata(cache)
         position_ids = torch.arange(
             context_length, context_length + question_ids.shape[1], device=self.model.device
         ).unsqueeze(0)
@@ -289,6 +300,7 @@ class KVPressTextGenerationPipeline(Pipeline):
                 past_key_values=cache,
                 position_ids=position_ids,
                 logits_to_keep=1,
+                kvpress_metadata=kvpress_metadata,
             )
         else:
             # Recurrent architectures only extend their state one token at a time.
@@ -298,6 +310,7 @@ class KVPressTextGenerationPipeline(Pipeline):
                     past_key_values=cache,
                     position_ids=position_ids[:, i : i + 1],
                     logits_to_keep=1,
+                    kvpress_metadata=kvpress_metadata,
                 )
 
         position_ids = position_ids[:, -1:] + 1
@@ -312,6 +325,7 @@ class KVPressTextGenerationPipeline(Pipeline):
                 input_ids=generated_ids[-1].unsqueeze(0).unsqueeze(0),
                 past_key_values=cache,
                 position_ids=position_ids + i,
+                kvpress_metadata=kvpress_metadata,
             )
             new_id = outputs.logits[0, -1].argmax()
             generated_ids.append(new_id)

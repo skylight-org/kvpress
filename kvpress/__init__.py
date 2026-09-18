@@ -7,6 +7,7 @@ from kvpress.attention_patch import patch_attention_functions
 from kvpress.pipeline import KVPressTextGenerationPipeline
 from kvpress.presses.adakv_press import AdaKVPress
 from kvpress.presses.base_press import BasePress
+from kvpress.presses.bernoulli_press import BernoulliPress
 from kvpress.presses.block_press import BlockPress
 from kvpress.presses.cam_press import CAMPress
 from kvpress.presses.cap_press import CapPress
@@ -62,6 +63,7 @@ __all__ = [
     "LlamaLikeAdapter",
     "Qwen3_5Adapter",
     "get_adapter",
+    "BernoulliPress",
     "ComposedPress",
     "ScorerPress",
     "ExpectedAttentionPress",

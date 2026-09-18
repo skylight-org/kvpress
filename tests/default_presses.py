@@ -5,6 +5,7 @@ import numpy as np
 import torch
 
 from kvpress import (
+    BernoulliPress,
     CapPress,
     CompactorPress,
     CURPress,
@@ -186,4 +187,13 @@ default_presses = [
     },
     {"cls": CapPress, "kwargs": [{"compression_ratio": 0.5}, {"compression_ratio": 0.8}]},
     {"cls": TestLUKVPress, "kwargs": [{"compression_ratio": 0.5}, {"compression_ratio": 0.8}]},
+    {
+        "cls": BernoulliPress,
+        "kwargs": [
+            {"press": KVzipPress(compression_ratio=0.5)},
+            {"press": KVzipPress(compression_ratio=0.8), "seed": 1},
+            {"press": CompactorPress(compression_ratio=0.5)},
+            {"press": CompactorPress(compression_ratio=0.8), "seed": 1},
+        ],
+    },
 ]
