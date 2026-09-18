@@ -47,6 +47,7 @@ from kvpress import (
     StreamingLLMPress,
     ThinKPress,
     TOVAPress,
+    VKvWRPress,
 )
 
 # These dictionaries define the available datasets, scorers, and KVPress methods for evaluation.
@@ -82,6 +83,8 @@ PRESS_REGISTRY = {
     "adakv_snapkv": AdaKVPress(SnapKVPress()),
     "bernoulli_compactor": BernoulliPress(press=CompactorPress()),
     "bernoulli_kvzip": BernoulliPress(press=KVzipPress()),
+    "vkvwr_compactor": VKvWRPress(press=CompactorPress()),
+    "vkvwr_kvzip": VKvWRPress(press=KVzipPress()),
     "block_keydiff": BlockPress(press=KeyDiffPress(), block_size=128),
     "chunkkv": ChunkKVPress(press=SnapKVPress(), chunk_length=20),
     "critical_adakv_expected_attention": CriticalAdaKVPress(ExpectedAttentionPress(use_vnorm=False)),

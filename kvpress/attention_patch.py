@@ -114,8 +114,20 @@ def attention_patch(func):
         if query.shape[2] == key.shape[2]:
             module.masked_key_indices = None
         metadata = kwargs.pop("kvpress_metadata", None)
-        attention_bias = None if metadata is None else metadata.get("attention_bias", {}).get(int(module.layer_idx))
-        if attention_bias is not None:
+        layer_idx = int(module.layer_idx)
+        vkvwr_state = None if metadata is None else metadata.get("vkvwr", {}).get(layer_idx)
+        attention_bias = None if metadata is None else metadata.get("attention_bias", {}).get(layer_idx)
+
+        # Prefill keeps q_len == k_len: do not sparsify. Decode / cached forwards use the real query.
+        if vkvwr_state is not None and query.shape[2] != key.shape[2]:
+            if module.config._attn_implementation != "sdpa":
+                raise ValueError("vkvwr decode bias is only supported with attn_implementation='sdpa'")
+            from kvpress.presses.vkvwr_press import decode_attention_bias
+
+            attention_mask = add_attention_bias(
+                decode_attention_bias(query, key, vkvwr_state), query, key, attention_mask
+            )
+        elif attention_bias is not None:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("attention_bias is only supported with attn_implementation='sdpa'")
             attention_mask = add_attention_bias(attention_bias, query, key, attention_mask)

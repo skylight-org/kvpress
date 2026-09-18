@@ -7,6 +7,7 @@ from kvpress.presses.adakv_press import AdaKVPress
 from kvpress.presses.base_press import BasePress
 from kvpress.presses.bernoulli_press import BernoulliPress
 from kvpress.presses.kvzip_press import KVzipPress
+from kvpress.presses.vkvwr_press import VKvWRPress
 
 
 @dataclass
@@ -26,7 +27,7 @@ class ComposedPress(BasePress):
     ])
     ```
 
-    AdaKVPress, KVzipPress and BernoulliPress are currently not supported.
+    AdaKVPress, KVzipPress, BernoulliPress and VKvWRPress are currently not supported.
 
     ⚠️ ComposedPress may fail if a press depends on features beyond keys and values
     (e.g., hidden states or attention weights). For example, combining KnormPress
@@ -47,8 +48,8 @@ class ComposedPress(BasePress):
     def __post_init__(self):
         self.compression_ratio = None
         assert not any(
-            isinstance(press, (AdaKVPress, KVzipPress, BernoulliPress)) for press in self.presses
-        ), "ComposedPress cannot contains AdaKVPress, KVzipPress or BernoulliPress"
+            isinstance(press, (AdaKVPress, KVzipPress, BernoulliPress, VKvWRPress)) for press in self.presses
+        ), "ComposedPress cannot contains AdaKVPress, KVzipPress, BernoulliPress or VKvWRPress"
 
     def post_init_from_model(self, model):
         for press in self.presses:

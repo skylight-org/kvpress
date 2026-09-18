@@ -27,6 +27,7 @@ from kvpress import (
     ScorerPress,
     SnapKVPress,
     ThinKPress,
+    VKvWRPress,
 )
 from tests.default_presses import default_presses
 from tests.fixtures import unit_test_model, unit_test_model_output_attention  # noqa: F401
@@ -87,7 +88,7 @@ def test_presses_run(unit_test_model, press_dict, wrapper_press):  # noqa: F811
             if hasattr(press, "post_init_from_model"):
                 press.post_init_from_model(unit_test_model)
             if issubclass(wrapper_press, ComposedPress):
-                if isinstance(press, (KVzipPress, FastKVzipPress, KVComposePress, BernoulliPress)):
+                if isinstance(press, (KVzipPress, FastKVzipPress, KVComposePress, BernoulliPress, VKvWRPress)):
                     # these presses are currently not compatible with ComposedPress
                     return
                 press = ComposedPress(presses=[press])
