@@ -9,9 +9,10 @@ Mirrors sparse_attention_hub's density / output-error pair:
 - ``denominator_error`` is ``|D̂ - D| / D`` for VKvWR's IS residual-denominator estimate
 
 Sparsity is logged from attention masks/biases, head-wise masked keys, or cache
-eviction (see metadata ``source``). Relative output error is only available when
-the full KV is still present (bias / masked-key paths). Denominator error is
-logged on the VKvWR decode path.
+eviction (see metadata ``source``). Relative output error needs a dense reference:
+bias / masked-key paths keep the full KV in the live cache; eviction presses store
+a prefill copy under ``metadata["full_kv"]`` for the attention patch to use.
+Denominator error is logged on the VKvWR decode path.
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from kvpress.metric_logging.logger import MicroMetricLogger
 ATTENTION_SPARSITY = "attention_sparsity"
 ATTENTION_OUTPUT_ERROR = "attention_output_error"
 DENOMINATOR_ERROR = "denominator_error"
+FULL_KV_METADATA_KEY = "full_kv"
 
 DEFAULT_MICRO_METRICS = (ATTENTION_SPARSITY, ATTENTION_OUTPUT_ERROR, DENOMINATOR_ERROR)
 
@@ -113,6 +115,54 @@ def maybe_log_attention_output_error(
 
 def want_attention_output_error() -> bool:
     return MicroMetricLogger().is_metric_enabled(ATTENTION_OUTPUT_ERROR)
+
+
+def want_store_full_kv() -> bool:
+    """Whether eviction presses should snapshot the uncompressed prefill KV into metadata."""
+    return want_attention_output_error()
+
+
+def store_full_kv(
+    metadata: dict[str, Any],
+    *,
+    layer_idx: int,
+    keys: torch.Tensor,
+    values: torch.Tensor,
+    compressed_ctx_len: int,
+) -> None:
+    """Persist a detached copy of the pre-compression KV for dense micro-metric forwards."""
+    metadata.setdefault(FULL_KV_METADATA_KEY, {})[int(layer_idx)] = {
+        "keys": keys.detach(),
+        "values": values.detach(),
+        "ctx_len": int(keys.shape[2]),
+        "compressed_ctx_len": int(compressed_ctx_len),
+    }
+
+
+def get_full_kv(metadata: Optional[dict[str, Any]], layer_idx: int) -> Optional[dict[str, Any]]:
+    if metadata is None:
+        return None
+    return metadata.get(FULL_KV_METADATA_KEY, {}).get(int(layer_idx))
+
+
+def reconstruct_dense_kv(
+    full_kv: dict[str, Any],
+    key: torch.Tensor,
+    value: torch.Tensor,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Build dense (key, value) as full prefill context plus post-compression suffix from ``key``/``value``."""
+    compressed_ctx = int(full_kv["compressed_ctx_len"])
+    if key.shape[2] < compressed_ctx:
+        raise ValueError(
+            f"live cache length {key.shape[2]} is shorter than compressed_ctx_len {compressed_ctx} "
+            "(stale full_kv metadata?)"
+        )
+    if key.shape[2] == compressed_ctx:
+        return full_kv["keys"], full_kv["values"]
+    return (
+        torch.cat([full_kv["keys"], key[:, :, compressed_ctx:]], dim=2),
+        torch.cat([full_kv["values"], value[:, :, compressed_ctx:]], dim=2),
+    )
 
 
 def relative_denominator_error(d_hat: float, d_true: float) -> float:

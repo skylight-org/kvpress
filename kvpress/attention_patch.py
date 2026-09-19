@@ -120,12 +120,23 @@ def attention_patch(func):
         layer_idx = int(module.layer_idx)
         vkvwr_state = None if metadata is None else metadata.get("vkvwr", {}).get(layer_idx)
         attention_bias = None if metadata is None else metadata.get("attention_bias", {}).get(layer_idx)
+        from kvpress.metric_logging import get_full_kv
+
+        full_kv = get_full_kv(metadata, layer_idx)
         original_attention_mask = attention_mask
         dense_key = None
+        dense_value = None
         sparsify_source = None
         apply_vkvwr = vkvwr_state is not None and query.shape[2] != key.shape[2]
-
         # Prefill keeps q_len == k_len: do not sparsify. Decode / cached forwards use the real query.
+        apply_full_kv = (
+            full_kv is not None
+            and not apply_vkvwr
+            and attention_bias is None
+            and getattr(module, "masked_key_indices", None) is None
+            and query.shape[2] != key.shape[2]
+        )
+
         if apply_vkvwr:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("vkvwr decode bias is only supported with attn_implementation='sdpa'")
@@ -193,6 +204,24 @@ def attention_patch(func):
             # At indices, update the keys to the fake keys
             key[batch_indices, head_indices, seq_indices] = k[batch_indices, head_indices]
             sparsify_source = "masked_keys"
+        elif apply_full_kv:
+            from kvpress.metric_logging import (
+                cache_sparsity,
+                maybe_log_sparsity,
+                reconstruct_dense_kv,
+                want_attention_output_error,
+            )
+
+            maybe_log_sparsity(
+                cache_sparsity(full_kv["ctx_len"], full_kv["compressed_ctx_len"]),
+                layer_idx=layer_idx,
+                q_len=query.shape[2],
+                k_len=key.shape[2],
+                source="full_kv",
+            )
+            if want_attention_output_error():
+                dense_key, dense_value = reconstruct_dense_kv(full_kv, key, value)
+            sparsify_source = "full_kv"
 
         # see https://github.com/NVIDIA/kvpress/pull/115#issuecomment-3183785597
         # cu_seq_lens_k are only in kwargs if model.generate is used.
@@ -204,12 +233,17 @@ def attention_patch(func):
 
             if want_attention_output_error():
                 sparse_result = func(module, query, key, value, attention_mask, dropout, **kwargs)
+                # Dense reference may have a longer key axis than the live (compressed) cache;
+                # drop a length-specific mask rather than broadcasting a stale one.
+                dense_mask = original_attention_mask
+                if dense_key is not None and dense_key.shape[2] != key.shape[2]:
+                    dense_mask = None
                 dense_result = func(
                     module,
                     query,
                     dense_key if dense_key is not None else key,
-                    value,
-                    original_attention_mask,
+                    dense_value if dense_value is not None else value,
+                    dense_mask,
                     dropout,
                     **kwargs,
                 )
