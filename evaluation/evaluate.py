@@ -82,6 +82,13 @@ class EvaluationConfig:
     enable_micro_metrics: bool = False
     micro_metrics_max_records: Optional[int] = None
     micro_metrics_sampling_factor: float = 1.0
+    micro_metrics: Optional[str] = None  # comma-separated subset; default is all of them
+    # Per-head upstream error statistics -> head_stats.parquet (see kvpress/metric_logging/head_stats.py)
+    enable_head_stats: bool = False
+    head_stats_layer_stride: int = 1
+    head_stats_step_stride: int = 1
+    head_stats_question_stride: int = 1
+    head_stats_max_rows: Optional[int] = None
 
     # Model-specific parameters
     model_kwargs: Optional[Dict[str, Any]] = None
@@ -285,19 +292,65 @@ class EvaluationRunner:
             return
         from kvpress.metric_logging import DEFAULT_MICRO_METRICS, MicroMetricLogger
 
+        if self.config.micro_metrics:
+            enabled = [m.strip() for m in self.config.micro_metrics.split(",") if m.strip()]
+            unknown = [m for m in enabled if m not in DEFAULT_MICRO_METRICS]
+            assert not unknown, f"unknown micro metrics {unknown}, expected some of {DEFAULT_MICRO_METRICS}"
+        else:
+            enabled = list(DEFAULT_MICRO_METRICS)
+
         MicroMetricLogger().configure_logging(
             log_path=str(results_dir),
-            enabled_metrics=list(DEFAULT_MICRO_METRICS),
+            enabled_metrics=enabled,
             max_records=self.config.micro_metrics_max_records,
             sampling_factor=self.config.micro_metrics_sampling_factor,
         )
         logger.info(
             "Micro-metric logging enabled (%s) → %s/micro_metrics.jsonl",
-            ", ".join(DEFAULT_MICRO_METRICS),
+            ", ".join(enabled),
             results_dir,
         )
 
+    def _configure_head_stats(self, results_dir: Path) -> None:
+        """Optionally enable per-head denominator / numerator / attention error statistics."""
+        if not self.config.enable_head_stats:
+            return
+        from kvpress.metric_logging import HeadStatsCollector
+
+        HeadStatsCollector().configure(
+            log_path=str(results_dir),
+            run_config=self._head_stats_run_config(),
+            layer_stride=self.config.head_stats_layer_stride,
+            step_stride=self.config.head_stats_step_stride,
+            question_stride=self.config.head_stats_question_stride,
+            max_rows=self.config.head_stats_max_rows,
+        )
+        logger.info("Per-head upstream error stats enabled -> %s/head_stats.parquet", results_dir)
+
+    def _head_stats_run_config(self) -> dict:
+        """Everything needed to interpret head_stats.parquet without its directory."""
+        import torch
+        import transformers
+
+        cfg = {k: v for k, v in vars(self.config).items() if not k.startswith("_")}
+        model_cfg = getattr(getattr(self.pipeline, "model", None), "config", None)
+        if model_cfg is not None:
+            cfg.update(
+                n_layers=getattr(model_cfg, "num_hidden_layers", None),
+                n_q_heads=getattr(model_cfg, "num_attention_heads", None),
+                n_kv_heads=getattr(model_cfg, "num_key_value_heads", None),
+                head_dim=getattr(model_cfg, "head_dim", None),
+                attn_implementation=getattr(model_cfg, "_attn_implementation", None),
+            )
+        cfg.update(torch_version=torch.__version__, transformers_version=transformers.__version__)
+        if torch.cuda.is_available():
+            cfg["gpu_name"] = torch.cuda.get_device_name(0)
+        return cfg
+
     def _flush_micro_metrics(self) -> None:
+        from kvpress.metric_logging import HeadStatsCollector
+
+        HeadStatsCollector().close()
         if not self.config.enable_micro_metrics:
             return
         from kvpress.metric_logging import MicroMetricLogger
@@ -670,6 +723,7 @@ class EvaluationRunner:
         self._setup_model_pipeline()
         self._load_and_prepare_dataset()
         self._configure_micro_metrics(results_dir)
+        self._configure_head_stats(results_dir)
 
         self._run_inference()
         self._save_results(predictions_filename)

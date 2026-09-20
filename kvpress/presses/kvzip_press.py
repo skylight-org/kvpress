@@ -399,3 +399,10 @@ class KVzipPress(BasePress):
                 head_indices = indices // ctx_len
                 seq_indices = indices % ctx_len
                 module.masked_key_indices = (batch_indices, head_indices, seq_indices)
+
+                # The compressible region's length, for metrics that need to tell the context apart
+                # from the question and the generated tokens (see metric_logging/head_stats.py).
+                if self._cache is not None:
+                    from kvpress.utils import get_cache_metadata
+
+                    get_cache_metadata(self._cache).setdefault("ctx_len", {})[int(module.layer_idx)] = int(ctx_len)

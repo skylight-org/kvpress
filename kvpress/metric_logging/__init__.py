@@ -16,13 +16,16 @@ from kvpress.metric_logging.metrics import (
     maybe_log_denominator_error,
     maybe_log_sparsity,
     reconstruct_dense_kv,
+    record_head_stats,
     relative_attention_output_error,
     relative_denominator_error,
     store_full_kv,
     want_attention_output_error,
     want_denominator_error,
+    want_head_stats,
     want_store_full_kv,
 )
+from kvpress.metric_logging.head_stats_sink import HeadStatsCollector
 
 __all__ = [
     "ATTENTION_OUTPUT_ERROR",
@@ -40,10 +43,13 @@ __all__ = [
     "maybe_log_denominator_error",
     "maybe_log_sparsity",
     "reconstruct_dense_kv",
+    "record_head_stats",
     "relative_attention_output_error",
     "relative_denominator_error",
     "store_full_kv",
     "want_attention_output_error",
+    "HeadStatsCollector",
     "want_denominator_error",
+    "want_head_stats",
     "want_store_full_kv",
 ]

@@ -213,6 +213,9 @@ class KVPressTextGenerationPipeline(Pipeline):
         if cache is None:
             cache = get_adapter(self.model).make_cache(self.model)
         kvpress_metadata = get_cache_metadata(cache)
+        from kvpress.metric_logging import HeadStatsCollector
+
+        HeadStatsCollector().begin_context(context_ids)
 
         # We only perform prefill compression if the press is a prefill press
         perform_prefill_compression = press is not None and not isinstance(press, DecodingPress)
@@ -237,7 +240,8 @@ class KVPressTextGenerationPipeline(Pipeline):
         with press(self.model) if perform_decoding_compression else contextlib.nullcontext():
             # Greedy decoding for each question
             answers = []
-            for question_ids in input_tensors["questions_ids"]:
+            for question_idx, question_ids in enumerate(input_tensors["questions_ids"]):
+                HeadStatsCollector().begin_question(question_idx)
                 if isinstance(press, KeyRerotationPress) or (isinstance(press, FinchPress) and press.rerotate_keys):
                     context_length = cache.get_seq_length()
 

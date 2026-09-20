@@ -211,3 +211,71 @@ def maybe_log_denominator_error(
 
 def want_denominator_error() -> bool:
     return MicroMetricLogger().is_metric_enabled(DENOMINATOR_ERROR)
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Per-head upstream error statistics (denominator, numerator and the attention ratio).
+#
+# Separate from the JSON Lines metrics above: these are per (layer, query head) rather than per
+# layer, and they go to a parquet sidecar because there are ~200k rows per run. The JSONL output
+# of the three metrics above is unchanged whether or not this is enabled.
+# ---------------------------------------------------------------------------------------------------------------------
+
+
+def want_head_stats(layer_idx: int) -> bool:
+    """True when per-head statistics should be computed for this layer, before doing the work."""
+    from kvpress.metric_logging.head_stats_sink import HeadStatsCollector
+
+    return HeadStatsCollector().should_record(layer_idx)
+
+
+def record_head_stats(
+    *,
+    module,
+    query: torch.Tensor,
+    key: torch.Tensor,
+    value: torch.Tensor,
+    attention_mask: Optional[torch.Tensor],
+    kwargs: Optional[dict] = None,
+    layer_idx: int,
+    source: str,
+    ctx_len: int,
+    bias: Optional[torch.Tensor] = None,
+    keep_mask: Optional[torch.Tensor] = None,
+) -> None:
+    """
+    Compute and record the per-head statistics. Must be called with the REAL keys, i.e. before any
+    press overwrites them with fake keys.
+    """
+    from kvpress.metric_logging.head_stats import compute_head_stats, resolve_scaling
+    from kvpress.metric_logging.head_stats_sink import HeadStatsCollector
+
+    collector = HeadStatsCollector()
+    if not collector.enabled:
+        return
+    q_len, k_len = query.shape[2], key.shape[2]
+    try:
+        stats = compute_head_stats(
+            query=query,
+            key=key,
+            value=value,
+            attention_mask=attention_mask,
+            scaling=resolve_scaling(module, query, kwargs),
+            ctx_len=ctx_len,
+            bias=bias,
+            keep_mask=keep_mask,
+            q_index=-1,
+        )
+    except Exception as exc:  # a metric must never take the run down
+        logger.warning(f"head stats skipped at layer {layer_idx}: {exc}")
+        return
+    collector.record(
+        stats,
+        layer_idx=layer_idx,
+        source=source,
+        ctx_len=ctx_len,
+        k_len=k_len,
+        q_len=q_len,
+        q_pos=k_len - 1,
+        groups=query.shape[1] // key.shape[1],
+    )

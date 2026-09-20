@@ -140,7 +140,7 @@ def attention_patch(func):
         if apply_vkvwr:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("vkvwr decode bias is only supported with attn_implementation='sdpa'")
-            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity
+            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity, want_head_stats
             from kvpress.presses.vkvwr_press import decode_attention_bias
 
             bias = decode_attention_bias(query, key, vkvwr_state)
@@ -151,12 +151,20 @@ def attention_patch(func):
                 k_len=key.shape[2],
                 source="vkvwr_bias",
             )
+            if want_head_stats(layer_idx):
+                from kvpress.metric_logging import record_head_stats
+
+                record_head_stats(
+                    module=module, query=query, key=key, value=value,
+                    attention_mask=original_attention_mask, kwargs=kwargs,
+                    layer_idx=layer_idx, source="vkvwr_bias", ctx_len=bias.shape[-1], bias=bias,
+                )
             attention_mask = add_attention_bias(bias, query, key, attention_mask)
             sparsify_source = "vkvwr_bias"
         elif attention_bias is not None:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("attention_bias is only supported with attn_implementation='sdpa'")
-            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity
+            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity, want_head_stats
 
             maybe_log_sparsity(
                 bias_sparsity(attention_bias),
@@ -165,6 +173,15 @@ def attention_patch(func):
                 k_len=key.shape[2],
                 source="attention_bias",
             )
+            if want_head_stats(layer_idx):
+                from kvpress.metric_logging import record_head_stats
+
+                record_head_stats(
+                    module=module, query=query, key=key, value=value,
+                    attention_mask=original_attention_mask, kwargs=kwargs,
+                    layer_idx=layer_idx, source="attention_bias",
+                    ctx_len=attention_bias.shape[-1], bias=attention_bias,
+                )
             attention_mask = add_attention_bias(attention_bias, query, key, attention_mask)
             sparsify_source = "attention_bias"
         elif getattr(module, "masked_key_indices", None) is not None:
@@ -173,6 +190,7 @@ def attention_patch(func):
                 masked_key_sparsity,
                 maybe_log_sparsity,
                 want_attention_output_error,
+                want_head_stats,
             )
 
             bsz, num_heads, seq_len, head_dim = query.shape
@@ -194,6 +212,25 @@ def attention_patch(func):
             )
             if want_attention_output_error():
                 dense_key = key.clone()
+
+            # Per-head statistics must be taken from the REAL keys. The fake-key write below goes
+            # straight into the KV cache tensor (DynamicLayer.update returns the cache's own
+            # storage), so after it there is nothing left to compare against.
+            if want_head_stats(layer_idx):
+                from kvpress.metric_logging import record_head_stats
+                from kvpress.metric_logging.head_stats import keep_mask_from_indices
+
+                ctx_len_meta = None if metadata is None else metadata.get("ctx_len", {}).get(layer_idx)
+                ctx_len_hs = int(ctx_len_meta) if ctx_len_meta is not None else int(seq_indices.max()) + 1
+                record_head_stats(
+                    module=module, query=query, key=key, value=value,
+                    attention_mask=original_attention_mask, kwargs=kwargs,
+                    layer_idx=layer_idx, source="masked_keys", ctx_len=ctx_len_hs,
+                    keep_mask=keep_mask_from_indices(
+                        module.masked_key_indices, bsz=bsz, n_kv_heads=num_key_value_heads,
+                        ctx_len=ctx_len_hs, device=key.device,
+                    ),
+                )
 
             # Build a fake key k per key group such that for every query q, exp(<q, k>) = 0
             q = query.view(bsz, num_key_value_heads, num_groups, seq_len, head_dim)
