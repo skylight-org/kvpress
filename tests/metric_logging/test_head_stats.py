@@ -256,3 +256,65 @@ def test_float32_default_is_accurate_enough():
     )
     rel = ((f32.log_b_dense - f64.log_b_dense).abs() / f64.log_b_dense.abs().clamp_min(1e-30)).max()
     assert rel < 1e-6, rel
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# The fake-key write goes into the KV cache's own storage, so without a restore the real keys are
+# gone for every later decode step and any dense reference silently becomes the compressed one.
+# ---------------------------------------------------------------------------------------------------------------------
+
+
+def _decode_run(model, tok, n_steps, collect):
+    import tempfile
+
+    from kvpress import KVzipPress
+    from kvpress.metric_logging import HeadStatsCollector
+
+    ctx = "The quick brown fox jumps over the lazy dog. " * 40
+    d = tempfile.mkdtemp()
+    HeadStatsCollector.reset_for_testing()
+    if collect:
+        HeadStatsCollector().configure(log_path=d, run_config={})
+    from transformers import pipeline as hf_pipeline
+
+    pipe = hf_pipeline("kv-press-text-generation", model=model, tokenizer=tok, device="cpu")
+    out = pipe(ctx, questions=["What jumps?"], press=KVzipPress(compression_ratio=0.5),
+               max_new_tokens=n_steps)
+    if collect:
+        HeadStatsCollector().close()
+    return out["answers"][0], d
+
+
+@pytest.fixture(scope="module")
+def tiny():
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    ckpt = "MaxJeblick/llama2-0b-unit-test"
+    m = AutoModelForCausalLM.from_pretrained(ckpt, attn_implementation="sdpa", dtype=torch.float32)
+    return m, AutoTokenizer.from_pretrained(ckpt)
+
+
+def test_dense_reference_survives_every_decode_step(tiny):
+    """
+    Without the restore the metric reads a difference on the FIRST decode forward only: from the
+    second onward the cache holds fake keys, so the 'dense' denominator is the compressed one and
+    the error collapses to zero. This asserts a real difference at every step.
+    """
+    import pandas as pd
+
+    model, tok = tiny
+    _, d = _decode_run(model, tok, 4, collect=True)
+    df = pd.read_parquet(f"{d}/head_stats.parquet")
+    assert df.decode_step.nunique() >= 3, df.decode_step.unique()
+    moved = df.groupby("decode_step").apply(
+        lambda g: float((g.log_b_sparse < g.log_b_dense - 1e-6).mean()), include_groups=False
+    )
+    assert (moved > 0.5).all(), f"steps where the dense reference was lost: {moved.to_dict()}"
+
+
+def test_restore_does_not_change_the_answer(tiny):
+    """The restore must be output-neutral: same generation with and without the metric."""
+    model, tok = tiny
+    a, _ = _decode_run(model, tok, 6, collect=False)
+    b, _ = _decode_run(model, tok, 6, collect=True)
+    assert a == b, (a, b)

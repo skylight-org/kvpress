@@ -124,6 +124,7 @@ def attention_patch(func):
 
         full_kv = get_full_kv(metadata, layer_idx)
         original_attention_mask = attention_mask
+        restore_keys = None
         dense_key = None
         dense_value = None
         sparsify_source = None
@@ -187,6 +188,7 @@ def attention_patch(func):
         elif getattr(module, "masked_key_indices", None) is not None:
             # Decoding: build fake keys k s.t. exp(<q, k>) = 0
             from kvpress.metric_logging import (
+                head_stats_enabled,
                 masked_key_sparsity,
                 maybe_log_sparsity,
                 want_attention_output_error,
@@ -232,6 +234,19 @@ def attention_patch(func):
                     ),
                 )
 
+            # The write below goes into the KV cache's own storage (DynamicLayer.update returns it),
+            # so the real keys at these positions are destroyed for every LATER forward too, not just
+            # this one. Measurements that need a dense reference must put them back afterwards. The
+            # restore is output-neutral: search_hyperplane reads only the query, and the fake keys are
+            # recomputed and rewritten unconditionally on every call.
+            if head_stats_enabled():
+                restore_keys = (
+                    batch_indices,
+                    head_indices,
+                    seq_indices,
+                    key[batch_indices, head_indices, seq_indices].clone(),
+                )
+
             # Build a fake key k per key group such that for every query q, exp(<q, k>) = 0
             q = query.view(bsz, num_key_value_heads, num_groups, seq_len, head_dim)
             q = q.reshape(bsz * num_key_value_heads, num_groups * seq_len, head_dim)
@@ -265,6 +280,17 @@ def attention_patch(func):
         if "cu_seq_lens_k" in kwargs:
             kwargs["cu_seq_lens_k"][-1] = key.shape[-2]
 
+        try:
+            return _run(module, query, key, value, attention_mask, dropout, kwargs,
+                        sparsify_source, original_attention_mask, dense_key, dense_value, layer_idx)
+        finally:
+            if restore_keys is not None:
+                b_i, h_i, s_i, saved = restore_keys
+                key[b_i, h_i, s_i] = saved
+                del restore_keys, saved
+
+    def _run(module, query, key, value, attention_mask, dropout, kwargs,
+             sparsify_source, original_attention_mask, dense_key, dense_value, layer_idx):
         if sparsify_source is not None:
             from kvpress.metric_logging import maybe_log_attention_output_error, want_attention_output_error
 

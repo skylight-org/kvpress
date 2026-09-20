@@ -222,6 +222,14 @@ def want_denominator_error() -> bool:
 # ---------------------------------------------------------------------------------------------------------------------
 
 
+def head_stats_enabled() -> bool:
+    """Whether per-head statistics are being collected at all. Cheap, and does not advance the
+    collector's step bookkeeping, unlike want_head_stats."""
+    from kvpress.metric_logging.head_stats_sink import HeadStatsCollector
+
+    return HeadStatsCollector().enabled
+
+
 def want_head_stats(layer_idx: int) -> bool:
     """True when per-head statistics should be computed for this layer, before doing the work."""
     from kvpress.metric_logging.head_stats_sink import HeadStatsCollector
