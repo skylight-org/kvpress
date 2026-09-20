@@ -13,6 +13,7 @@ from benchmarks.loogle.calculate_metrics import calculate_metrics as loogle_scor
 from benchmarks.math500.calculate_metrics import calculate_metrics as math500_scorer
 from benchmarks.needle_in_haystack.calculate_metrics import calculate_metrics as needle_in_haystack_scorer
 from benchmarks.ruler.calculate_metrics import calculate_metrics as ruler_scorer
+from benchmarks.scbench.calculate_metrics import calculate_metrics as scbench_scorer
 from benchmarks.zero_scrolls.calculate_metrics import calculate_metrics as zero_scrolls_scorer
 
 from kvpress import (
@@ -68,6 +69,7 @@ DATASET_REGISTRY = {
     "longbench-e": "Xnhyacinth/LongBench",
     "longbench-v2": "simonjegou/LongBench-v2",
     "needle_in_haystack": "alessiodevoto/paul_graham_essays",
+    "scbench": "microsoft/SCBench",
     # Datasets used to be used for decoding compression
     "aime25": "alessiodevoto/aime25",
     "aime2024": "xAlg-AI/att-hub-aime2024",
@@ -89,6 +91,7 @@ SCORER_REGISTRY = {
     "longbench-e": longbench_scorer_e,
     "longbench-v2": longbenchv2_scorer,
     "needle_in_haystack": needle_in_haystack_scorer,
+    "scbench": scbench_scorer,
     "aime25": aime25_scorer,
     "aime2024": aime2024_scorer,
     "aime2025": aime2025_scorer,

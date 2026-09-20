@@ -57,6 +57,7 @@ At the moment, we support the following standard popular benchmarks:
 - [Needle in a Haystack](benchmarks/needle_in_haystack/README.md)([hf link][Paul Graham's essays](https://huggingface.co/datasets/alessiodevoto/paul_graham_essays))
 - [AIME 2024](benchmarks/aime2024/README.md) ([hf link](https://huggingface.co/datasets/xAlg-AI/att-hub-aime2024))
 - [AIME 2025](benchmarks/aime2025/README.md) ([hf link](https://huggingface.co/datasets/xAlg-AI/att-hub-aime2025))
+- [SCBench](benchmarks/scbench/README.md)([hf link](https://huggingface.co/datasets/microsoft/SCBench)), the shared context setting: one long context per sample, answered over several turns from a single compressed cache
 
 Each dataset directory is structured as follows:
 
