@@ -570,7 +570,12 @@ class EvaluationRunner:
             model_kwargs["quantization_config"] = FineGrainedFP8Config()
             logger.info("FP8 quantization enabled.")
 
-        if isinstance(self.press, ObservedAttentionPress):
+        if model_kwargs.get("attn_implementation"):
+            logger.info(
+                "attn_implementation '%s' requested explicitly; leaving it alone.",
+                model_kwargs["attn_implementation"],
+            )
+        elif isinstance(self.press, ObservedAttentionPress):
             model_kwargs["attn_implementation"] = "eager"
             logger.info("ObservedAttentionPress detected, setting attn_implementation to 'eager'.")
         elif isinstance(self.press, (BernoulliPress, VKvWRPress)):
