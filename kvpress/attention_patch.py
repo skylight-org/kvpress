@@ -255,6 +255,12 @@ def attention_patch(func):
                     k_len=key.shape[2],
                     source=sparsify_source,
                 )
+                if sparsify_source == "masked_keys":
+                    # The fake-key write went into the KV cache's own storage (DynamicCache.update returns it, not
+                    # a copy), so put the real keys back: otherwise the next call clones stale fake keys as its
+                    # dense reference. Output-neutral, since the fake keys are recomputed from the query and
+                    # rewritten on every call.
+                    key[batch_indices, head_indices, seq_indices] = dense_key[batch_indices, head_indices, seq_indices]
                 return sparse_result
 
         return func(module, query, key, value, attention_mask, dropout, **kwargs)
