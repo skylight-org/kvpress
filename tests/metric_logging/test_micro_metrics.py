@@ -3,6 +3,7 @@
 
 import json
 
+import pytest
 import torch
 from transformers import DynamicCache
 
@@ -148,3 +149,86 @@ def test_reconstruct_dense_kv():
     assert torch.equal(dense_k[:, :, :8], full_keys)
     assert torch.equal(dense_k[:, :, 8:], live_keys[:, :, 4:])
     assert torch.equal(dense_v[:, :, 8:], live_values[:, :, 4:])
+
+
+@pytest.fixture(scope="module")
+def fp32_pipeline():
+    """
+    float32 on purpose: the shared fixture loads the checkpoint's float16, in which search_hyperplane's
+    -1e5 * Y / ||Y||^2 fake keys overflow and every attention output is NaN, which would hide what is tested.
+    """
+    from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+
+    ckpt = "maxjeblick/llama2-0b-unit-test"
+    model = AutoModelForCausalLM.from_pretrained(ckpt, attn_implementation="sdpa", dtype=torch.float32).eval()
+    return pipeline(
+        "kv-press-text-generation", model=model, tokenizer=AutoTokenizer.from_pretrained(ckpt), device="cpu"
+    )
+
+
+def _kvzip_answer(pipe, log_path, max_new_tokens, enabled):
+    """Generate with KVzip, which drops through masked_key_indices, with attention_output_error on or off."""
+    from kvpress import KVzipPress
+
+    MicroMetricLogger.reset_for_testing()
+    MicroMetricLogger().configure_logging(
+        log_path=str(log_path), enabled_metrics=[ATTENTION_OUTPUT_ERROR] if enabled else []
+    )
+    context = "The quick brown fox jumps over the lazy dog. " * 40
+    answer = pipe(
+        context, question="What jumps?", press=KVzipPress(compression_ratio=0.5), max_new_tokens=max_new_tokens
+    )["answer"]
+    MicroMetricLogger.reset_for_testing()
+    return answer
+
+
+def test_attention_output_error_uses_the_real_keys_on_every_step(tmp_path):
+    """
+    attention_patch fakes head-wise pruning by writing fake keys into ``key``, which during generation is the
+    KV cache's own storage (DynamicCache.update returns it, not a copy). So the real keys must still be in the
+    cache after every call, or the next call's dense reference is cloned from stale fake keys and the logged
+    error stops measuring anything. Two calls with different queries on one key tensor stand in for two decode
+    steps on one cache; the logged error is checked against a dense forward on the real keys.
+    """
+    from types import SimpleNamespace
+
+    from transformers.integrations.sdpa_attention import sdpa_attention_forward
+
+    from kvpress.attention_patch import attention_patch
+
+    torch.manual_seed(0)
+    n_kv, groups, k_len, head_dim = 2, 2, 16, 8
+    pruned = torch.arange(0, k_len - 1, 2)  # every other context key, never the current token
+    module = SimpleNamespace(layer_idx=0, num_key_value_groups=groups, is_causal=True)
+    module.masked_key_indices = (
+        torch.zeros(n_kv * len(pruned), dtype=torch.long),
+        torch.arange(n_kv).repeat_interleave(len(pruned)),
+        pruned.repeat(n_kv),
+    )
+    key, value = torch.randn(1, n_kv, k_len, head_dim), torch.randn(1, n_kv, k_len, head_dim)
+    real_key = key.clone()
+
+    MicroMetricLogger().configure_logging(log_path=str(tmp_path), enabled_metrics=[ATTENTION_OUTPUT_ERROR])
+    patched = attention_patch(sdpa_attention_forward)
+    expected, intact = [], []
+    for _ in range(2):
+        query = torch.randn(1, n_kv * groups, 1, head_dim)
+        sparse, _ = patched(module, query, key, value, None, 0.0)
+        dense, _ = sdpa_attention_forward(module, query, real_key, value, None, 0.0)
+        expected.append(relative_attention_output_error(sparse, dense))
+        intact.append(torch.equal(key, real_key))
+    MicroMetricLogger().flush()
+
+    logged = [json.loads(line)["value"] for line in (tmp_path / "micro_metrics.jsonl").read_text().splitlines()]
+    assert len(logged) == 2 and all(e > 0 for e in expected), (logged, expected)
+    assert all(abs(a - b) < 1e-6 for a, b in zip(logged, expected)), f"logged {logged}, true {expected}"
+    assert all(
+        intact
+    ), f"real keys left overwritten in the cache after step(s) {[i for i, ok in enumerate(intact) if not ok]}"
+
+
+def test_attention_output_error_does_not_change_generation(fp32_pipeline, tmp_path):
+    """Measuring must be output-neutral: the same answer with the metric on and off."""
+    on = _kvzip_answer(fp32_pipeline, tmp_path, max_new_tokens=8, enabled=True)
+    off = _kvzip_answer(fp32_pipeline, tmp_path, max_new_tokens=8, enabled=False)
+    assert on and on == off, (on, off)
