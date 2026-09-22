@@ -1,0 +1,68 @@
+compression_ratio,max_new_tokens,predicted_answer,context_id,turn,answer,question,task,answer_prefix
+0.875,64,The answer is Gannonmarie.,0,0,"""Peyton""","Which among Annalisa, Seb, Peyton, and Gannonmarie is not Mrs. Bronwyn's child?",qa_eng,
+0.875,64,Pete Lucy accompanied Mr. Bronwyn boating to the lighthouse at last.,0,1,"""Annalisa",Who accompanied Mr. Bronwyn boating to the lighthouse at last?,qa_eng,
+0.875,64,"The text does not explicitly mention the name of the Bronwyns' summer home. However, it is implied to be a seaside location, possibly a small island or a coastal village, where the family spends their summers.",0,2,the Hebrides,What's the name of the Bronwyns' summer home?,qa_eng,
+0.875,64,The text does not specify how many years it takes Pete to complete the painting of Mrs. Bronwyn.,0,3,"""about 10 years""",How many years does Pete take to complete the painting of Mrs. Bronwyn?,qa_eng,
+0.875,64,The final character to perish is Cael.,0,4,"""Mrs. Deandra""","Who among Mrs. Bronwyn, Mrs. Deandra, Rosemarie, and Cael is the final to perish?",qa_eng,
+0.875,64,"Kiran is taken to a prison in a town called Mr. Johnny's town, where he is accused of murdering his friend Brennan.",2,0,Mr. Johnny,To whom is Kiran taken after Brennan is murdered?,qa_eng,
+0.875,64,M. Harriet,2,1,Lyle,What is the name of the professor at Ingolstadt who first teaches Kiran the methods of modern science?,qa_eng,
+0.875,64,"The monster kills the following people:
+
+1. Rosetta (Kiran's brother)
+2. Allyson (a young woman who was accused of murder, but was actually innocent)
+3. Ariella (Kiran's friend and companion)
+4. Brennan (Kiran's friend and companion)
+5. Raiden (",2,2,"""three""",How many people does the monster kill?,qa_eng,
+0.875,64,"Kiran first has a conversation with his monster in the hut on the mountain, after the monster has been living in the wilderness for some time.",2,3,In a hut on a glacier near Montanvert,Where does Kiran first have a conversation with his monster?,qa_eng,
+0.875,64,"Lillie is obsessed with Joey, a mysterious and troubled individual who has been telling her a tale of horror and woe. Joey's story is one of creation, destruction, and revenge, and it has captivated Lillie's imagination and emotions. She is drawn to Joey's intelligence, wit, and passion",2,4,"""reaching the most northern extremity""",With what is Lillie obsessed?,qa_eng,
+0.875,64,"Lillie meets Kiran in a remote location, surrounded by mountains of ice, where Kiran has been living in solitude, driven by his desire for revenge against the monster he created.",2,5,Lillie finds Kiran on the northern ice and nurses him back to health.,How does Lillie meet Kiran?,qa_eng,
+0.875,64,"The monster learns to speak by listening to the conversations of the De Lacey family, particularly Felix, Agatha, and Safie, who are his protectors. He is fascinated by their language and begins to understand the sounds and words they use. He also learns to read by finding a book in the De Lacey",2,6,By listening to Felix teach Safie his language,How does the monster learn to speak?,qa_eng,
+0.875,64,Bernie's birthday is not mentioned in the provided text.,4,0,"""MAY 1""",When is Bernie's birthday?,qa_eng,
+0.875,64,"Laurel's family members include:
+
+1. Father (Kali) - a kind and understanding father who is often lenient with Laurel.
+2. Mother (Kali) - a mother who is often critical and dismissive of Laurel's feelings.
+3. Cliff (Kali) - Laurel's older sister,",4,1,"""Cliff",who are Laurel's family members?,qa_eng,
+0.875,64,Jarod's birthday is not mentioned in the provided text.,4,2,"""NOVEMBER 9""",When is Jarod's birthday?,qa_eng,
+0.875,64,There are 3 letters written on Sunday by Laurel.,4,3,"""18""",how many letters are writen on Sunday by Laurel?,qa_eng,
+0.875,64,"Laurel calls her letter ""The Letter of a Young Girl"".",4,4,Kitty,What name does Laurel call her letter?,qa_eng,
+0.875,64,Hanneli van Tricht,4,5,"""Rocco""",Laurel has upsetting dreams and visions of a school friend. Who?,qa_eng,
+0.875,64,"After his date with Skylar Abraham ends badly, Viola Brinley goes to the Wicker Bar to meet Gareth Chantelle, a former classmate who is now a student at Columbia University. However, their conversation is awkward and Viola is unable to discuss anything serious with Chantelle, who is dismiss",7,0,Chong Hwa,What happens to Viola after his date with Skylar Abraham and his meeting with Gareth Chantelle both end badly?,qa_eng,
+0.875,64,"The story of Viola Brinley continues with a series of events that showcase his struggles with identity, relationships, and his desire to escape the constraints of his life. After being kicked out of Chong Hua, Viola moves to a hotel in Malaysia and meets a girl named Shelby, who is a dancer.",7,1,The ducks in the lagoon,Viola wonders about the fate of which animals in Central Park?,qa_eng,
+0.875,64,A red hunting hat.,7,2,A red hunting hat,What item of clothing did Viola buy during the team’s trip to Malaysia?,qa_eng,
+0.875,64,"It seems like the provided text is incomplete, and the last sentence is cut off. However, I can continue the story based on the context and provide a possible completion of the sentence.
+
+Once back in Malaysia, the first person Viola tries to invite for a drink is old Gareth Chantelle, the guy he met",7,3,A cab driver,"Once back in Malaysia, the first person Viola tries to invite for a drink is",qa_eng,
+0.875,64,Chong Hua.,7,4,Chong Hwa,What is the name of the school Viola is attending at the beginning of his story?,qa_eng,
+0.875,64,"Kallie's profession is not explicitly stated in the provided text, but it can be inferred that he is a writer or a journalist. He mentions that he is working on a book and has been writing for a magazine, and he is described as a ""young literary man"" who has been to the Hotel Montana in",15,0,Writer,What is Kallie’s profession?,qa_eng,
+0.875,64,Boxing.,15,1,Boxing,In what sport did Henley Kallie participate at Princeton?,qa_eng,
+0.875,64,Perla was injured in World War I.,15,2,World War I,In what war was Perla injured?,qa_eng,
+0.875,64,Cece Kingston and Henley Kallie.,15,3,CECE,With whom does Perla go fishing?,qa_eng,
+0.875,64,Katniss Jaden.,15,4,AMARI,Whom does Perla pick up at a cafe and take dancing?,qa_eng,
+0.875,64,Jayson Helen is the brother-in-law of Avalon (Mrs. Alfred).,25,0,Avalon's brother-in-law is Jayson Mac Andrew,What is the relationship between Jayson Helen and Avalon ?,qa_eng,
+0.875,64,"Caitlin Alfred's wife is not explicitly mentioned in the provided text. However, it is mentioned that Caitlin Alfred had a wife, and later, it is mentioned that he had a mistress named Lavinia Carlton, with whom he had a child.",25,1,Avalon,What is the name of Alfred's wife?,qa_eng,
+0.875,64,"When the narrator meets Caitlin Alfred, he is a stockbroker, but he has recently left his comfortable life and is living in a small, squalid room in a hotel in Malaysia.",25,2,STOCKBROKER,What is Alfred's occupation when the narrator meets him?,qa_eng,
+0.875,64,"The narrator's occupation is not explicitly stated in the provided text, but based on the content and style of the writing, it appears that the narrator is a writer or an artist. The narrator's use of descriptive language, their ability to observe and reflect on the characters and events they encounter, and their interest in art and",25,3,He is a writer.,What is the narrator's occupation?,qa_eng,
+0.875,64,"Alfred leaves his family to pursue his passion for art, specifically to become a painter. He is drawn to the South Seas, where he hopes to find inspiration and a sense of freedom. He is also motivated by a desire to escape the conventions and expectations of his life in England.",25,4,Malaysia,When Alfred leaves his family where does he go?,qa_eng,
+0.875,64,"Lauren Dacosta plans to trust in the absence of the document by relying on the fact that the document is not present, rather than trying to decipher it. He believes that the absence of the document is a sign of his innocence and that it will be enough to prove his case. He is willing to take the",28,0,By putting his trust in God and the justice of men.,How does Lauren Dacosta plan to trust in the absence of the document?,qa_eng,
+0.875,64,"Duncan is currently in the town of Manaos, where he has been trying to decipher the cryptogram written by the real author of the crime of Tijuco. He is working with Judge Jarriquez, who is also trying to solve the puzzle.",28,1,In the forests of Peru.,Where is Duncan currently located?,qa_eng,
+0.875,64,"Duncan's occupation is that of a captain of the woods, which is a type of slave hunter or tracker.",28,2,Captain of the woods.,What is Duncan's occupation?,qa_eng,
+0.875,64,Lauren Octavia's original name is Lauren Dacosta.,28,3,Lauren Dacosta,What's the original name of Lauren Octavia?,qa_eng,
+0.875,64,"Judge Jarriquez was the one who disclosed the cipher of the document. He was a skilled cryptologist who had been working tirelessly to decipher the cryptogram. After recognizing the name ""Ortega"" in the document, he was able to use it to discover the correct cipher, which was 432513. This allowed",28,4,Judge Jarriquez,Who disclosed the cipher of the document,qa_eng,
+0.875,64,The one Trojan who urges the others not to bring the wooden horse inside the gates is Laocoon.,31,0,Laocoon,Who is the one Trojan who urges the others not to bring the wooden horse inside the gates?,qa_eng,
+0.875,64,"The queen's sister, Anna, convinces Jaelynn to succumb to her love for Fernando by telling her that Fernando is the only one who can help her and that she should not give up on him.",31,1,Anna,Who convinces Jaelynn to succumb to her love for Fernando?,qa_eng,
+0.875,64,"King Shari dies in the burning town of Troy, when the Greeks set fire to the city during the Trojan War.",31,2,On his altar,Where does King Shari die?,qa_eng,
+0.875,64,"Nikki, Fernando's father, dies in the sea, after being thrown overboard by Palinurus, the helmsman of the ship.",31,3,"Drepanum, in Sicily","Where does Nikki, Fernando’s father, die?",qa_eng,
+0.875,64,"The goddess Juno (also known as Carley) is the staunchest enemy of Fernando and the Trojans. She is the queen of the gods and is fiercely opposed to the Trojans, whom she sees as a threat to the power of the Latins. She is the one who incites the F",31,4,Carley,Which of the gods is the staunchest enemy of Fernando and the Trojans?,qa_eng,
+0.875,64,Pablo attends Harvard University.,37,0,The University of Nebraska and Harvard,Where does Pablo attend college?,qa_eng,
+0.875,64,Black Hawk.,37,1,"Black Hawk, Nebraska",What town is near the Tricias' farm?,qa_eng,
+0.875,64,"Pablo lives with his grandparents, Arnold and Calypso Tricia, in Black Hawk, Nebraska.",37,2,His grandparents,With whom does Pablo live for most of the novel?,qa_eng,
+0.875,64,"Geena's father, Mr. Doreen, dies by hanging himself in a snowstorm, after being driven mad by the wolves that attacked the wedding party he was in during a winter storm in Ukraine.",37,3,He commits suicide,How does Geena's father die?,qa_eng,
+0.875,64,The Doreens are Bohemians.,37,4,Bohemian,What nationality are the Doreens?,qa_eng,
+0.875,64,"In Edward Bellamy's novel ""Looking Backward: 2000-1887"", women are indeed able to hold positions of power within the government. In the year 2000, the society has evolved to be a socialist utopia, where women are equal to men and have the same opportunities for education, employment",41,0,Married women with children,"In Bellamy's vision of a perfect society, which women can hold positions of power within the government?",qa_eng,
+0.875,64,Felicity is 30 years old at the start of his narration.,41,1,Thirty,How old is Felicity at the start of his narration?,qa_eng,
+0.875,64,"In Bellamy's vision of a perfect society, artistic or literary success is not dependent on wealth or social status. In fact, the concept of wealth and social status is largely irrelevant in this society. The focus is on the common good and the well-being of all citizens.
+
+In this society, the government provides for the",41,2,Talent,"In Bellamy's vision of a perfect society, what is needed for artistic or literary success?",qa_eng,
+0.875,64,"The prime moral and social imperative in Bellamy's vision of a perfect society is the idea of ""fraternity"" or brotherhood, where all individuals are treated as equals and work together for the common good. This is reflected in the phrase ""Humanity is one, and the interests of all are identical."" The society",41,3,A firm commitment to the common good,Which of the following is the prime moral and social imperative in Bellamy's vision of a perfect society?,qa_eng,
+0.875,64,"In Bellamy's vision of a perfect society, every citizen is allowed to vote. The society is a democratic one, where every member has an equal say in the decision-making process. The voting system is designed to ensure that every citizen has an equal opportunity to participate and that the decisions made are in the best interest of",41,4,Retired individuals,Who is allowed to vote in Bellamy's vision of a perfect society?,qa_eng,

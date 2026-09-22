@@ -1,0 +1,7 @@
+{
+ "seconds": 2065.198094367981,
+ "peak_gpu_gb": 30.478294528,
+ "n_contexts": 0,
+ "gpu": "NVIDIA A40",
+ "cholesky_fallbacks": 0
+}

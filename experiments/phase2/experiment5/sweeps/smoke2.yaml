@@ -1,0 +1,11 @@
+# Smoke 2: the two new pieces - the per-head Bernoulli ablation, and VKvWR on its own ratio ladder.
+group: smoke2
+dataset: ruler32k
+tasks: [niah_single_3]
+n_samples: 2
+ratios: [0.875]
+arms: [perhead_bern_kvzip_s1, vkvwr_kvzip_s1]
+arm_ratios:
+  vkvwr: [0.9375, 0.96875, 0.984]
+seeds: [1]
+max_new_tokens: 4

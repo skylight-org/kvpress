@@ -1,0 +1,4 @@
+predicted_answer,context_length,answer,compression_ratio,max_new_tokens,task,answer_prefix,question
+"  
+1. **",32768,"['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']",0.875,120,cwe,Answer: The top 10 words that appear most often in the list are:,Question: What are the 10 most common words in the above list? 

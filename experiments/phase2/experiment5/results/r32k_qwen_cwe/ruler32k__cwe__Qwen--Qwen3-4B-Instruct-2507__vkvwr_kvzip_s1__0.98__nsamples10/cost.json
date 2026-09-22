@@ -1,0 +1,9 @@
+{
+  "seconds": 371.04300570487976,
+  "peak_gb": 18.201486848,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "press": "vkvwr_kvzip_s1",
+  "ratio": 0.984,
+  "task": "cwe",
+  "model": "Qwen/Qwen3-4B-Instruct-2507"
+}

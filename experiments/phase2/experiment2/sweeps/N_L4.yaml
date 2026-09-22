@@ -1,0 +1,9 @@
+# EXPLORATORY (not pre-registered): B1 at 16x, where RULER 4k is expected to separate top-k from sampling.
+# Both arms of the pair run on L40S, so the paired comparison never crosses hardware.
+config: 4096
+samples_per_subtask: 60
+runs:
+  - {press: kvzip,         ratio: 0.9375}
+  - {press: kvzip_bern_s1, ratio: 0.9375}
+  - {press: kvzip_bern_s2, ratio: 0.9375}
+  - {press: kvzip_bern_s3, ratio: 0.9375}

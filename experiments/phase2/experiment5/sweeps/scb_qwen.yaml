@@ -1,0 +1,13 @@
+dataset: scbench
+group: scb_qwen
+model: Qwen/Qwen3-4B-Instruct-2507
+tasks: [prefix_suffix]
+fraction: 0.05
+max_context_length: 130000
+ratios: [0.875]
+arms: [kvzip, bernoulli_kvzip_s1, perhead_bern_kvzip_s1, vkvwr_kvzip_s1]
+arm_ratios:
+  vkvwr: [0.875, 0.9375, 0.96875]
+seeds: [1]
+max_new_tokens: 4
+layer_stride: 1

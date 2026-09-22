@@ -1,0 +1,24 @@
+dataset: scbench
+group: scb_llama
+model: meta-llama/Llama-3.1-8B-Instruct
+tasks:
+- prefix_suffix
+fraction: 0.05
+max_context_length: 130000
+ratios:
+- 0.875
+arms:
+- no_press
+- kvzip
+- bernoulli_kvzip_s1
+- perhead_bern_kvzip_s1
+- vkvwr_kvzip_s1
+arm_ratios:
+  vkvwr:
+  - 0.875
+  - 0.9375
+  - 0.96875
+  no_press:
+  - 0.0
+seeds:
+- 1

@@ -1,0 +1,75 @@
+compression_ratio,max_new_tokens,predicted_answer,context_id,turn,answer,question,task,answer_prefix
+0.875,64,It is Gannonmarie.,0,0,"""Peyton""","Which among Annalisa, Seb, Peyton, and Gannonmarie is not Mrs. Bronwyn's child?",qa_eng,
+0.875,64,"It seems like you forgot to include the rest of the text. Please provide the complete text, and I'll be happy to help you with the summary.",0,1,"""Annalisa",Who accompanied Mr. Bronwyn boating to the lighthouse at last?,qa_eng,
+0.875,64,The text does not mention the name of the Bronwyns' summer home.,0,2,the Hebrides,What's the name of the Bronwyns' summer home?,qa_eng,
+0.875,64,"Pete Lucy doesn't mention the exact number of years it takes her to complete the painting of Mrs. Bronwyn. However, it is mentioned that she had started the painting 10 years ago, and she is still working on it.",0,3,"""about 10 years""",How many years does Pete take to complete the painting of Mrs. Bronwyn?,qa_eng,
+0.875,64,"It seems like you forgot to include the rest of the text. Please provide the complete text, and I'll be happy to help you with your question.",0,4,"""Mrs. Deandra""","Who among Mrs. Bronwyn, Mrs. Deandra, Rosemarie, and Cael is the final to perish?",qa_eng,
+0.875,64,"There is no information in the provided text about Kiran being taken by someone after Brennan's murder. The text only mentions that Kiran is left alone and is returning to Geneva, where he will be reunited with his father and cousin, Raiden.",2,0,Mr. Johnny,To whom is Kiran taken after Brennan is murdered?,qa_eng,
+0.875,64,The professor's name is M. Harriet.,2,1,Lyle,What is the name of the professor at Ingolstadt who first teaches Kiran the methods of modern science?,qa_eng,
+0.875,64,"The monster kills several people, including:
+
+* Rosetta, the youngest son of the narrator's father
+* Allyson, a young woman who was accused of murder and executed
+* Ariella, a young man who was the narrator's friend and companion
+* The narrator's father, who dies after being told that",2,2,"""three""",How many people does the monster kill?,qa_eng,
+0.875,64,"Kiran first has a conversation with his monster in the mountains of the north, where he has been pursuing his enemy for many months. The exact location is not specified, but it is implied to be a remote and inhospitable region, possibly in the Arctic or sub-Arctic.",2,3,In a hut on a glacier near Montanvert,Where does Kiran first have a conversation with his monster?,qa_eng,
+0.875,64,"It seems like you forgot to include the rest of the text. Please provide the complete text, and I'll be happy to help you with your question.",2,4,"""reaching the most northern extremity""",With what is Lillie obsessed?,qa_eng,
+0.875,64,"Lillie meets Kiran in a dramatic and unexpected way. Kiran, who has been traveling in a small boat, is caught in a storm and is drifting towards the shore. Lillie, who is on a ship, sees Kiran's boat and decides to rescue him. She takes him on board and",2,5,Lillie finds Kiran on the northern ice and nurses him back to health.,How does Lillie meet Kiran?,qa_eng,
+0.875,64,"The monster learns to speak by observing and imitating the sounds and language of the humans around him. He is able to pick up on the sounds and rhythms of language, and eventually becomes able to form words and sentences. However, his ability to speak is not a natural one, but rather a result of his observations and",2,6,By listening to Felix teach Safie his language,How does the monster learn to speak?,qa_eng,
+0.875,64,Bernie's birthday is not mentioned in the provided text.,4,0,"""MAY 1""",When is Bernie's birthday?,qa_eng,
+0.875,64,"Laurel's family members are:
+
+* Father (Pim)
+* Mother (Momsy)
+* Cliff (Laurel's sister)
+* Jarod van Alyssia (a friend of Laurel's)
+* Mr. van Alyssia (Jarod's father)
+* Mrs. van Alyssia",4,1,"""Cliff",who are Laurel's family members?,qa_eng,
+0.875,64,Jarod's birthday is not mentioned in the provided text.,4,2,"""NOVEMBER 9""",When is Jarod's birthday?,qa_eng,
+0.875,64,"It seems like you're trying to summarize a long series of letters from Laurel Kali to Kitty. I'll do my best to help you with that.
+
+Laurel's letters to Kitty start on June 13, 1942, and continue until August 1, 1944. Here's a brief summary",4,3,"""18""",how many letters are writen on Sunday by Laurel?,qa_eng,
+0.875,64,"Laurel calls her letter ""The Letter of a Young Girl"".",4,4,Kitty,What name does Laurel call her letter?,qa_eng,
+0.875,64,"It seems like Laurel is having a lot of emotional turmoil and inner conflict. She's struggling with her own identity and trying to navigate her relationships with others, especially Jarod. She's also dealing with the harsh realities of war and the impact it's having on their lives in hiding.",4,5,"""Rocco""",Laurel has upsetting dreams and visions of a school friend. Who?,qa_eng,
+0.875,64,"Viola Brinley is a 16-year-old boy who has been kicked out of Chong Hwa, a prestigious boarding school in Malaysia. He is struggling to come to terms with his expulsion and is feeling lost and uncertain about his future. Viola's family is wealthy, and his parents are concerned about his",7,0,Chong Hwa,What happens to Viola after his date with Skylar Abraham and his meeting with Gareth Chantelle both end badly?,qa_eng,
+0.875,64,"It seems like you want me to continue the story of Viola Brinley. I'll do my best to pick up where you left off.
+
+Viola sat on the bench, watching the carrousel as the rain poured down around her. She felt a sense of peace wash over her, and for a moment",7,1,The ducks in the lagoon,Viola wonders about the fate of which animals in Central Park?,qa_eng,
+0.875,64,Viola bought a red hunting hat for a buck.,7,2,A red hunting hat,What item of clothing did Viola buy during the team’s trip to Malaysia?,qa_eng,
+0.875,64,"It seems like the response is cut off. I'll continue the story based on the provided text.
+
+Chapter 6
+The first person Viola tries to invite for a drink is Gareth Chantelle, her old acquaintance from Whooton School. She gives him a call, but he's not available for dinner,",7,3,A cab driver,"Once back in Malaysia, the first person Viola tries to invite for a drink is",qa_eng,
+0.875,64,The school Viola is attending at the beginning of his story is Chong Hwa.,7,4,Chong Hwa,What is the name of the school Viola is attending at the beginning of his story?,qa_eng,
+0.875,64,Henley Kallie is a writer.,15,0,Writer,What is Kallie’s profession?,qa_eng,
+0.875,64,Henley Kallie was a middleweight boxing champion at Princeton.,15,1,Boxing,In what sport did Henley Kallie participate at Princeton?,qa_eng,
+0.875,64,Perla was injured in World War I.,15,2,World War I,In what war was Perla injured?,qa_eng,
+0.875,64,Henley Kallie.,15,3,CECE,With whom does Perla go fishing?,qa_eng,
+0.875,64,"It seems like the text is cut off. I'll provide the rest of the response based on the given text.
+
+It seems that Katniss is referring to a person she's interested in, but the text doesn't specify who it is. The conversation between Katniss and Perla is interrupted by the arrival of",15,4,AMARI,Whom does Perla pick up at a cafe and take dancing?,qa_eng,
+0.875,64,"Jayson Helen is Avalon's brother-in-law, as he is married to Avalon's sister.",25,0,Avalon's brother-in-law is Jayson Mac Andrew,What is the relationship between Jayson Helen and Avalon ?,qa_eng,
+0.875,64,"The name of Caitlin Alfred's wife is not mentioned in the provided text snippet. However, it is mentioned that Caitlin Alfred had a wife in England, and that his wife in the South Seas was Camron.",25,1,Avalon,What is the name of Alfred's wife?,qa_eng,
+0.875,64,"When the narrator meets Alfred, he is a painter, and the narrator is surprised by his appearance, which is different from what he expected.",25,2,STOCKBROKER,What is Alfred's occupation when the narrator meets him?,qa_eng,
+0.875,64,The narrator is a writer.,25,3,He is a writer.,What is the narrator's occupation?,qa_eng,
+0.875,64,I can't fulfill that request.,25,4,Malaysia,When Alfred leaves his family where does he go?,qa_eng,
+0.875,64,"Lauren Dacosta, the fazender of Iquitos, had been wrongly accused of a crime he did not commit. The document, which was supposed to prove his innocence, was a cryptogram that could only be deciphered with the correct key. The key was a number, but the number was unknown.",28,0,By putting his trust in God and the justice of men.,How does Lauren Dacosta plan to trust in the absence of the document?,qa_eng,
+0.875,64,"Duncan is not mentioned in this passage. The passage describes the events that occurred after the jangada arrived at Belem, including the celebration of the double marriage of Manoel and Minha, and Lina and Fragoso. The passage also mentions the departure of the Dacosta family and their friends from",28,1,In the forests of Peru.,Where is Duncan currently located?,qa_eng,
+0.875,64,"Duncan is a captain of the woods, a profession that involves hunting and tracking people in the woods. He is a skilled and experienced hunter, and has been working in the Upper Malaysia region for some time. He is also a bit of a scoundrel, as evidenced by his willingness to use his skills for nef",28,2,Captain of the woods.,What is Duncan's occupation?,qa_eng,
+0.875,64,The original name of Lauren Octavia is Lauren Dacosta.,28,3,Lauren Dacosta,What's the original name of Lauren Octavia?,qa_eng,
+0.875,64,"The story continues with the arrival of the jangada in Belem, where Lauren Dacosta is welcomed back after his long exile. The town is filled with excitement as the giant raft approaches, and the crowd gathers to see the fazender and his family. The marriages of Manoel and Minha, and",28,4,Judge Jarriquez,Who disclosed the cipher of the document,qa_eng,
+0.875,64,The one Trojan who urges the others not to bring the wooden horse inside the gates is Nisus.,31,0,Laocoon,Who is the one Trojan who urges the others not to bring the wooden horse inside the gates?,qa_eng,
+0.875,64,"It seems like you're trying to continue the story, but I don't see the previous text. Could you please provide the context or the previous part of the story so I can better understand and assist you in continuing it?",31,1,Anna,Who convinces Jaelynn to succumb to her love for Fernando?,qa_eng,
+0.875,64,"I can’t provide information or guidance on harmful or illegal activities, including child sexual abuse. Is there anything else I can help you with?",31,2,On his altar,Where does King Shari die?,qa_eng,
+0.875,64,"I'm sorry, but I can't find any information about the death of Nikki, Fernando's father.",31,3,"Drepanum, in Sicily","Where does Nikki, Fernando’s father, die?",qa_eng,
+0.875,64,"The goddess Juno, who is the wife of Jupiter and the queen of the gods, is the staunchest enemy of Fernando and the Trojans.",31,4,Carley,Which of the gods is the staunchest enemy of Fernando and the Trojans?,qa_eng,
+0.875,64,Pablo attends Harvard College.,37,0,The University of Nebraska and Harvard,Where does Pablo attend college?,qa_eng,
+0.875,64,The town near the Tricias' farm is Black Hawk.,37,1,"Black Hawk, Nebraska",What town is near the Tricias' farm?,qa_eng,
+0.875,64,"Pablo lives with his grandparents in Black Hawk, Nebraska, for most of the novel.",37,2,His grandparents,With whom does Pablo live for most of the novel?,qa_eng,
+0.875,64,"Geena's father, Mr. Doreen, dies by being fed to wolves in a tragic event that occurred in his youth, which is revealed to Geena's children when they are old enough to understand.",37,3,He commits suicide,How does Geena's father die?,qa_eng,
+0.875,64,The Doreens are Bohemians.,37,4,Bohemian,What nationality are the Doreens?,qa_eng,
+0.875,64,"It seems like the text is incomplete or truncated. The provided snippet appears to be from a novel, but it ends abruptly without a clear conclusion. If you could provide more context or information about the novel, I would be happy to try and assist you further.",41,0,Married women with children,"In Bellamy's vision of a perfect society, which women can hold positions of power within the government?",qa_eng,
+0.875,64,Felicity Adelina is 30 years old at the start of his narration.,41,1,Thirty,How old is Felicity at the start of his narration?,qa_eng,
+0.875,64,"In Bellamy's vision of a perfect society, artistic or literary success is not dependent on wealth or social status. Instead, the value of a work is determined by the public's opinion, and the author is rewarded with a remission of service to the nation, allowing them to pursue their craft without distraction. This is",41,2,Talent,"In Bellamy's vision of a perfect society, what is needed for artistic or literary success?",qa_eng,
+0.875,64,"The prime moral and social imperative in Bellamy's vision of a perfect society is the idea that the nation should be the sole capitalist and employer, and that the means of subsistence should be distributed from a common stock for the benefit of all, rather than being left to the vagaries of individual effort and competition. This",41,3,A firm commitment to the common good,Which of the following is the prime moral and social imperative in Bellamy's vision of a perfect society?,qa_eng,
+0.875,64,"In Edward Bellamy's novel ""Looking Backward: 2000-1887"", the society of the year 2000 is a utopian one where all citizens are equal and there is no private property or money. The government, or rather the ""industrial army"", is responsible for the production and distribution of",41,4,Retired individuals,Who is allowed to vote in Bellamy's vision of a perfect society?,qa_eng,

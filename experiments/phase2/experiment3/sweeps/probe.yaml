@@ -1,0 +1,9 @@
+# Stage 0 probe: 2 contexts of two tasks (one retrieval, one aggregation) through every arm shape.
+# Measures per-run wall time and PEAK GPU MEMORY at ~110k context, and runs self-tests T1-T6.
+tasks: [kv, summary]
+n_contexts: 2
+runs:
+  - {press: no_press,      ratio: 0.0}
+  - {press: kvzip,         ratio: 0.875}
+  - {press: kvzip_bern_s1, ratio: 0.875}
+  - {press: expected_attention, ratio: 0.875}

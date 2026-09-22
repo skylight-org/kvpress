@@ -1,0 +1,8 @@
+# Overnight L40S shard 1: no_press HARDWARE CHECK (must match A40's 95.42) + SnapKV.
+config: 4096
+samples_per_subtask: 60
+runs:
+  - {press: no_press, ratio: 0.0}
+  - {press: snapkv,   ratio: 0.5}
+  - {press: snapkv,   ratio: 0.75}
+  - {press: snapkv,   ratio: 0.875}

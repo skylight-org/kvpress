@@ -1,0 +1,21 @@
+dataset: ruler
+data_dir: '4096'
+model: meta-llama/Llama-3.1-8B-Instruct
+device: null
+press_name: streaming_llm
+compression_ratio: 0.75
+key_channel_compression_ratio: null
+fraction: 0.12
+max_new_tokens: null
+max_context_length: null
+query_aware: false
+needle_depth: null
+compression_interval: null
+target_size: null
+hidden_states_buffer_size: null
+output_dir: /home/rethinkingai-self/23b1835/phase2/experiment2/results/L40S
+log_level: INFO
+model_kwargs: {}
+press_init_command: StreamingLLMPress(compression_ratio=0.75, n_sink=4)
+seed: 42
+fp8: false

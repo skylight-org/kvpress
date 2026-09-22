@@ -1,0 +1,17 @@
+315628 l40 r32k_llama_qa_1
+315629 l40 r32k_llama_niah_single_3
+315630 l40 r32k_llama_niah_multikey_2
+315631 l40 r32k_llama_vt
+315632 l40 r32k_llama_cwe
+315633 dgx r32k_qwen_niah_single_3_a
+315634 dgx r32k_qwen_niah_single_3_b
+315635 dgx r32k_qwen_niah_multikey_2_a
+315636 dgx r32k_qwen_niah_multikey_2_b
+315637 dgx r32k_qwen_cwe_a
+315638 a40 r32k_qwen_qa_1
+315639 a40 r32k_qwen_vt
+315758 dgx r32k_qwen_cwe_b
+315759 dgx smoke_scb
+315766 l40 needle_diag
+316089 dgx scb_llama
+316090 dgx scb_qwen

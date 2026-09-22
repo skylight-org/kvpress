@@ -1,0 +1,41 @@
+compression_ratio,task,predicted_answer,question,context_id,turn,max_new_tokens,answer_prefix,answer
+0.875,scbench_prefix_suffix,"The word in the dictionary that has both the prefix and the suffix is:
+
+s-IVU
+
+This word is present in the list of words.","Given prefix = ""s-IVU""
+suffix = ""hcKDW""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,0,150,,['s-IVU^jkIcWHHzfjlhxKhcKDW']
+0.875,scbench_prefix_suffix,"The word in the dictionary that has both the prefix and the suffix is: ""_gdfO""
+
+This word is present in the list of words.","Given prefix = ""_gdfO""
+suffix = ""RNPQO""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,1,150,,['_gdfOZRlr+vmZoXIUcJjRNPQO']
+0.875,scbench_prefix_suffix,"The word in the dictionary that has both the prefix and the suffix is: KEcFQccLxD
+
+This word is present in the list of words.","Given prefix = ""KEcFQ""
+suffix = ""ccLxD""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,2,150,,['KEcFQno-zDLFSvbCQGJmccLxD']
+0.875,scbench_prefix_suffix,"The word in the dictionary that has both the prefix and the suffix is: ""Ss^_T""
+
+Explanation:
+The word ""Ss^_T"" is present in the given list of words.","Given prefix = ""Ss^_T""
+suffix = ""wOEQB""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,3,150,,['Ss^_Tn_ygrWomKPVgazMwOEQB']
+0.875,scbench_prefix_suffix,"The word in the dictionary that has both the prefix and the suffix is:
+
+LIAuD
+
+This word is present in the list of words.","Given prefix = ""LIAuD""
+suffix = ""EPmqQ""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,4,150,,['LIAuDRHrCk+WA+wpfZDDEPmqQ']

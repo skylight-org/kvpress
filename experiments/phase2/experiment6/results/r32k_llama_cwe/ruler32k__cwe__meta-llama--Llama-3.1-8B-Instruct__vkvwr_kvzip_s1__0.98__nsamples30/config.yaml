@@ -1,0 +1,37 @@
+dataset: ruler32k
+data_dir: cwe
+model: meta-llama/Llama-3.1-8B-Instruct
+device: null
+press_name: vkvwr_kvzip_s1
+compression_ratio: 0.984
+key_channel_compression_ratio: null
+fraction: 1.0
+n_samples: 30
+dataset_path: null
+max_new_tokens: null
+min_context_length: null
+max_context_length: null
+query_aware: false
+needle_depth: null
+compression_interval: null
+target_size: null
+hidden_states_buffer_size: null
+output_dir: /home/rethinkingai-self/23b1835/phase2/experiment6/results/r32k_llama_cwe
+log_level: INFO
+enable_micro_metrics: false
+micro_metrics_max_records: null
+micro_metrics_sampling_factor: 1.0
+micro_metrics: null
+enable_head_stats: false
+head_stats_layer_stride: 1
+head_stats_step_stride: 1
+head_stats_question_stride: 1
+head_stats_max_rows: null
+model_kwargs:
+  attn_implementation: sdpa
+trust_remote_code: false
+press_init_command: VKvWRPress(press=KVzipPress(compression_ratio=0.984, layerwise=False,
+  n_sink=4, kvzip_plus_normalization=False), sink=4, local=4, epsilon=0.1, delta=0.05,
+  max_sample_frac=1.0, seed=1, topk_frac_override=None, base_sample_frac_override=None)
+seed: 42
+fp8: false

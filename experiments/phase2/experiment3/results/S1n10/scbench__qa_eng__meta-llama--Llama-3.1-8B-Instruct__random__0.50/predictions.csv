@@ -1,0 +1,145 @@
+predicted_answer,turn,task,compression_ratio,context_id,answer,question,answer_prefix,max_new_tokens
+"The answer is that it does not matter. It is finished. Yes, it is finished.",0,qa_eng,0.5,0,"""Peyton""","Which among Annalisa, Seb, Peyton, and Gannonmarie is not Mrs. Bronwyn's child?",,64
+"The sun was shining brightly on the lawn, and the sun was shining brightly on the lawn, and the sun was shining brightly on the lawn, and the sun was shining brightly on the lawn, and the sun was shining brightly on the lawn, and the sun was shining brightly on the lawn, and the sun was shining",1,qa_eng,0.5,0,"""Annalisa",Who accompanied Mr. Bronwyn boating to the lighthouse at last?,,64
+"The Kindergarten was a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home, a summer home,",2,qa_eng,0.5,0,the Hebrides,What's the name of the Bronwyns' summer home?,,64
+The question of how many years Pete takes to complete the painting of Mrs. Bronwyn is a question of how many years Pete takes to complete the painting of Mrs. Bronwyn. The question of how many years Pete takes to complete the painting of Mrs. Bronwyn is a question of how many years Pete takes to complete,3,qa_eng,0.5,0,"""about 10 years""",How many years does Pete take to complete the painting of Mrs. Bronwyn?,,64
+The final to perish is the final to perish.,4,qa_eng,0.5,0,"""Mrs. Deandra""","Who among Mrs. Bronwyn, Mrs. Deandra, Rosemarie, and Cael is the final to perish?",,64
+It is to Brennan that Kiran is taken after.,0,qa_eng,0.5,2,Mr. Johnny,To whom is Kiran taken after Brennan is murdered?,,64
+The professor at Ingolstadt who first teaches Kiran the methods of modern science?,1,qa_eng,0.5,2,Lyle,What is the name of the professor at Ingolstadt who first teaches Kiran the methods of modern science?,,64
+"It is difficult to determine the exact number of people killed by the monster. However, it is mentioned that the monster killed Ariella, Allyson, and Raiden.",2,qa_eng,0.5,2,"""three""",How many people does the monster kill?,,64
+"It is in the midst of a conversation with his monster, that he is in the midst of a conversation with his monster, that he is in the midst of a conversation with his monster, that he is in the midst of a conversation with his monster, that he is in the midst of a conversation with his monster,",3,qa_eng,0.5,2,In a hut on a glacier near Montanvert,Where does Kiran first have a conversation with his monster?,,64
+Lillie is obsessed with Joey's misfortune.,4,qa_eng,0.5,2,"""reaching the most northern extremity""",With what is Lillie obsessed?,,64
+"September 2nd, 17--
+
+I have been writing to you, my dear sister, for some time now. I
+have been writing to you, my dear sister, for some time now. I
+have been writing to you, my dear sister, for some time now. I
+have been writing to",5,qa_eng,0.5,2,Lillie finds Kiran on the northern ice and nurses him back to health.,How does Lillie meet Kiran?,,64
+"The monster's language is a complex of sounds and gestures, which he learns to speak through his creator's guidance. His creator's guidance is a complex of sounds and gestures, which he learns to speak through. His creator's guidance is a complex of sounds and gestures, which he learns to speak through. His creator's",6,qa_eng,0.5,2,By listening to Felix teach Safie his language,How does the monster learn to speak?,,64
+I'm finally getting optimistic about Bernie's birthday.,0,qa_eng,0.5,4,"""MAY 1""",When is Bernie's birthday?,,64
+"I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+",1,qa_eng,0.5,4,"""Cliff",who are Laurel's family members?,,64
+"The letter continues:
+
+I'm afraid that if I ever become the person I'd like to be, I'll have to change myself completely. I'm afraid that if I ever become the person I'd like to be, I'll have to change myself completely. I'm afraid that if I ever become the person I'd",2,qa_eng,0.5,4,"""NOVEMBER 9""",When is Jarod's birthday?,,64
+The letter was written on Sunday by Laurel.,3,qa_eng,0.5,4,"""18""",how many letters are writen on Sunday by Laurel?,,64
+"I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+",4,qa_eng,0.5,4,Kitty,What name does Laurel call her letter?,,64
+Laurel Kali's letter is a bundle of contradictions. She is a bundle of contradictions. She is a bundle of contradictions. She is a bundle of contradictions. She is a bundle of contradictions. She is a bundle of contradictions. She is a bundle of contradictions. She is a bundle of contradictions. She is,5,qa_eng,0.5,4,"""Rocco""",Laurel has upsetting dreams and visions of a school friend. Who?,,64
+I'm not going to tell you anything.,0,qa_eng,0.5,7,Chong Hwa,What happens to Viola after his date with Skylar Abraham and his meeting with Gareth Chantelle both end badly?,,64
+I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going,1,qa_eng,0.5,7,The ducks in the lagoon,Viola wonders about the fate of which animals in Central Park?,,64
+I was going to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to bum a trip to,2,qa_eng,0.5,7,A red hunting hat,What item of clothing did Viola buy during the team’s trip to Malaysia?,,64
+I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going,3,qa_eng,0.5,7,A cab driver,"Once back in Malaysia, the first person Viola tries to invite for a drink is",,64
+I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going to tell you anything else. I'm not going,4,qa_eng,0.5,7,Chong Hwa,What is the name of the school Viola is attending at the beginning of his story?,,64
+## Step 1:  The problem is to find a solution to the problem of the Kallie’s profession. The problem is to find a solution to the problem of the Kallie’s profession. The problem is to find a solution to the problem of the Kallie’s profession. The problem is to,0,qa_eng,0.5,15,Writer,What is Kallie’s profession?,,64
+## Step 1:  The problem is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel,1,qa_eng,0.5,15,Boxing,In what sport did Henley Kallie participate at Princeton?,,64
+"## Step 1: Problem
+The problem is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the hotel is that the",2,qa_eng,0.5,15,World War I,In what war was Perla injured?,,64
+"## Step 1: Problem Statement
+The problem statement is a problem statement that is a problem statement that is a problem statement that is a problem statement that is a problem statement that is a problem statement that is a problem statement that is a problem statement that is a problem statement that is a problem statement that is a problem",3,qa_eng,0.5,15,CECE,With whom does Perla go fishing?,,64
+## Step 1:  The problem is to find a solution to the problem of the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe and the cafe,4,qa_eng,0.5,15,AMARI,Whom does Perla pick up at a cafe and take dancing?,,64
+"I am not sure what you are referring to, but I am not sure what you are referring to, but I am not sure what you are referring to, but I am not sure what you are referring to, but I am not sure what you are referring to, but I am not sure what you are referring to",0,qa_eng,0.5,25,Avalon's brother-in-law is Jayson Mac Andrew,What is the relationship between Jayson Helen and Avalon ?,,64
+The name of Alfred's wife is Mrs. Alfred.,1,qa_eng,0.5,25,Avalon,What is the name of Alfred's wife?,,64
+Alfred was a painter.,2,qa_eng,0.5,25,STOCKBROKER,What is Alfred's occupation when the narrator meets him?,,64
+"The narrator is a writer. 
+
+The narrator is a writer. 
+
+The narrator is a writer. 
+
+The narrator is a writer. 
+
+The narrator is a writer. 
+
+The narrator is a writer. 
+
+The narrator is a writer. 
+
+The narrator is a writer. 
+
+The narrator is a writer. 
+
+The",3,qa_eng,0.5,25,He is a writer.,What is the narrator's occupation?,,64
+I was a little surprised that the conversation was not a little surprised that the conversation was not a little surprised that the conversation was not a little surprised that the conversation was not a little surprised that the conversation was not a little surprised that the conversation was not a little surprised that the conversation was not a little surprised that the conversation,4,qa_eng,0.5,25,Malaysia,When Alfred leaves his family where does he go?,,64
+Lauren Dacosta plans to trust in the absence of the document.,0,qa_eng,0.5,28,By putting his trust in God and the justice of men.,How does Lauren Dacosta plan to trust in the absence of the document?,,64
+The final answer is not a complete sentence. The final answer is not a complete sentence. The final answer is not a complete sentence. The final answer is not a complete sentence. The final answer is not a complete sentence. The final answer is not a complete sentence. The final answer is not a complete sentence. The,1,qa_eng,0.5,28,In the forests of Peru.,Where is Duncan currently located?,,64
+The final answer is the following question: The final answer is the following question: The final answer is the following question: The final answer is the following question: The final answer is the following question: The final answer is the following question: The final answer is the following question: The final answer is the following question:,2,qa_eng,0.5,28,Captain of the woods.,What is Duncan's occupation?,,64
+assistant name of Lauren Octavia.,3,qa_eng,0.5,28,Lauren Dacosta,What's the original name of Lauren Octavia?,,64
+assistant,4,qa_eng,0.5,28,Judge Jarriquez,Who disclosed the cipher of the document,,64
+I am not able to provide a response to the question as it is a continuation of the story. The story is a continuation of the story. The story is a continuation of the story. The story is a continuation of the story. The story is a continuation of the story. The story is a continuation of the story,0,qa_eng,0.5,31,Laocoon,Who is the one Trojan who urges the others not to bring the wooden horse inside the gates?,,64
+I cannot provide a response to the question. The question is a continuation of the story and does not make sense in the context of the story. The story is a continuation of the story and does not make sense in the context of the story. The story is a continuation of the story and does not make sense in the,1,qa_eng,0.5,31,Anna,Who convinces Jaelynn to succumb to her love for Fernando?,,64
+I cannot provide the requested information. The requested information is not available in the format requested.,2,qa_eng,0.5,31,On his altar,Where does King Shari die?,,64
+I cannot provide a response to the question as the provided text is a continuation of the story and the question is a continuation of the story and the question is a continuation of the story and the question is a continuation of the story and the question is a continuation of the story and the question is a continuation of the story and,3,qa_eng,0.5,31,"Drepanum, in Sicily","Where does Nikki, Fernando’s father, die?",,64
+"The gods of war, the most fierce and terrible, are the enemies of Fernando and the Trojans. The gods of war are the most fierce and terrible, and are the enemies of Fernando and the Trojans.",4,qa_eng,0.5,31,Carley,Which of the gods is the staunchest enemy of Fernando and the Trojans?,,64
+Pablo attends college in Lincoln.,0,qa_eng,0.5,37,The University of Nebraska and Harvard,Where does Pablo attend college?,,64
+The town is Black Hawk.,1,qa_eng,0.5,37,"Black Hawk, Nebraska",What town is near the Tricias' farm?,,64
+"Based on the provided information, it seems that Pablo lives for most of the novel with Geena.",2,qa_eng,0.5,37,His grandparents,With whom does Pablo live for most of the novel?,,64
+Geena's father does not die. He is a character in a story that is told by Geena's children.,3,qa_eng,0.5,37,He commits suicide,How does Geena's father die?,,64
+The Doreens are of Bohemian nationality.,4,qa_eng,0.5,37,Bohemian,What nationality are the Doreens?,,64
+The previous chapter of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of the book of,0,qa_eng,0.5,41,Married women with children,"In Bellamy's vision of a perfect society, which women can hold positions of power within the government?",,64
+"The previous chapter was a continuation of the previous chapter, but the next chapter was a continuation of the previous chapter, but the next chapter was a continuation of the previous chapter, but the next chapter was a continuation of the previous chapter, but the next chapter was a continuation of the previous chapter, but the next chapter was",1,qa_eng,0.5,41,Thirty,How old is Felicity at the start of his narration?,,64
+The previous chapter of the book of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of the year of,2,qa_eng,0.5,41,Talent,"In Bellamy's vision of a perfect society, what is needed for artistic or literary success?",,64
+The moral of the story is that the narrator's vision of a perfect society was not to be had in the Bellamy's vision of a moral imperative. The narrator's vision of a perfect society was not to be had in the Bellamy's vision of a moral imperative. The narrator's vision of a perfect society was,3,qa_eng,0.5,41,A firm commitment to the common good,Which of the following is the prime moral and social imperative in Bellamy's vision of a perfect society?,,64
+"The conversation that evening was marked by a sense of wonder at the strange sight of the Boston of the future. The city was a place of great beauty, with its gardens and parks a source of joy. The people of the city were a source of great wonder, with their faces a picture of great beauty. The city",4,qa_eng,0.5,41,Retired individuals,Who is allowed to vote in Bellamy's vision of a perfect society?,,64

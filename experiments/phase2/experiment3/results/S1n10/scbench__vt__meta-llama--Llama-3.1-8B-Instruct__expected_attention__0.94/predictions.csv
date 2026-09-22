@@ -1,0 +1,355 @@
+context_id,predicted_answer,turn,max_new_tokens,answer,question,compression_ratio,task,answer_prefix
+0,"The variables that are assigned the value 22087 in the text above are:
+
+1. SDGAU
+2. SDGZP
+3. SDGZQ
+4. SDGZP
+5. SDGZQ",0,128,"[""CTLFS"", ""VVUTI"", ""QBORE"", ""IHQFY"", ""JWJQC""]","Question: Find all variables that are assigned the value 22087 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 22087, they are: ",0.9375,vt,
+0,"The variables that are assigned the value 33762 in the text above are:
+
+1. SDGAU
+2. SDGZP
+3. SDGZQ
+4. SDGZP
+5. SDGAU",1,128,"[""NHPIA"", ""DSITT"", ""ROLJC"", ""JIAXN"", ""CPVLP""]","Question: Find all variables that are assigned the value 33762 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 33762, they are: ",0.9375,vt,
+0,"The variables that are assigned the value 92617 in the text above are:
+
+1. UGDVG
+2. UGDVG
+3. UGDVG
+4. UGDVG
+5. UGDVG",2,128,"[""DJHTA"", ""HNZYZ"", ""BRWEV"", ""SDGAU"", ""UGDVG""]","Question: Find all variables that are assigned the value 92617 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 92617, they are: ",0.9375,vt,
+0,"The variables that are assigned the value 19596 in the text above are:
+
+1. UGDVG
+2. UGDVG
+3. UGDVG
+4. UGDVG
+5. UGDVG",3,128,"[""PZHIE"", ""UJCKV"", ""HQTDP"", ""USYVS"", ""AFCBD""]","Question: Find all variables that are assigned the value 19596 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 19596, they are: ",0.9375,vt,
+0,"The variables that are assigned the value 28313 in the text above are:
+
+1. UGDZG
+2. UGZQF
+3. UGZQG
+4. UGZQH
+5. UGZQI",4,128,"[""KFWJP"", ""TMTZY"", ""HQXNY"", ""LZJRW"", ""IJTOJ""]","Question: Find all variables that are assigned the value 28313 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 28313, they are: ",0.9375,vt,
+1,"The variables that are assigned the value 76549 in the text above are:
+
+1. VAR ANYZV
+2. VAR PBLES
+3. VAR PLES
+4. VAR PBLES
+5. VAR ANYZV",0,128,"[""NJXBK"", ""ORAIW"", ""KDHDD"", ""MFWHK"", ""TGSRO""]","Question: Find all variables that are assigned the value 76549 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 76549, they are: ",0.9375,vt,
+1,"The variables that are assigned the value 33705 in the text above are:
+
+1. MYHH
+2. PLES
+3. SCBV
+4. SCBV
+5. MYHH",1,128,"[""VIJLB"", ""YHUFS"", ""THZTJ"", ""SCBVZ"", ""DNQDC""]","Question: Find all variables that are assigned the value 33705 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 33705, they are: ",0.9375,vt,
+1,"The 5 variables that are assigned the value 77364 in the text above are:
+
+1. MYHH
+2. MYHH
+3. MYHH
+4. MYHH
+5. MYHH",2,128,"[""CBCYN"", ""YXRHR"", ""AQIQY"", ""ACOIE"", ""CDUDB""]","Question: Find all variables that are assigned the value 77364 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 77364, they are: ",0.9375,vt,
+1,"The variables that are assigned the value 83445 in the text above are:
+
+1. SYDOT
+2. SYDOT
+3. SYDOT
+4. SYDOT
+5. SYDOT",3,128,"[""SYDOT"", ""PXYGE"", ""CWXUU"", ""ANYZV"", ""DXBAT""]","Question: Find all variables that are assigned the value 83445 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 83445, they are: ",0.9375,vt,
+1,"The variables that are assigned the value 88645 in the text above are:
+
+1. PLESR
+2. PBLSR
+3. PBLSR
+4. PBLSR
+5. PBLSR",4,128,"[""JXYCR"", ""OQWFT"", ""MYHHN"", ""PLESR"", ""PBKUT""]","Question: Find all variables that are assigned the value 88645 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 88645, they are: ",0.9375,vt,
+2,"The variables that are assigned the value 12023 in the text above are:
+
+1. ZW
+2. ZY
+3. ZW
+4. ZY
+5. ZW",0,128,"[""QNIKX"", ""YLIUH"", ""NHEAI"", ""GCZFF"", ""WERUM""]","Question: Find all variables that are assigned the value 12023 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 12023, they are: ",0.9375,vt,
+2,"VAR GQZQO = 69796
+VAR GQZQO = 69796
+VAR GQZQO = 69796
+VAR GQZQO = 69796
+VAR GQZQO = 69796
+
+The 5 variables that are assigned the value 69796 are: 
+VAR GQZQO 
+VAR GQZQO 
+VAR GQZQO 
+VAR GQZQO 
+VAR GQZQO",1,128,"[""RUAEL"", ""YIHEY"", ""XCYEF"", ""ZYTNQ"", ""ATPAG""]","Question: Find all variables that are assigned the value 69796 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 69796, they are: ",0.9375,vt,
+2,"The variables that are assigned the value 90073 in the text above are:
+
+1. ZW
+2. ZY
+3. ZW
+4. ZY
+5. ZW",2,128,"[""DYWLR"", ""GQKFQ"", ""NDNRD"", ""ZWASC"", ""DCTEM""]","Question: Find all variables that are assigned the value 90073 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 90073, they are: ",0.9375,vt,
+2,"The variables that are assigned the value 74429 in the text above are:
+
+1. ZZ
+2. ZY
+3. ZW
+4. ZV
+5. ZU",3,128,"[""PNJOK"", ""QCCYW"", ""OAECB"", ""ZZFAG"", ""JUDMU""]","Question: Find all variables that are assigned the value 74429 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 74429, they are: ",0.9375,vt,
+2,"The variables that are assigned the value 71627 in the text above are:
+
+1. ZZ
+2. ZY
+3. ZW
+4. ZV
+5. ZU",4,128,"[""ECOUQ"", ""QUNEA"", ""ALDRD"", ""VPYPB"", ""LANFQ""]","Question: Find all variables that are assigned the value 71627 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 71627, they are: ",0.9375,vt,
+3,"The variables that are assigned the value 43848 in the text above are:
+
+1. YMXZC
+2. YMXZC
+3. YMXZC
+4. YMXZC
+5. YMXZC",0,128,"[""ZWCPJ"", ""PJJHP"", ""BYOYO"", ""XMGDS"", ""EFXGQ""]","Question: Find all variables that are assigned the value 43848 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 43848, they are: ",0.9375,vt,
+3,"The variables that are assigned the value 47804 in the text above are:
+
+1. GIFDQ
+2. GIFDQ
+3. GIFDQ
+4. GIFDQ
+5. GIFDQ",1,128,"[""SLOYB"", ""GSSZH"", ""RPULT"", ""SMWTW"", ""GIFCQ""]","Question: Find all variables that are assigned the value 47804 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 47804, they are: ",0.9375,vt,
+3,"The variables that are assigned the value 25379 in the text above are:
+
+1. YISRC
+2. GIFDQ
+3. GIFDQ
+4. GIFDQ
+5. YISRC",2,128,"[""YMXZC"", ""VWULN"", ""RVSOL"", ""YTIBQ"", ""CEFWN""]","Question: Find all variables that are assigned the value 25379 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 25379, they are: ",0.9375,vt,
+3,"The variables that are assigned the value 69664 in the text above are:
+
+1. YMXZC
+2. YMXZC
+3. YMXZC
+4. YMXZC
+5. YMXZC",3,128,"[""TFKIQ"", ""MOFDF"", ""IABIJ"", ""EXUWV"", ""YISRC""]","Question: Find all variables that are assigned the value 69664 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 69664, they are: ",0.9375,vt,
+3,"The variables that are assigned the value 37766 in the text above are:
+
+1. YISRC
+2. GIFDQ
+3. GIFDQ
+4. GIFDQ
+5. YISRC",4,128,"[""ASOZB"", ""MUMDN"", ""CTPON"", ""ANOBX"", ""FOQCT""]","Question: Find all variables that are assigned the value 37766 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 37766, they are: ",0.9375,vt,
+4,"The variables that are assigned the value 78099 in the text above are:
+
+1. LXL
+2. LXL
+3. LXL
+4. LXL
+5. LXL",0,128,"[""PSVUL"", ""JAPBF"", ""PGPVT"", ""RXBGK"", ""AZXWX""]","Question: Find all variables that are assigned the value 78099 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 78099, they are: ",0.9375,vt,
+4,"The variables that are assigned the value 46060 in the text above are:
+
+1. ITCYH
+2. IZQZC
+3. IZQZC
+4. IZQZC
+5. ITCYH",1,128,"[""PFQSE"", ""EWYUB"", ""IZTMW"", ""ITCYH"", ""ACBWM""]","Question: Find all variables that are assigned the value 46060 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 46060, they are: ",0.9375,vt,
+4,"The variables that are assigned the value 79122 in the text above are:
+
+1. IZC
+2. IZC
+3. IZC
+4. IZC
+5. IZC",2,128,"[""UXDBM"", ""GIJRH"", ""WTLRY"", ""MJGCQ"", ""EUIHC""]","Question: Find all variables that are assigned the value 79122 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 79122, they are: ",0.9375,vt,
+4,"The variables that are assigned the value 26087 in the text above are:
+
+1. LXLV
+2. LXLW
+3. LXLX
+4. LXLZ
+5. LXLU",3,128,"[""UIQCQ"", ""VIUIT"", ""ZVZYG"", ""AZDEM"", ""PHJXW""]","Question: Find all variables that are assigned the value 26087 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 26087, they are: ",0.9375,vt,
+4,"The variables that are assigned the value 58868 in the text above are:
+
+1. LXL
+2. LXL
+3. LXL
+4. LXL
+5. LXL",4,128,"[""BIVLK"", ""ODFUD"", ""MCJMI"", ""ZCIMI"", ""LACGR""]","Question: Find all variables that are assigned the value 58868 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 58868, they are: ",0.9375,vt,
+5,"The variables that are assigned the value 33225 in the text above are:
+
+1. RIECU
+2. RIECU
+3. RIECU
+4. RIECU
+5. RIECU",0,128,"[""CYUHU"", ""PPKKD"", ""GFFDE"", ""KEWQH"", ""XSISJ""]","Question: Find all variables that are assigned the value 33225 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 33225, they are: ",0.9375,vt,
+5,"The variables that are assigned the value 16643 in the text above are:
+
+1. RIECU
+2. RIECU
+3. RIECU
+4. RIECU
+5. RIECU",1,128,"[""LRDPM"", ""UPKRY"", ""KFWOK"", ""LIGLS"", ""NBVPI""]","Question: Find all variables that are assigned the value 16643 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 16643, they are: ",0.9375,vt,
+5,"The variables that are assigned the value 46727 in the text above are:
+
+1. HNZZ
+2. HNZZ
+3. HNZZ
+4. HNZZ
+5. HNZZ",2,128,"[""SDBIA"", ""UUJNF"", ""XRMXF"", ""BMECZ"", ""HNZZL""]","Question: Find all variables that are assigned the value 46727 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 46727, they are: ",0.9375,vt,
+5,"The variables that are assigned the value 21005 in the text above are:
+
+1. HNZZ
+2. HNZZ
+3. HNZZ
+4. HNZZ
+5. HNZZ",3,128,"[""FUZDO"", ""LJWLZ"", ""RIECU"", ""HSCVQ"", ""GXIJV""]","Question: Find all variables that are assigned the value 21005 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 21005, they are: ",0.9375,vt,
+5,"The variables that are assigned the value 75697 in the text above are:
+
+1. HNZZ
+2. HNZZ
+3. HNZZ
+4. HNZZ
+5. HNZZ",4,128,"[""PCMRH"", ""CLLRT"", ""OEHSE"", ""QNKDE"", ""RWWSD""]","Question: Find all variables that are assigned the value 75697 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 75697, they are: ",0.9375,vt,
+6,"The variables that are assigned the value 26029 in the text above are:
+
+1. OIZPS
+2. OIZPS
+3. OIZPS
+4. OIZPS
+5. OIZPS",0,128,"[""QZGGD"", ""NUWPR"", ""QJLPS"", ""MJHNG"", ""WIJRV""]","Question: Find all variables that are assigned the value 26029 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 26029, they are: ",0.9375,vt,
+6,"The variables that are assigned the value 24226 in the text above are:
+
+1. SVTXG
+2. OIZPS
+3. OIZPS
+4. OIZPS
+5. SVTXG",1,128,"[""DGRLK"", ""ELLYA"", ""NSILK"", ""UVBWW"", ""HPJKY""]","Question: Find all variables that are assigned the value 24226 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 24226, they are: ",0.9375,vt,
+6,"The variables that are assigned the value 73646 in the text above are:
+
+1. SVTXG
+2. SVTXG
+3. SVTXG
+4. SVTXG
+5. SVTXG",2,128,"[""KFXXO"", ""MPALA"", ""AKKSV"", ""USRDY"", ""TVUVM""]","Question: Find all variables that are assigned the value 73646 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 73646, they are: ",0.9375,vt,
+6,"The variables that are assigned the value 70603 in the text above are:
+
+1. SVTXG
+2. OIZPS
+3. TVZQG
+4. OIZPS
+5. SVTXG",3,128,"[""FWIAG"", ""ASOBQ"", ""SVTXK"", ""OIZPS"", ""AESWG""]","Question: Find all variables that are assigned the value 70603 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 70603, they are: ",0.9375,vt,
+6,"The variables that are assigned the value 38731 in the text above are:
+
+1. OIZG
+2. OIZG
+3. OIZG
+4. OIZG
+5. OIZG",4,128,"[""APIUC"", ""MFFPP"", ""LVHVF"", ""KYEMF"", ""BUFNU""]","Question: Find all variables that are assigned the value 38731 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 38731, they are: ",0.9375,vt,
+7,"The variables that are assigned the value 78926 in the text above are:
+
+1. BJHQM
+2. BJHQM
+3. BJHQM
+4. BJHQM
+5. BJHQM",0,128,"[""CVVWK"", ""GPSOX"", ""WJXUS"", ""HZVYB"", ""SWJUZ""]","Question: Find all variables that are assigned the value 78926 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 78926, they are: ",0.9375,vt,
+7,"The variables that are assigned the value 15997 are:
+
+1. BJHQM
+2. BJHQM
+3. BJHQM
+4. BJHQM
+5. BJHQM",1,128,"[""VHPHQ"", ""STSCA"", ""AQNMQ"", ""JRJQH"", ""CMPWV""]","Question: Find all variables that are assigned the value 15997 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 15997, they are: ",0.9375,vt,
+7,"The variables that are assigned the value 65506 in the text above are:
+
+1. BJHQM
+2. BJHQM
+3. BJHQM
+4. BJHQM
+5. BJHQM",2,128,"[""JZJYW"", ""PBNTS"", ""EGTSU"", ""EUIHZ"", ""BJHQM""]","Question: Find all variables that are assigned the value 65506 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 65506, they are: ",0.9375,vt,
+7,"The variables that are assigned the value 88229 in the text above are:
+
+1. BJHQM
+2. BJHQM
+3. BJHQM
+4. BJHQM
+5. BJHQM",3,128,"[""MBYNM"", ""TKALT"", ""PWJVX"", ""MOWJR"", ""CWQEZ""]","Question: Find all variables that are assigned the value 88229 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 88229, they are: ",0.9375,vt,
+7,"The variables that are assigned the value 59815 are:
+
+1. BJHQM
+2. BJHQM
+3. BJHQM
+4. BJHQM
+5. BJHQM",4,128,"[""BNORT"", ""TLTWA"", ""IVBNA"", ""ZOQRM"", ""EADSJ""]","Question: Find all variables that are assigned the value 59815 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 59815, they are: ",0.9375,vt,
+8,"The variables that are assigned the value 52092 in the text above are:
+
+1. LANJG
+2. LANJG
+3. LANJG
+4. LANJG
+5. LANJG",0,128,"[""EFLKT"", ""PFHDR"", ""PRECI"", ""OPOKT"", ""LANJG""]","Question: Find all variables that are assigned the value 52092 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 52092, they are: ",0.9375,vt,
+8,"The variables that are assigned the value 72539 in the text above are:
+
+1. LANJG
+2. LANJG
+3. LANJG
+4. LANJG",1,128,"[""TCNLP"", ""RQARG"", ""SJHDL"", ""FTHNS"", ""VPTHB""]","Question: Find all variables that are assigned the value 72539 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 72539, they are: ",0.9375,vt,
+8,"The variables that are assigned the value 76077 in the text above are:
+
+1. LANJG
+2. LANJG
+3. LANJG
+4. LANJG
+5. LANJG",2,128,"[""OHQLK"", ""SMRIR"", ""CYODT"", ""WRVLJ"", ""SMFTA""]","Question: Find all variables that are assigned the value 76077 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 76077, they are: ",0.9375,vt,
+8,"The variables that are assigned the value 31817 in the text above are:
+
+1. LANJG
+2. LANJG
+3. LANJG
+4. LANJG
+5. LANJG",3,128,"[""ERMIM"", ""DGYVO"", ""EJSMM"", ""WODCG"", ""ZLGSF""]","Question: Find all variables that are assigned the value 31817 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 31817, they are: ",0.9375,vt,
+8,"The variables that are assigned the value 47861 in the text above are:
+
+1. AQYGJ
+2. FTHZB
+3. FTHZC
+4. FTHZD
+5. FTHZE",4,128,"[""XQTZA"", ""BCIWH"", ""AQYGJ"", ""FGLJX"", ""FRCHY""]","Question: Find all variables that are assigned the value 47861 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 47861, they are: ",0.9375,vt,
+9,"The variables that are assigned the value 23428 in the text above are:
+
+1. FDCCR
+2. FDCCR
+3. FDCCR
+4. FDCCR
+5. FDCCR",0,128,"[""MWYBF"", ""XBZIC"", ""MQAZQ"", ""EZANV"", ""UVCDT""]","Question: Find all variables that are assigned the value 23428 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 23428, they are: ",0.9375,vt,
+9,"The variables that are assigned the value 53934 in the text above are:
+
+1. FDCCR
+2. FDCCR
+3. FDCCR
+4. FDCCR
+5. FDCCR",1,128,"[""XDTTD"", ""BKXOW"", ""EYVSS"", ""JRKVQ"", ""QKFIY""]","Question: Find all variables that are assigned the value 53934 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 53934, they are: ",0.9375,vt,
+9,"The variables that are assigned the value 20258 in the text above are:
+
+1. YXZQF
+2. YXZQF
+3. YXZQF
+4. YXZQF
+5. YXZQF",2,128,"[""WZATZ"", ""VJKKI"", ""FDCCR"", ""RZVGN"", ""RBZWP""]","Question: Find all variables that are assigned the value 20258 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 20258, they are: ",0.9375,vt,
+9,"The variables that are assigned the value 67775 in the text above are:
+
+1. FDCCR
+2. FDCCR
+3. FDCCR
+4. FDCCR
+5. FDCCR",3,128,"[""BBMGP"", ""YQYEN"", ""DYADZ"", ""YFRNW"", ""LSCGW""]","Question: Find all variables that are assigned the value 67775 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 67775, they are: ",0.9375,vt,
+9,"The variables that are assigned the value 91580 in the text above are:
+
+1. FDCCR
+2. FDCCR
+3. FDCCR
+4. FDCCR
+5. FDCCR",4,128,"[""ELCLC"", ""JKCZS"", ""FAKXX"", ""DHSNA"", ""FZYSU""]","Question: Find all variables that are assigned the value 91580 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 91580, they are: ",0.9375,vt,

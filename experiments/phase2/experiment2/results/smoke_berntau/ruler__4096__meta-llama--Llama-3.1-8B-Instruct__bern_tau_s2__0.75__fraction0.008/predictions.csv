@@ -1,0 +1,138 @@
+answer,max_new_tokens,predicted_answer,task,answer_prefix,compression_ratio,question
+['6188935'],128,: 6188935.,niah_single_2,The special magic number for questionable-tangerine mentioned in the provided text is,0.75,What is the special magic number for questionable-tangerine mentioned in the provided text? 
+['7373495' '6573679' '1113537' '8385715'],128,":
+
+1. For swift-pigeon: 7373495
+2. For mammoth-caution: 6573679
+3. For homeless-octagon: 1113537
+4. For impossible-frenzy: 8385715",niah_multiquery,"The special magic numbers for swift-pigeon, mammoth-caution, homeless-octagon, and impossible-frenzy mentioned in the provided text are",0.75,"What are all the special magic numbers for swift-pigeon, mammoth-caution, homeless-octagon, and impossible-frenzy mentioned in the provided text? "
+['Inland Empire' 'Temecula and Murrieta'],32, The San Diego metropolitan area and the Inland Empire.,qa_1,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Other than the San Diego metropolitan area, what other area are the communities along Interstates 15 and 215 connected with? "
+['8387112'],128, 8387112.,niah_single_2,The special magic number for chivalrous-barometer mentioned in the provided text is,0.75,What is the special magic number for chivalrous-barometer mentioned in the provided text? 
+['23a4e70e-9dbc-45c0-aa7d-c57c6d9c5b50'],128,: 23a4e70e-9dbc-45c0-aa7d-c57c6d9c5b50.,niah_multikey_3,The special magic uuid for a1fd4187-9c3a-4e0b-b5f3-f8aadc6dafff mentioned in the provided text is,0.75,What is the special magic uuid for a1fd4187-9c3a-4e0b-b5f3-f8aadc6dafff mentioned in the provided text? 
+['9742856' '8590804' '6843509' '2637842'],128,":
+
+1. Exotic-rape: 9742856
+2. Noxious-pearl: 8590804
+3. Plain-weed: 6843509
+4. Periodic-orchard: 2637842",niah_multiquery,"The special magic numbers for exotic-rape, noxious-pearl, plain-weed, and periodic-orchard mentioned in the provided text are",0.75,"What are all the special magic numbers for exotic-rape, noxious-pearl, plain-weed, and periodic-orchard mentioned in the provided text? "
+['715629ee-e893-4e3d-b354-ea6f61607459'],128,: 715629ee-e893-4e3d-b354-ea6f61607459.,niah_single_3,The special magic uuid for recondite-wiring mentioned in the provided text is,0.75,What is the special magic uuid for recondite-wiring mentioned in the provided text? 
+['345af934-b42a-4d93-9aba-0f15b2149062'],128,: 345af934-b42a-4d93-9aba-0f15b2149062.,niah_single_3,The special magic uuid for frantic-tale mentioned in the provided text is,0.75,What is the special magic uuid for frantic-tale mentioned in the provided text? 
+['5521644' '2532210' '1348050' '1674975'],128,":
+
+- 5521644 (unequaled-atmosphere)
+- 2532210 (adamant-waveform)
+- 1348050 (flagrant-woodshed)
+- 1674975 (smelly-fascia)",niah_multiquery,"The special magic numbers for unequaled-atmosphere, adamant-waveform, flagrant-woodshed, and smelly-fascia mentioned in the provided text are",0.75,"What are all the special magic numbers for unequaled-atmosphere, adamant-waveform, flagrant-woodshed, and smelly-fascia mentioned in the provided text? "
+['2147909'],128, 2147909.,niah_single_2,The special magic number for swanky-dozen mentioned in the provided text is,0.75,What is the special magic number for swanky-dozen mentioned in the provided text? 
+['67814c1f-cc53-4e36-addc-3e13ab3b4d37'],128,: 67814c1f-cc53-4e36-addc-3e13ab3b4d37.,niah_single_3,The special magic uuid for inquisitive-library mentioned in the provided text is,0.75,What is the special magic uuid for inquisitive-library mentioned in the provided text? 
+['2089275'],128,: 2089275.,niah_multikey_1,The special magic number for needy-deathwatch mentioned in the provided text is,0.75,What is the special magic number for needy-deathwatch mentioned in the provided text? 
+['1752920' '4350161' '3446428' '7271672'],128,":
+
+1. 1752920 (numerous-jury)
+2. 4350161 (flipped-out-paperwork)
+3. 3446428 (tacit-fluke)
+4. 7271672 (various-coverall)",niah_multiquery,"The special magic numbers for numerous-jury, flipped-out-paperwork, tacit-fluke, and various-coverall mentioned in the provided text are",0.75,"What are all the special magic numbers for numerous-jury, flipped-out-paperwork, tacit-fluke, and various-coverall mentioned in the provided text? "
+['1229419'],128,: 1229419.,niah_single_1,The special magic number for scattered-trench mentioned in the provided text is,0.75,What is the special magic number for scattered-trench mentioned in the provided text? 
+['6338112'],128,: 6338112.,niah_single_1,The special magic number for amused-veto mentioned in the provided text is,0.75,What is the special magic number for amused-veto mentioned in the provided text? 
+['bd17c5e8-d5ca-49ab-8a2e-6a93c5580bb2'],128,: bd17c5e8-d5ca-49ab-8a2e-6a93c5580bb2.,niah_single_3,The special magic uuid for quick-native mentioned in the provided text is,0.75,What is the special magic uuid for quick-native mentioned in the provided text? 
+['gmebgb' 'qsyeiu' 'reuvhy'],50," 
+
+1. gmebgb (appeared 73 times)
+2. qsyeiu (appeared 43 times)
+3. reuvhy (appeared 37 times)",fwe,"Answer: According to the coded text above, the three most frequently appeared words are:",0.75,Question: Do not provide any explanation. Please ignore the dots '....'. What are the three most frequently appeared words in the above coded text? 
+['4412989'],128,: 4412989.,niah_multikey_2,The special magic number for capable-milkshake mentioned in the provided text is,0.75,What is the special magic number for capable-milkshake mentioned in the provided text? 
+['Palm Springs' 'Palm Springs' 'Palm Springs'],32, Palm Springs,qa_1,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the name of the desert city? "
+['5444179'],128, 5444179.,niah_multikey_2,The special magic number for happy-bride mentioned in the provided text is,0.75,What is the special magic number for happy-bride mentioned in the provided text? 
+['7245146' '2409947' '5342289' '2258076'],128,":
+
+1. 5342289
+2. 2409947
+3. 2258076
+4. 7245146",niah_multivalue,The special magic numbers for mature-commander mentioned in the provided text are,0.75,What are all the special magic numbers for mature-commander mentioned in the provided text? 
+['c8a723e9-bfa0-46c2-809c-b50648f1096d'],128,: c8a723e9-bfa0-46c2-809c-b50648f1096d.,niah_single_3,The special magic uuid for stupid-sherbet mentioned in the provided text is,0.75,What is the special magic uuid for stupid-sherbet mentioned in the provided text? 
+['7067228'],128,: 7067228.,niah_single_2,The special magic number for tangy-boysenberry mentioned in the provided text is,0.75,What is the special magic number for tangy-boysenberry mentioned in the provided text? 
+"['NP-complete Boolean satisfiability problem'
+ 'NP-complete Boolean satisfiability'
+ 'the NP-complete Boolean satisfiability problem']",32, The knapsack problem.,qa_1,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the example of another problem characterized by large instances that is routinely solved by SAT handlers employing efficient algorithms? "
+"['A probabilistic Turing machine' 'probabilistic'
+ 'probabilistic Turing machine']",32, Probabilistic Turing machine.,qa_1,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the term used to identify a deterministic Turing machine that has additional random bits? "
+['author'],32, Author,qa_2,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Eric Ambler and Carol Shields are both best Known for what profession? "
+['frxhxt' 'qyhgtv' 'rtvpqv'],50," 
+
+1. frxhxt (appeared 73 times)
+2. qyhgtv (appeared 43 times)
+3. rtvpqv (appeared 34 times)",fwe,"Answer: According to the coded text above, the three most frequently appeared words are:",0.75,Question: Do not provide any explanation. Please ignore the dots '....'. What are the three most frequently appeared words in the above coded text? 
+['c9dc72b8-5b6a-4102-8428-7378bf5023f4'],128,: c9dc72b8-5b6a-4102-8428-7378bf5023f4.,niah_single_3,The special magic uuid for gaping-member mentioned in the provided text is,0.75,What is the special magic uuid for gaping-member mentioned in the provided text? 
+['1943'],32, 1943,qa_2,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Tefik Selim Mborja was a part of a party that held power in Albania until what year?  "
+['5255545'],128,: 5255545.,niah_single_2,The special magic number for lively-inn mentioned in the provided text is,0.75,What is the special magic number for lively-inn mentioned in the provided text? 
+['7267813' '7636992' '2695038' '6646557'],128,":
+
+1. 2695038
+2. 7636992
+3. 6646557
+4. 7267813",niah_multivalue,The special magic numbers for bloody-pillow mentioned in the provided text are,0.75,What are all the special magic numbers for bloody-pillow mentioned in the provided text? 
+['9692311'],128,: 9692311.,niah_multikey_1,The special magic number for creepy-juice mentioned in the provided text is,0.75,What is the special magic number for creepy-juice mentioned in the provided text? 
+['7352484' '4942645' '8517846' '8702329'],128,":
+
+1. 7352484 (for scattered-lawn)
+2. 4942645 (for melodic-linkage)
+3. 8517846 (for obeisant-blowgun)
+4. 8702329 (for boundless-icon)",niah_multiquery,"The special magic numbers for scattered-lawn, melodic-linkage, obeisant-blowgun, and boundless-icon mentioned in the provided text are",0.75,"What are all the special magic numbers for scattered-lawn, melodic-linkage, obeisant-blowgun, and boundless-icon mentioned in the provided text? "
+['9648751'],128,: 9648751.,niah_single_1,The special magic number for stingy-hostess mentioned in the provided text is,0.75,What is the special magic number for stingy-hostess mentioned in the provided text? 
+['Scott Sidney'],32, Alain Resnais,qa_2,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Which director had the longest career, Alain Resnais or Scott Sidney? "
+['economically' 'economically' 'economically'],32, economically,qa_1,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Southern California's distinctive regions are divided culturally, politically and what other trait? "
+['7754864'],128,: 7754864.,niah_single_2,The special magic number for axiomatic-tremor mentioned in the provided text is,0.75,What is the special magic number for axiomatic-tremor mentioned in the provided text? 
+['3182975'],128,: 3182975.,niah_single_2,The special magic number for little-petal mentioned in the provided text is,0.75,What is the special magic number for little-petal mentioned in the provided text? 
+['9240971'],128,: 9240971.,niah_single_2,The special magic number for volatile-surge mentioned in the provided text is,0.75,What is the special magic number for volatile-surge mentioned in the provided text? 
+['87e504ce-1c17-4c69-9535-99c6c379b61d'],128,: 87e504ce-1c17-4c69-9535-99c6c379b61d.,niah_multikey_3,The special magic uuid for 1a9e82f5-0228-4e49-a4c4-e73c4c46bad8 mentioned in the provided text is,0.75,What is the special magic uuid for 1a9e82f5-0228-4e49-a4c4-e73c4c46bad8 mentioned in the provided text? 
+['8e85140d-0f9a-4b70-8670-7cd64ceda164'],128,: 8e85140d-0f9a-4b70-8670-7cd64ceda164.,niah_single_3,The special magic uuid for momentous-crust mentioned in the provided text is,0.75,What is the special magic uuid for momentous-crust mentioned in the provided text? 
+['8290770'],128,: 8290770.,niah_single_1,The special magic number for squealing-influx mentioned in the provided text is,0.75,What is the special magic number for squealing-influx mentioned in the provided text? 
+"['decline' 'waitress' 'uniformity' 'ask' 'atelier' 'junket' 'church'
+ 'retention' 'snake' 'agriculture']",120," 
+
+1. atelier 2. agriculture 3. junket 4. retention 5. waitress 6. uniformity 7. decline 8. snake 9. church 10. ask",cwe,Answer: The top 10 words that appear most often in the list are:,0.75,Question: What are the 10 most common words in the above list? 
+['dznynv' 'pwvgox' 'skmtng'],50," 
+
+1. dznynv (appeared 73 times)
+2. pwvgox (appeared 43 times)
+3. skmtng (appeared 37 times)",fwe,"Answer: According to the coded text above, the three most frequently appeared words are:",0.75,Question: Do not provide any explanation. Please ignore the dots '....'. What are the three most frequently appeared words in the above coded text? 
+['7089806'],128,: 7089806.,niah_single_1,The special magic number for colossal-duck mentioned in the provided text is,0.75,What is the special magic number for colossal-duck mentioned in the provided text? 
+['dtpgpe' 'pkwkfe' 'pvyqym'],50," 
+
+1. dtpgpe (appeared 73 times)
+2. pkwkfe (appeared 43 times)
+3. ibnftf (appeared 34 times)",fwe,"Answer: According to the coded text above, the three most frequently appeared words are:",0.75,Question: Do not provide any explanation. Please ignore the dots '....'. What are the three most frequently appeared words in the above coded text? 
+['8375356' '7972975' '9124385' '8792046'],128,":
+
+1. 9124385
+2. 7972975
+3. 8792046
+4. 8375356",niah_multivalue,The special magic numbers for different-harbor mentioned in the provided text are,0.75,What are all the special magic numbers for different-harbor mentioned in the provided text? 
+['defensive coordinator'],32, Defensive coordinator.,qa_2,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: One of the coaches of Southern Methodist University also played what role at the Arizona State Sun Devils? "
+['9646569'],128,: 9646569.,niah_single_1,The special magic number for tasty-consul mentioned in the provided text is,0.75,What is the special magic number for tasty-consul mentioned in the provided text? 
+['d33343eb-08ec-4357-bddb-bed37e4648a5'],128,: d33343eb-08ec-4357-bddb-bed37e4648a5.,niah_multikey_3,The special magic uuid for 5fdc70ee-224a-45d1-adb6-bbd8125d0ae6 mentioned in the provided text is,0.75,What is the special magic uuid for 5fdc70ee-224a-45d1-adb6-bbd8125d0ae6 mentioned in the provided text? 
+"['grid' 'easy' 'spiffy' 'airfield' 'nifty' 'buze' 'damp' 'lottery' 'barn'
+ 'bandana']",120," 
+
+1. bandana 2. lottery 3. spiffy 4. easy 5. airfield 6. buze 7. nifty 8. damp 9. grid 10. barn",cwe,Answer: The top 10 words that appear most often in the list are:,0.75,Question: What are the 10 most common words in the above list? 
+['John John Florence'],32, John John Florence,qa_2,Answer:,0.75,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What American professional Hawaiian surfer born 18 October 1992 won the Rip Curl Pro Portugal? "

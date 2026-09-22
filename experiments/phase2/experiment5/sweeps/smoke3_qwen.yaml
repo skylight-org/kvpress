@@ -1,0 +1,10 @@
+# Untested corner 1: Qwen3-4B end to end, and the vt / cwe RULER tasks which have never loaded.
+group: smoke3
+dataset: ruler32k
+model: Qwen/Qwen3-4B-Instruct-2507
+tasks: [vt, cwe]
+n_samples: 1
+ratios: [0.875]
+arms: [kvzip, perhead_bern_kvzip_s1, vkvwr_kvzip_s1]
+seeds: [1]
+max_new_tokens: 4

@@ -1,0 +1,3 @@
+answer,question,predicted_answer,task,compression_ratio,max_new_tokens,context_length,answer_prefix
+['715629ee-e893-4e3d-b354-ea6f61607459'],What is the special magic uuid for recondite-wiring mentioned in the provided text? ,: 715629,niah_single_3,0.875,128,32768,The special magic uuid for recondite-wiring mentioned in the provided text is
+['6e068097-25e9-4977-8d72-48e2951f58d0'],What is the special magic uuid for lewd-handgun mentioned in the provided text? ,: 6e,niah_single_3,0.875,128,32768,The special magic uuid for lewd-handgun mentioned in the provided text is

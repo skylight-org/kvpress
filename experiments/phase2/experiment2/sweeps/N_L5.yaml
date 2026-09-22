@@ -1,0 +1,10 @@
+# Replication of the 8x B1 pair on independent hardware (L40S). 8x is where sampling leads most on A40
+# (+0.84 +- 0.54); this checks the effect is not an artefact of one GPU type. Both arms run here, so the
+# pair is internally consistent.
+config: 4096
+samples_per_subtask: 60
+runs:
+  - {press: kvzip,         ratio: 0.875}
+  - {press: kvzip_bern_s1, ratio: 0.875}
+  - {press: kvzip_bern_s2, ratio: 0.875}
+  - {press: kvzip_bern_s3, ratio: 0.875}

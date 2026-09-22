@@ -1,0 +1,101 @@
+answers,task,answer_prefix,max_new_tokens,language,compression_ratio,_id,dataset,predicted_answer,length,all_classes,question
+"['43,000 marchers']",hotpotqa,Answer:,52,en,0.75,b7af427ee230063a2aabb35691c7a81670c0b7e85ac3b7b2,hotpotqa," 43,000",11812,,"Question: How many marchers were in the protest that Pelham D. Glassford ended? 
+"
+['2000 Summer Olympic Games'],hotpotqa,Answer:,52,en,0.75,c261ca6aeaf366815232e91db1ef4dc8408cec3750c38ee9,hotpotqa, 2000,8651,,"Question: Professional cyclist Sara Symington competed in which Olympic Games held in Sydeney, Australia?
+"
+['7.2 million'],hotpotqa,Answer:,52,en,0.75,cb677158d6f710ab0cb440b2024cc61c942a1ea4a963087d,hotpotqa," 12,817",12070,,"Question: Yau Ma Tei North is a district of a city with how many citizens?
+"
+['an acting career'],hotpotqa,Answer:,52,en,0.75,e0a5da9581af9a4a573423cbdcf207c5436dc35ff8a9d380,hotpotqa, Acting,7725,,"Question: What career led Brandon James Routh to move to the city where Brian Ralston lives?
+"
+['University'],hotpotqa,Answer:,52,en,0.75,ad26b1fdaa97e8ef1c290a41a9151cc6b453756cb2715176,hotpotqa, NASA,11738,,"Question: What organization does Sandra Pizzarello and Doctorate have in common?
+"
+['director'],hotpotqa,Answer:,52,en,0.75,7528b0be35e8e6007f07c98b9f2d45ee1c854298134aba5c,hotpotqa, Filmmaker,8556,,"Question: Sarah Price and Rob Schneider are both what profession? 
+"
+['yes'],hotpotqa,Answer:,52,en,0.75,9a19f9594aa73716dd38bcbd5ff1c04e57a6649800570f80,hotpotqa, Yes,11899,,"Question: Are Mick Jagger and Brett Scallions both musicians?
+"
+['Henry Jackson Society'],hotpotqa,Answer:,52,en,0.75,1df269c3eca341348a837f39c628f59aa40d663c07875d24,hotpotqa, The Royal Ballet,11212,,"Question: For what ogranization does a commentator of Press TV serve as associate director?
+"
+['Babylon'],hotpotqa,Answer:,52,en,0.75,bf8ee342564ae21a17b169023f83a20220a63198827a0232,hotpotqa, Babylon,10063,,"Question: The Panel with striding lion  was one of many that lined the way north of the gate to the inner city of what location?
+"
+['Keith Morris'],hotpotqa,Answer:,52,en,0.75,eac05e5d0936f802e28b0c5081a2c2a1a94fe4f2c20cb2df,hotpotqa, Both,9574,,"Question: Which person is known for playing in punk bands, Keith Morris or Rome Ramirez?
+"
+['Deftones'],hotpotqa,Answer:,52,en,0.75,75439ed8609c12817aaee0fa4f749aebb3e4a36dfa72390e,hotpotqa, Deftones,9116,,"Question: Which California band, whose debut album Adrenaline appeared in 1995, has been referred to as ""the Radiohead of metal""?
+"
+['Arizona State University'],hotpotqa,Answer:,52,en,0.75,de89026c970fbb6dff04176107b9cf20407d155bc1ae2eec,hotpotqa, University of Mississippi,8698,,"Question: Where did the punter for the Dallas Cowboys in the 1980s play college football?
+"
+['Atlantic Ocean'],hotpotqa,Answer:,52,en,0.75,c9f8b2166f7c44bf2e0843b2c77fb9fa5738af275555ca73,hotpotqa, Atlantic,2496,,"Question: Which ocean would the ingredients likely come from for the She-crab soup?
+"
+['coaxial'],hotpotqa,Answer:,52,en,0.75,5e7675388334946fc508c4c8ac4ab0c491910fcc0e048bfd,hotpotqa, Coaxial cable.,3945,,"Question: SR connector is based on the connector that is often used for what type of cable?
+"
+['Brothers Quay'],hotpotqa,Answer:,52,en,0.75,d3b2acfdec13f925424cd7d96b689557edfd08e6dd6177b7,hotpotqa, Brothers Quay,10564,,"Question: Who won more awards, Brothers Quay or Jake Kasdan?
+"
+['1978'],hotpotqa,Answer:,52,en,0.75,6c64a81fa526cb96d0a191d9cbd85a7e917b5d4f03b316d7,hotpotqa, 1978,10058,,"Question: The player who laid motionless for ten minutes in the Todd Bertuzzi–Steve Moore incident was born in which year ?
+"
+['Washington State'],hotpotqa,Answer:,52,en,0.75,47b3fb2eb0b90839a7887fa2138662a58c0170c96479190a,hotpotqa, Mississippi State,10232,,"Question: After coaching the red raiders to several winning seasons, where does Mike Leach currently coach at?
+"
+['Brian Stokes Mitchell'],hotpotqa,Answer:,52,en,0.75,83df22880fee9f761464404ca2ff6ab21954e6b0827b4142,hotpotqa, Brian Stokes Mitchell,11179,,"Question: What past honoree from the New Dramatists Organization is a powerful baritone who won the Tony Award for Best Actor in 2000?
+"
+['Hawaii'],hotpotqa,Answer:,52,en,0.75,a16ac581bde4459861c8681858b07f82363f66142beed4c2,hotpotqa, Hawaii,11314,,"Question: 1920 Politics was a Republican political strategy to reassert the authority of the white race in which US state?
+"
+['India'],hotpotqa,Answer:,52,en,0.75,cf16ba255ad4b7b0fdae56093ac7d5fb58487dc24f2659e2,hotpotqa, India,9331,,"Question: Which country is home to Alsa Mall and Spencer Plaza?
+"
+['Ellie Kemper'],hotpotqa,Answer:,52,en,0.75,22a4122731366b93dd7495f9cb64b9312537fbe85797efbc,hotpotqa, Ellie Kemper,11526,,"Question: Who stars in the title role of a Netflix show co-created by Robert Carlock?
+"
+['Claudio Javier López'],hotpotqa,Answer:,52,en,0.75,ab016faac478c4acc6e9ed3ed87f9e29dbed47fd946be244,hotpotqa, Claudio López,4109,,"Question: Which retired Argentine footballer who played as a forward was a main player for Valencia CF?
+"
+['the Veneto region of Northern Italy'],hotpotqa,Answer:,52,en,0.75,781060824875cb0343a110f5e6f83d46e638cbb89e2ad7c6,hotpotqa, The Veneto region of Northern Italy.,7336,,"Question: The FIBT World Championships 1960 took place in a town located in which part of Italy ?
+"
+['poet'],hotpotqa,Answer:,52,en,0.75,3df75e9b85781f83af8d3011cedb0c5fc6725f3489e48e54,hotpotqa, Writer.,11567,,"Question: What occupation is shared by both Marge Piercy and Richard Aldington?
+"
+['Vernon Smith'],hotpotqa,Answer:,52,en,0.75,f1c0b9a9ec47ccda8ba4b1be0ca7083b961ba0f06b2a4df7,hotpotqa, Vernon L. Smith,10589,,"Question: What Nobel Laureate teaches at  Chapman University?
+"
+['English'],hotpotqa,Answer:,52,en,0.75,93d2774c99edbde88789a9f989642ff160871ca09e66e46a,hotpotqa, British,12372,,"Question: What is the nationality of the author of Fifty Shades Freed?
+"
+"[""due to the onset and progression of Alzheimer's disease""]",hotpotqa,Answer:,52,en,0.75,3e4cce5082e968aec7f0c008b1acbd111f505d0579d1c9ee,hotpotqa, due to the onset and progression of Alzheimer's disease.,11891,,"Question: Why did the CEO of the football team based in Denver, Colorado step down in 2014?
+"
+['810'],hotpotqa,Answer:,52,en,0.75,8a5d7c131d291d2c7cf2c20ea36a629f969402e0c50a8a8a,hotpotqa, Not available,8149,,"Question: What was the population in 2010 of the town where The Stelljes House is located ?
+"
+['yes'],hotpotqa,Answer:,52,en,0.75,c16a3dd0b5b97180359715cab5c41d528cf2a99e2744f037,hotpotqa, Yes,8413,,"Question: Are Yut and Tsuro both board games?
+"
+['French mathematician and physicist'],hotpotqa,Answer:,52,en,0.75,2bf8384417cec2f1a2d43a2602326d90a97622d87898b1cc,hotpotqa," British, physicist and engineer.",8995,,"Question: What was the nationality and profession of the person responsible for the concept of a dimensionless number in physics and engineering?
+"
+['The Rebirth'],hotpotqa,Answer:,52,en,0.75,a30caa5dafcc37835bfe4093f129017adf4c814e9016e10d,hotpotqa, The Rebirth,6021,,"Question: For which band, was the female member of Fitz and The Tantrums, the front woman for ten years ?
+"
+"['""Talk That Talk""']",hotpotqa,Answer:,52,en,0.75,e4df9576e5cd102024e81baf94a43325335d0ba2d8892041,hotpotqa," Rihanna's ""We Found Love""",10290,,"Question: The song that came out ahead of The Wanted's ""Lightning"" on the UK Singles Chart was featured on which album?
+"
+['no'],hotpotqa,Answer:,52,en,0.75,87fd3f0590498461d595ff1823632c79b66cf313cf55fbb3,hotpotqa, Yes,9537,,"Question: Are Yoo-hoo and Faygo both carbonated drinks?
+"
+['14'],hotpotqa,Answer:,52,en,0.75,f536646dd72a8a4f5ebddec61a67b8319dc9187d47bb7fc6,hotpotqa, 12,4029,,"Question: The winner of the the London Riders' Championship in 1953 scored how many points in the 1952 Individual Speedway World Championship?
+"
+['French'],hotpotqa,Answer:,52,en,0.75,e8ba4badc3c5d30cc0942ede8df86a72257c492c07025dab,hotpotqa, French forces,9898,,"Question: In modern history of Syria this kingdom lasted for only four months, this kingdom surrendered to who?
+"
+['West African descendants'],hotpotqa,Answer:,52,en,0.75,4636487a1855382398fe1e54284cb7dd3d7b8d178ac4a476,hotpotqa, Afro-Cuban communities following the Atlantic slave trade of the 16th to 19th centuries.,11592,,"Question: Migene González-Wippler is leading expert on a religion that developed among which ethnic group ?
+"
+['Puli Alam'],hotpotqa,Answer:,52,en,0.75,5748ce1eca37fc55596e58fcff71e45363396002d28e0af9,hotpotqa, Logar,7563,,"Question: Baraki Barak District is situated in the western part of a province whose capital is what?
+"
+['Plato'],hotpotqa,Answer:,52,en,0.75,efc793ac73a0341a7cc35ea6872a89be3d4fed5f64c1e043,hotpotqa, Plato,12021,,"Question: The ""New York Times"" bestselling book ""The 50th Law"" contains lessons and anecdotes from this historical figure who was a classical Greek (Athenian) philosopher who is known mainly through the writings of which philosopher?
+"
+"['3,677 seated']",hotpotqa,Answer:,52,en,0.75,0118217cf85bd94f6a5f65952212eb05e7176fd3b18c694a,hotpotqa," 4,000",10535,,"Question: The arena where the Lewiston Maineiacs played their home games can seat how many people?
+"
+['Big 12 Conference'],hotpotqa,Answer:,52,en,0.75,6e541b3b8fc7e59da0da6548a17932b403b2e865d4036982,hotpotqa, Big 12 Conference,10490,,"Question: A wide receiver for the Toronto Argonauts played college football for a team that represents the University of Oklahoma, which belongs to what conference?
+"
+['Wicked Twister'],hotpotqa,Answer:,52,en,0.75,8bcda9c521bb7cb5dcd9a8d4987bd5bcf4ec455a84c62f81,hotpotqa, Steel Venom,6415,,"Question: Which is farther north, Steel Venom or Wicked Twister?
+"
+['William'],hotpotqa,Answer:,52,en,0.75,4670f2a542ac06d27e47a74a042cf57f743fba34722a7dc5,hotpotqa, William,2412,,"Question: What is the first name of the author who wrote the play in which Rønnaug Alten made her stage debut at Den Nationale Scene in 1930 as ""Viola""?
+"
+['Xcel Energy Inc.'],hotpotqa,Answer:,52,en,0.75,72a769d6d0fd1c5c90974e60ab97e88e6853b9115a7fb85e,hotpotqa, Xcel Energy,11865,,"Question: Which utility holding company did Alfred A. Marcus work as a consultant?
+"
+"[""It's Always Sunny in Philadelphia""]",hotpotqa,Answer:,52,en,0.75,26a5366c80c3a569c474a3990f3383beb125d34149e8ed3e,hotpotqa, It's Always Sunny in Philadelphia,10483,,"Question: Robbie Tucker plays in what series that follows a group of friends who run an Irish bar?
+"
+['alleged paranormal phenomena'],hotpotqa,Answer:,52,en,0.75,9303f959145f198df63d2d7ec604a9d6efcb3e8daca89e91,hotpotqa," Displacement activities, cult activity, animal mutilations, paranormal phenomena, and sightings of supernatural creatures.",11168,,"Question: What types of activities occur in both the Bennington and Bridgewater Triangles?
+"
+['the deadpan sketch group'],hotpotqa,Answer:,52,en,0.75,40b5d54934bcf22bb9267e605c49d46509f3bd41b1a34c31,hotpotqa, Two Episodes of Mash,7720,,"Question: what is the group called that Dianne Morgan and Joe Wilkinson a part of in the BBC comedy ""Two Episodes of Mash""
+"
+['University of Southern California'],hotpotqa,Answer:,52,en,0.75,4b83e873a551cd83a2e409d2b4467f74dd332326fcbca843,hotpotqa, USC,11886,,"Question: The 1958 Pro Bowl was played at the California stadium that is the home for which college?
+"
+['Bob Dylan'],hotpotqa,Answer:,52,en,0.75,5e3362de0244d2b96c83958c4d3229151999292c369b0197,hotpotqa, The Traveling Wilburys,11185,,"Question: Name a member of a British-American supergroup who recored a version of Nobody's child in 1990
+"
+['Father of Liberalism'],hotpotqa,Answer:,52,en,0.75,1650b91e6fb722111b6461fc9524295246c3bd3b1a342267,hotpotqa, John Locke,11398,,"Question: Roger Stuart Woolhouse is a biographer of a philosopher commonly known as what ?
+"
+['Leucippus'],hotpotqa,Answer:,52,en,0.75,7bb5645d62fc946b46910757e007f59e87f52bbf8535da58,hotpotqa, Leucippus,11424,,"Question: The Pluralist school is said to have included what creator of the theory of atomism? 
+"

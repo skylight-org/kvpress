@@ -1,0 +1,6 @@
+{
+ "seconds": 1280.97412109375,
+ "peak_gpu_gb": 44.410511872,
+ "n_contexts": 10,
+ "gpu": "NVIDIA L40S"
+}

@@ -1,0 +1,9 @@
+# Smoke: one RULER 32k task, 2 samples, all three arms at 8x, both models run as separate jobs.
+group: smoke
+dataset: ruler32k
+tasks: [niah_single_3]
+n_samples: 2
+ratios: [0.875]
+arms: [kvzip, bernoulli_kvzip_s1, vkvwr_kvzip_s1]
+seeds: [1]
+max_new_tokens: 4

@@ -1,0 +1,17 @@
+max_new_tokens,answer_prefix,predicted_answer,task,context_length,question,answer,compression_ratio
+120,Answer: The top 10 words that appear most often in the list are:," 
+1. the (1,144 times) 
+2. and (1,044 times) 
+3. a (844 times) 
+4. of (744 times) 
+5. to (734 times) 
+6. in (674 times) 
+7. that (644 times) 
+8. is (634 times) 
+9. for (624 times) 
+10. with (594 times)",cwe,32768,Question: What are the 10 most common words in the above list? ,"['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']",0.875
+120,Answer: The top 10 words that appear most often in the list are:,1. the 2. and 3. a 4. to 5. of 6. in 7. that 8. is 9. for 10. with,cwe,32768,Question: What are the 10 most common words in the above list? ,"['sympathy' 'didactic' 'tinkle' 'spending' 'criminal' 'confront'
+ 'hacienda' 'avocado' 'ecliptic' 'adrenaline']",0.875
+120,Answer: The top 10 words that appear most often in the list are:,"1. the (appears 1,144 times)2. and (appears 1,044 times)3. of (appears 944 times)4. to (appears 844 times)5. a (appears 744 times)6. in (appears 694 times)7. that (appears 644 times)8. is (appears 594 times)9. for (appears 544 times)10. with (appears 494 times)",cwe,32768,Question: What are the 10 most common words in the above list? ,"['crowded' 'nucleotidase' 'bubble' 'philosopher' 'operator' 'chamber'
+ 'accompanist' 'down' 'review' 'enjoyment']",0.875

@@ -1,0 +1,20 @@
+dataset: ruler32k
+group: smoke_qwen
+model: Qwen/Qwen3-4B-Instruct-2507
+tasks:
+- qa_1
+- cwe
+n_samples: 3
+ratios:
+- 0.875
+arms:
+- kvzip
+- bernoulli_kvzip_s1
+- perhead_bern_kvzip_s1
+- vkvwr_kvzip_s1
+arm_ratios:
+  vkvwr:
+  - 0.96875
+seeds:
+- 1
+- 2

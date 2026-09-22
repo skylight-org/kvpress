@@ -1,0 +1,9 @@
+# Stage 0a+0b (l40): T1-T9 at job start, then qasper x 5 samples through every arm at 8x.
+dataset: longbench
+group: smoke
+tasks: [qasper]
+fraction: 0.25
+max_samples: 5
+no_press: true
+ratios: [0.875]
+arms: [kvzip, kvzip_bern_s1, kvzip_bern_nobias_s1, compactor, compactor_bern_s1, compactor_bern_s2]

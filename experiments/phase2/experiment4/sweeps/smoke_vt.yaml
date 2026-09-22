@@ -1,0 +1,9 @@
+# Stage 0c (dgx, A100): one 124k SCBench vt context (5 turns), compactor and compactor_bern at 8x.
+# Checks peak memory, run time, and the bias at full length. T1-T9 also run on the A100.
+dataset: scbench
+group: smoke_vt
+tasks: [vt]
+n_contexts: 1
+no_press: false
+ratios: [0.875]
+arms: [compactor, compactor_bern_s1]

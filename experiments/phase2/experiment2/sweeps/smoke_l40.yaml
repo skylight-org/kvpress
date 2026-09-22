@@ -1,0 +1,6 @@
+# L40S environment smoke: same code, different GPU architecture. 4 samples/subtask.
+config: 4096
+samples_per_subtask: 4
+runs:
+  - {press: no_press, ratio: 0.0}
+  - {press: snapkv,   ratio: 0.75}

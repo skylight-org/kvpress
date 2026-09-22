@@ -1,0 +1,9 @@
+{
+  "seconds": 178.03685665130615,
+  "peak_gb": 44.151614976,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "press": "bernoulli_kvzip_s1",
+  "ratio": 0.875,
+  "task": "prefix_suffix",
+  "model": "meta-llama/Llama-3.1-8B-Instruct"
+}

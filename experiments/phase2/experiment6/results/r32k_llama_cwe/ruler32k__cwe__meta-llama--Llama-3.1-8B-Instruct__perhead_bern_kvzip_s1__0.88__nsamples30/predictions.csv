@@ -1,0 +1,134 @@
+question,compression_ratio,predicted_answer,answer,context_length,answer_prefix,max_new_tokens,task
+Question: What are the 10 most common words in the above list? ,0.875," 
+1. the (1,144 times) 
+2. and (1,044 times) 
+3. a (844 times) 
+4. of (744 times) 
+5. to (734 times) 
+6. in (674 times) 
+7. that (644 times) 
+8. is (634 times) 
+9. for (624 times) 
+10. with (594 times)","['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. the 2. and 3. a 4. to 5. of 6. in 7. that 8. is 9. for 10. with,"['sympathy' 'didactic' 'tinkle' 'spending' 'criminal' 'confront'
+ 'hacienda' 'avocado' 'ecliptic' 'adrenaline']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,"1. the (appears 1,144 times)2. and (appears 1,044 times)3. of (appears 944 times)4. to (appears 844 times)5. a (appears 744 times)6. in (appears 694 times)7. that (appears 644 times)8. is (appears 594 times)9. for (appears 544 times)10. with (appears 494 times)","['crowded' 'nucleotidase' 'bubble' 'philosopher' 'operator' 'chamber'
+ 'accompanist' 'down' 'review' 'enjoyment']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875," 
+1. the 
+2. and 
+3. a 
+4. of 
+5. to 
+6. in 
+7. that 
+8. is 
+9. for 
+10. with","['ford' 'encounter' 'exposition' 'bulb' 'sage' 'huge' 'ceramic' 'patch'
+ 'harmonise' 'cyclone']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,"1. the (1,142 times)2. and (844 times)3. to (744 times)4. of (644 times)5. a (574 times)6. in (544 times)7. that (476 times)8. is (446 times)9. for (434 times)10. with (394 times)","['sombrero' 'beak' 'collard' 'criterion' 'bartender' 'donut' 'marketing'
+ 'politician' 'headquarters' 'platinum']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,"1. utilize (appears 24 times)2. utilize (appears 24 times)3. utilize (appears 24 times)4. utilize (appears 24 times)5. utilize (appears 24 times)6. utilize (appears 24 times)7. utilize (appears 24 times)8. utilize (appears 24 times)9. utilize (appears 24 times)10. utilize (appears 24 times)
+
+Note: The word ""utilize"" appears 24 times in the list, making it the most","['frustration' 'subdued' 'count' 'offer' 'utilize' 'embossing' 'turf'
+ 'gastropod' 'wetsuit' 'samovar']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. administration 2. boorish 3. boorish 4. boorish 5. boorish 6. boorish 7. boorish 8. boorish 9. boorish 10. boorish,"['overview' 'boorish' 'snail' 'courage' 'distance' 'administration'
+ 'nectar' 'crook' 'spiffy' 'gamy']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875," 
+1. the (1,144 times)
+2. and (1,044 times)
+3. to (944 times)
+4. of (844 times)
+5. a (744 times)
+6. in (694 times)
+7. that (644 times)
+8. is (594 times)
+9. for (544 times)
+10. with (494 times)","['washtub' 'bark' 'lewd' 'cheesecake' 'jogging' 'humidity' 'bloomer'
+ 'pendulum' 'tattler' 'goldfish']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875, 1. ball 2. rabbit 3. checkout 4. headlight 5. monasticism 6. vegetable 7. accomplish 8. accomplish 9. accomplish 10. accomplish,"['rabbit' 'ball' 'headlight' 'vegetable' 'checkout' 'pupa' 'high' 'stamp'
+ 'monasticism' 'polish']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875," 
+1. the (not in the list, but the most common word in general English) 
+2. and (not in the list, but the second most common word in general English) 
+3. a (not in the list, but the third most common word in general English) 
+4. of (not in the list, but the fourth most common word in general English) 
+5. to (not in the list, but the fifth most common word in general English) 
+6. in (not in the list, but the sixth most common word in general English) 
+","['composite' 'illustration' 'creative' 'cord' 'cape' 'mango' 'aunt'
+ 'deranged' 'howitzer' 'chutney']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875," 
+1. the (1,142 times)
+2. and (1,044 times)
+3. a (844 times)
+4. of (744 times)
+5. to (734 times)
+6. in (664 times)
+7. that (644 times)
+8. is (634 times)
+9. for (624 times)
+10. with (604 times)","['exam' 'mantel' 'generate' 'mighty' 'admin' 'mascara' 'checkout'
+ 'handgun' 'pillbox' 'know']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. the (134 times)2. and (123 times)3. a (114 times)4. of (104 times)5. to (96 times)6. in (94 times)7. that (84 times)8. is (78 times)9. for (74 times)10. with (72 times),"['efficiency' 'preserve' 'forte' 'gloom' 'cheque' 'parrot' 'ischemia'
+ 'heap' 'cookie' 'quizzical']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. app 2. ensure 3. ensure 4. ensure 5. ensure 6. ensure 7. ensure 8. ensure 9. ensure 10. ensure,"['ejector' 'ensure' 'grouchy' 'appraise' 'humour' 'glutamate' 'radar'
+ 'uniform' 'ammunition' 'emergent']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875," 
+
+1. turnip (appears 64 times)
+2. shrimp (appears 63 times)
+3. turn (appears 62 times)
+4. turner (appears 61 times)
+5. turner (appears 60 times)
+6. turn (appears 59 times)
+7. turner (appears 58 times)
+8. turn (appears 57 times)
+9. turner (appears 56 times)
+10. turn (appears 55 times)
+
+However, if we consider the original list and the words that appear most","['revenge' 'handicap' 'enclosure' 'ruffle' 'turnip' 'shrimp' 'presidency'
+ 'external' 'quick' 'productive']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,"1. the (1,444 times)2. and (1,244 times)3. of (1,144 times)4. to (1,044 times)5. a (944 times)6. in (844 times)7. that (744 times)8. is (644 times)9. for (544 times)10. with (444 times)","['moody' 'evaluate' 'athletics' 'eating' 'generator' 'ale' 'wonderful'
+ 'identity' 'research' 'energy']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. jolly (appears 67 times)2. musician (appears 64 times)3. enquiry (appears 63 times)4. sociology (appears 62 times)5. error (appears 61 times)6. mistake (appears 60 times)7. lathe (appears 59 times)8. time (appears 58 times)9. error (appears 57 times)10. mistake (appears 56 times),"['sketch' 'sociology' 'mainstream' 'beset' 'musician' 'enquiry' 'jolly'
+ 'lathe' 'loss' 'mistake']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. the 2. and 3. to 4. a 5. of 6. in 7. that 8. is 9. for 10. with,"['republic' 'inflation' 'periodic' 'excite' 'runaway' 'pecan' 'cattle'
+ 'wingman' 'caper' 'look']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. opportunity 2. main 3. depth 4. cube 5. subgroup 6. want 7. competition 8. mid-course 9. time 10. year,"['competition' 'main' 'opportunity' 'cube' 'wanting' 'subgroup'
+ 'mid-course' 'annoy' 'boon' 'depth']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. pill 2. leopard 3. soy 4. transparency 5. infrastructure 6. lanai 7. transparency 8. transparency 9. transparency 10. transparency,"['infrastructure' 'lanai' 'gambling' 'sled' 'pill' 'soy' 'rush'
+ 'transparency' 'cowboy' 'leopard']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875, 1. the 2. and 3. to 4. a 5. of 6. in 7. that 8. is 9. for 10. with,"['native' 'hummus' 'deck' 'greedy' 'economic' 'drain' 'cleavage'
+ 'expression' 'mom' 'oatmeal']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. milkshake 2. scenario 3. scenario 4. scenario 5. scenario 6. scenario 7. scenario 8. scenario 9. scenario 10. scenario,"['jackal' 'cost' 'cirrhosis' 'gobbler' 'milkshake' 'exultant' 'scenario'
+ 'landscape' 'acupuncture' 'bite']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,"1. the (1,144 times)2. and (1,044 times)3. to (944 times)4. of (844 times)5. a (744 times)6. in (694 times)7. that (644 times)8. is (594 times)9. for (544 times)10. with (494 times)","['zoot-suit' 'deer' 'swear' 'utilization' 'breakfast' 'chase'
+ 'testimonial' 'democracy' 'leek' 'week']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. the 2. and 3. to 4. a 5. of 6. in 7. that 8. is 9. for 10. with,"['system' 'wharf' 'stockings' 'hand' 'mud' 'mind' 'flume' 'magnet'
+ 'abortion' 'howard']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. the 2. and 3. to 4. a 5. of 6. in 7. that 8. is 9. for 10. with,"['idiot' 'pawnshop' 'hostel' 'sweatshop' 'erect' 'entry' 'granola'
+ 'capability' 'watcher' 'ambiguous']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875," 
+1. the (1,000 times)
+2. and (844 times)
+3. of (744 times)
+4. to (644 times)
+5. a (574 times)
+6. in (544 times)
+7. that (484 times)
+8. is (446 times)
+9. for (434 times)
+10. with (394 times)","['rumor' 'tourism' 'herb' 'foot' 'newsletter' 'mainstream' 'meteor'
+ 'elbow' 'macaroni' 'savior']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,"1. the (1,444 times)2. and (1,244 times)3. to (1,144 times)4. of (944 times)5. a (844 times)6. in (744 times)7. that (644 times)8. is (584 times)9. for (544 times)10. with (484 times)","['handmaiden' 'hazel' 'icicle' 'fraudster' 'cummerbund' 'scout' 'gym'
+ 'turnover' 'warren' 'loincloth']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. climate (appears 73 times)2. contract (appears 67 times)3. member (appears 64 times)4. immigration (appears 62 times)5. friend (appears 59 times)6. relationship (appears 57 times)7. family (appears 55 times)8. community (appears 53 times)9. society (appears 51 times)10. culture (appears 49 times),"['molding' 'contract' 'lime' 'grade' 'clove' 'immigration' 'climate'
+ 'member' 'friendship' 'bottom-line']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,1. word 2. profile 3. moccasins 4. profile 5. profile 6. profile 7. profile 8. profile 9. profile 10. profile,"['tow-truck' 'profile' 'alley' 'poll' 'nun' 'moccasins' 'telling' 'daikon'
+ 'raspberry' 'cormorant']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875," 
+1. the 2. and 3. a 4. of 5. to 6. in 7. that 8. is 9. for 10. with","['elf' 'mariachi' 'noon' 'palate' 'pigeon' 'catastrophe' 'in-joke'
+ 'fratricide' 'vise' 'deafening']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
+Question: What are the 10 most common words in the above list? ,0.875,"1. the (1,441 times)2. and (1,235 times)3. of (1,144 times)4. to (1,044 times)5. a (944 times)6. in (844 times)7. that (744 times)8. is (694 times)9. for (644 times)10. with (594 times)","['mycoplasma' 'hearing' 'wrecker' 'locust' 'improve' 'bottling' 'inventor'
+ 'ninja' 'wastebasket' 'butane']",32768,Answer: The top 10 words that appear most often in the list are:,120,cwe
