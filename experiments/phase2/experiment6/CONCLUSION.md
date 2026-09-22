@@ -100,9 +100,10 @@ by the direct measurement in section 3.
   wrong (it lists English stopwords, a ceiling of 43), so Llama `cwe` is a weak signal.
 - **VKvWR's memory comes from E5's measurement**, not from these runs. For `qa_1`, which has no E5 errors, it's
   the mean over the other four tasks.
-- **SCBench was not run.** In the smoke, uncompressed Llama scored 0/5 on `prefix_suffix` (the scorer is correct:
-  the model glues the prefix and suffix together instead of retrieving the word), so no arm can be told apart there.
-  Still needs a decision: smoke Qwen, switch to an SCBench task Llama can do, or drop it.
+- **SCBench `prefix_suffix` cannot discriminate** (14 runs, 25 questions, 8x budget; see §8). The uncompressed
+  ceiling is 12 for Llama and **0 for Qwen**, so there is almost nothing left for compression to lose. The one
+  signal, Llama keeping 8 of that 12 under Bernoulli while every other arm reads 0, rests on 2 questions and is
+  not significant. Pick a task with headroom next time.
 - As in E5, **no memory is actually freed**. Every arm masks rather than evicts, so accuracy is compared at a
   *modelled* memory level.
 
@@ -120,7 +121,24 @@ by the direct measurement in section 3.
 4. **For the professor:** VKvWR's per-head adaptive sample size gave it low median error in E5, but here it
    equalises the budget across heads, and that costs it retrieval.
 
-## 8. Files
+## 8. SCBench (added after the RULER runs)
+
+`prefix_suffix`, E5's 25-question slice (5 shared contexts x 5 turns), 8x budget, 14 runs, every per-question
+score reproduced from `metrics.json` (14/14).
+
+| model | no_press | KVzip | Bernoulli | per-head | VKvWR (realised kept 0.12-0.22) |
+|---|---|---|---|---|---|
+| Llama-3.1-8B | 12 | 0 | **8** | 0 | 0 at all three ladder points |
+| Qwen3-4B | **0** | 0 | 0 | 0 | 0 at all three ladder points |
+
+The scorer is correct: uncompressed Llama answers by gluing the prefix and suffix together
+("KEcFQ" + "ccLxD" -> "KEcFQccLxD") instead of retrieving the dictionary word, and Qwen never gets one right.
+So the benchmark has no headroom here and the arms cannot be separated: Bernoulli's +8 over KVzip is 2 questions
+out of 25 (sign test p = 0.5). It is consistent with the RULER direction but is not evidence on its own.
+
+Tables: `out/REPORT.md` (appended by `analyze_scb.py`), `out/scbench_runs.csv`.
+
+## 9. Files
 
 `analyze.py` (all tables and figures) · `out/REPORT.md` · `out/runs.csv` · `out/paired_vs_kvzip.csv` ·
 `out/vkvwr_matched.csv` · `out/upstream_vs_downstream.csv` · `out/figures/fig1_accuracy_vs_memory.png`,

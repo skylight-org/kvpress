@@ -72,3 +72,8 @@ the prefix and suffix instead of retrieving the dictionary word. A zero ceiling 
 ## Done (2026-09-22)
 All 180 RULER runs complete and verified (180/180 metrics.json reproduced). Conclusion: CONCLUSION.md.
 E5's CONCLUSION.md has an addendum withdrawing its per-head-budget recommendation. SCBench still undecided.
+
+## SCBench done (2026-09-22)
+Jobs 316089 (Llama, 5h29m) / 316090 (Qwen, 9h53m), 14 runs, all scored. prefix_suffix has no headroom:
+ceiling 12 (Llama) and 0 (Qwen). Bernoulli 8 vs KVzip/per-head/VKvWR 0 on Llama, but that is 2 of 25
+questions (sign p=0.5). See CONCLUSION.md section 8. Analysis: analyze_scb.py.

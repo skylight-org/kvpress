@@ -167,3 +167,25 @@ Cells = (model, task, arm, ratio) measured in both experiments (qa_1 has no E5 e
 | Bernoulli (global c) | 0.067 | 6.9 |
 | Bernoulli (per-head) | 0.024 | 49.9 |
 | VKvWR (prof.) | 0.037 | 27.3 |
+
+## SCBench prefix_suffix (8x budget, 25 questions = 5 shared contexts x 5 turns)
+
+14 runs; every per-question score reproduces metrics.json (14/14).
+
+| model | no_press | KVzip | Bernoulli | per-head | VKvWR ladder (acc @ realised kept) |
+|---|---|---|---|---|---|
+| Llama-3.1-8B | 12 | 0 | 8 | 0 | 0 @ 0.123, 0 @ 0.165, 0 @ 0.221 |
+| Qwen3-4B | 0 | 0 | 0 | 0 | 0 @ 0.122, 0 @ 0.156, 0 @ 0.207 |
+
+Paired per question against KVzip (VKvWR = its cr 0.96875 run, realised kept ~0.123):
+
+| model | arm | mean diff (points) | wins/losses | exact sign p |
+|---|---|---|---|---|
+| Llama-3.1-8B | bernoulli | +8.0 | 2/0 | 0.5 |
+| Llama-3.1-8B | perhead_bern | +0.0 | 0/0 | 1 |
+| Llama-3.1-8B | vkvwr | +0.0 | 0/0 | 1 |
+| Llama-3.1-8B | no_press | +12.0 | 3/0 | 0.25 |
+| Qwen3-4B | bernoulli | +0.0 | 0/0 | 1 |
+| Qwen3-4B | perhead_bern | +0.0 | 0/0 | 1 |
+| Qwen3-4B | vkvwr | +0.0 | 0/0 | 1 |
+| Qwen3-4B | no_press | +0.0 | 0/0 | 1 |

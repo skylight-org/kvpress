@@ -39,13 +39,15 @@ predictions and scores.
 4. **VKvWR** (the professor's method, `kvpress/presses/vkvwr_press.py`) has a **memory floor**: its
    `compression_ratio` sets no budget, so it cannot reach 16×, and at matched realised memory it
    loses to both KVzip and Bernoulli (E6 §4). Always place it at its *realised* kept fraction.
-5. **SCBench `prefix_suffix` is nearly useless as a downstream task here**: the uncompressed
-   ceiling is 12 (Llama) and 0 (Qwen). `vt` is saturated at ~100 for every method, and Llama's
-   `cwe` ceiling is only 43. Pick tasks with headroom.
+5. **Some tasks have no headroom, so they cannot separate methods.** SCBench `prefix_suffix`
+   measured out at a ceiling of 12 (Llama) and **0** (Qwen) with no compression at all (E6 §8);
+   RULER `vt` is saturated at ~100 for every method; Llama's `cwe` ceiling is only 43. Check the
+   `no_press` ceiling before spending GPU hours on a task.
 
 ### Backlog (in priority order)
 
-- **P0** Downstream runs mirroring the error settings (SCBench, RULER) — done for RULER in E6.
+- **P0** Downstream runs mirroring the error settings — done in E6 (RULER informative; SCBench
+  `prefix_suffix` has no headroom, so it settled nothing).
 - **P0** Add `qa_1` to RULER — done in E6.
 - **P0** Dynamic Bernoulli: re-solve the keep probabilities per decode step from the real query
   (as VKvWR re-solves its sample size). Add to both the micro-metrics and the downstream eval.
