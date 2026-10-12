@@ -8,6 +8,8 @@ from kvpress.pipeline import KVPressTextGenerationPipeline
 from kvpress.presses.adakv_press import AdaKVPress
 from kvpress.presses.base_press import BasePress
 from kvpress.presses.bernoulli_press import BernoulliPress
+from kvpress.presses.needle_fetch_press import NeedleFetchPress
+from kvpress.presses.cached_kvzip_press import CachedKVzipPress
 from kvpress.presses.block_press import BlockPress
 from kvpress.presses.cam_press import CAMPress
 from kvpress.presses.cap_press import CapPress
@@ -65,6 +67,8 @@ __all__ = [
     "Qwen3_5Adapter",
     "get_adapter",
     "BernoulliPress",
+    "NeedleFetchPress",
+    "CachedKVzipPress",
     "VKvWRPress",
     "ComposedPress",
     "ScorerPress",

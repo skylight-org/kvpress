@@ -65,13 +65,17 @@ def add_attention_bias(bias, query, key, attention_mask):
         Additive attention mask with shape broadcastable to (bsz, num_heads, q_len, k_len).
     """
     q_len, k_len = query.shape[2], key.shape[2]
-    bsz, num_key_value_heads, ctx_len = bias.shape
+    bsz, num_key_value_heads, ctx_len = bias.shape[0], bias.shape[1], bias.shape[-1]
     if ctx_len > k_len:
         raise ValueError(f"attention_bias covers {ctx_len} keys but only {k_len} are present (stale bias?)")
 
-    num_groups = query.shape[1] // num_key_value_heads
     full = torch.zeros((bsz, query.shape[1], q_len, k_len), dtype=query.dtype, device=query.device)
-    full[..., :ctx_len] = bias.repeat_interleave(num_groups, dim=1)[:, :, None, :].to(query.dtype)
+    if bias.dim() == 4:
+        # already per query head and per query position: [bsz, num_heads, q_len, ctx_len]
+        full[..., :ctx_len] = bias.to(query.dtype)
+    else:
+        num_groups = query.shape[1] // num_key_value_heads
+        full[..., :ctx_len] = bias.repeat_interleave(num_groups, dim=1)[:, :, None, :].to(query.dtype)
 
     if attention_mask is None:
         # SDPA only applies causal masking when no mask is given, so once a mask is passed the causal structure
@@ -138,7 +142,18 @@ def attention_patch(func):
             and query.shape[2] != key.shape[2]
         )
 
-        if apply_vkvwr:
+        needle_state = None if metadata is None else metadata.get("needle", {}).get(layer_idx)
+        if needle_state is not None and query.shape[2] != key.shape[2]:
+            # NeedleFetchPress: Bernoulli bias plus per-query fetched needles, one bias row per query.
+            if module.config._attn_implementation != "sdpa":
+                raise ValueError("needle fetch bias is only supported with attn_implementation='sdpa'")
+            from kvpress.presses.needle_fetch_press import needle_decode_bias
+
+            scaling = kwargs.get("scaling") or getattr(module, "scaling", None) or query.shape[-1] ** -0.5
+            bias4 = needle_decode_bias(query, key, needle_state, scaling)  # [bsz, H, q_len, ctx]
+            attention_mask = add_attention_bias(bias4, query, key, attention_mask)
+            sparsify_source = "needle_bias"
+        elif apply_vkvwr:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("vkvwr decode bias is only supported with attn_implementation='sdpa'")
             from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity, want_head_stats
