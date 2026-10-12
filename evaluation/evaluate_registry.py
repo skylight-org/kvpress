@@ -129,6 +129,8 @@ PRESS_REGISTRY = {
     "needle_final_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=0.1, theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16),
     # ablation: sketch and reserve NOT charged, so the draw equals bernoulli_kvzip_c's at the same ratio
     "needle_uncharged_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=0.1, theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16, charge_overhead=False),
+    # question-time fetch only: the decode trigger switched off (theta infinite), budget as needle_final_c
+    "needle_qonly_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=float("inf"), theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16),
     # 16x ablation: half the sketch (8 RoPE pairs, 0.9% of K+V) to leave more kept budget
     "needle_p8_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=0.1, theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=8),
     "vkvwr_compactor": VKvWRPress(press=CompactorPress()),

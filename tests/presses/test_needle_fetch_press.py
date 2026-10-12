@@ -179,6 +179,36 @@ def test_pipeline_uncharged_infinite_theta_is_bernoulli_at_the_same_ratio(kv_pre
     assert a["answer"] == b["answer"]
 
 
+def test_traffic_counters_per_step_and_question():
+    """A decode step fetches if any layer does; the question-time share is per (layer, KV head)."""
+    k_len, ctx_len = 12, 9
+    _, key, _ = random_qkv(1, k_len)
+    bias = random_bias(ctx_len)
+    stats = fresh_stats()
+    layers = {i: {"bias": bias, "k_hat": key[:, :, :ctx_len].float(), "stats": stats, "layer_idx": i, "first_layer": 0,
+                  "log_theta": float("inf") if i == 0 else -float("inf")} for i in (0, 1)}
+    for _ in range(3):  # three generated tokens: layer 0 never fetches, layer 1 always does
+        for i in (0, 1):
+            query, _, _ = random_qkv(1, k_len)
+            needle_decode_bias(query, key, layers[i], 0.35)
+    assert stats["decode_steps"] == 3
+    assert stats["decode_steps_any"] == 3
+    layers[1]["log_theta"] = float("inf")  # now nothing fetches
+    for i in (0, 1):
+        query, _, _ = random_qkv(1, k_len)
+        needle_decode_bias(query, key, layers[i], 0.35)
+    assert stats["decode_steps"] == 4 and stats["decode_steps_any"] == 3
+    # question: a zero threshold transfers every dropped entry, so the share is the dropped share per head
+    q_state = {"bias": bias, "k_hat": key[:, :, :ctx_len].float(), "stats": stats, "log_theta": -float("inf")}
+    query, _, _ = random_qkv(5, k_len)
+    needle_decode_bias(query, key, q_state, 0.35)
+    dropped = torch.isinf(bias).float().sum(-1) / ctx_len  # [1, n_kv]
+    assert stats["question_frac_sum"] == pytest.approx(float(dropped.sum()))
+    assert stats["question_frac_max"] == pytest.approx(float(dropped.max()))
+    NeedleFetchPress.reset_stats(type("P", (), {"fetch_stats": stats})())
+    assert "decode_steps" not in stats and "question_frac_max" not in stats
+
+
 def test_non_contiguous_query():
     """Attention modules hand over a transposed (non-contiguous) query; the bias must not depend on layout."""
     k_len, ctx_len, q_len = 12, 9, 5

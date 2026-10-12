@@ -126,6 +126,14 @@ def needle_decode_bias(query: torch.Tensor, key: torch.Tensor, state: dict, scal
     stats[f"{kind}_fetched_entries"] += int(new.any(dim=2).sum()) if q_len > 1 else int(fetched.sum())
     stats[f"{kind}_ctx_entries"] += fetched.numel() * ctx
     if q_len == 1:  # per-layer decode breakdown: which layers drive the fetch rate
+        # per generated token: a step starts at the first sketched layer; it counts as fetching if any
+        # (layer, KV head) of it fetches, which is the unit a host round trip is paid in
+        if state.get("layer_idx", 0) == state.get("first_layer", 0):
+            stats["decode_steps"] = stats.get("decode_steps", 0) + 1
+            stats["_step_any"] = False
+        if not stats.get("_step_any", False) and bool((fetched > 0).any()):
+            stats["decode_steps_any"] = stats.get("decode_steps_any", 0) + 1
+            stats["_step_any"] = True
         per_layer = stats.setdefault("per_layer", {})
         rec = per_layer.setdefault(str(state.get("layer_idx", -1)), [0, 0, 0])
         rec[0] += fetched.numel()
@@ -135,6 +143,9 @@ def needle_decode_bias(query: torch.Tensor, key: torch.Tensor, state: dict, scal
         per_head = new.any(dim=2).sum(-1)  # [bsz, n_kv]
         stats["question_heads"] = stats.get("question_heads", 0) + per_head.numel()
         stats["question_heads_any"] = stats.get("question_heads_any", 0) + int((per_head > 0).sum())
+        frac = per_head.float() / ctx  # share of the context one (layer, KV head) transfers for the question
+        stats["question_frac_sum"] = stats.get("question_frac_sum", 0.0) + float(frac.sum())
+        stats["question_frac_max"] = max(stats.get("question_frac_max", 0.0), float(frac.max()))
     if promoted is not None:
         # after the call: a position never sees a later position's fetch. Persist at most ``cap``
         # entries per KV head (the memory reserve); past it, the heaviest new entries win and the
@@ -200,7 +211,8 @@ class NeedleFetchPress(BasePress):
         for k in ("decode", "question"):
             for m in ("decisions", "fetch_any", "fetched_entries", "ctx_entries"):
                 self.fetch_stats[f"{k}_{m}"] = 0
-        for k in ("per_layer", "promoted_dropped", "question_heads", "question_heads_any", "ctx_slots"):
+        for k in ("per_layer", "promoted_dropped", "question_heads", "question_heads_any", "ctx_slots",
+                  "decode_steps", "decode_steps_any", "_step_any", "question_frac_sum", "question_frac_max"):
             self.fetch_stats.pop(k, None)
 
     @property
@@ -283,6 +295,7 @@ class NeedleFetchPress(BasePress):
                     self.theta if self.theta_question is None else self.theta_question))),
                 "stats": self.fetch_stats,
                 "layer_idx": int(layer_idx),
+                "first_layer": int(min(biases)),
             }
             if self.persist:
                 needle[layer_idx]["promoted"] = torch.zeros_like(bias, dtype=torch.bool)
