@@ -1,0 +1,11 @@
+# Overnight A40 shard 2: P1 4x + 8x(s1) Bernoulli, then P4 no-bias at 8x.
+config: 4096
+samples_per_subtask: 60
+runs:
+  - {press: kvzip_bern_s1,        ratio: 0.75}
+  - {press: kvzip_bern_s2,        ratio: 0.75}
+  - {press: kvzip_bern_s3,        ratio: 0.75}
+  - {press: kvzip_bern_s1,        ratio: 0.875}
+  - {press: kvzip_bern_nobias_s1, ratio: 0.875}
+  - {press: kvzip_bern_nobias_s2, ratio: 0.875}
+  - {press: kvzip_bern_nobias_s3, ratio: 0.875}

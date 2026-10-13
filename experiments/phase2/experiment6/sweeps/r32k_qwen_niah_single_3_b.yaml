@@ -1,0 +1,18 @@
+dataset: ruler32k
+group: r32k_qwen_niah_single_3
+model: Qwen/Qwen3-4B-Instruct-2507
+tasks:
+- niah_single_3
+n_samples: 30
+ratios:
+- 0.75
+- 0.9375
+arms:
+- kvzip
+- bernoulli_kvzip_s1
+- bernoulli_kvzip_s2
+- perhead_bern_kvzip_s1
+arm_ratios: {}
+seeds:
+- 1
+- 2

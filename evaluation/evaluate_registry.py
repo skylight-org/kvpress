@@ -13,9 +13,12 @@ from benchmarks.loogle.calculate_metrics import calculate_metrics as loogle_scor
 from benchmarks.math500.calculate_metrics import calculate_metrics as math500_scorer
 from benchmarks.needle_in_haystack.calculate_metrics import calculate_metrics as needle_in_haystack_scorer
 from benchmarks.ruler.calculate_metrics import calculate_metrics as ruler_scorer
+from benchmarks.scbench.calculate_metrics import calculate_metrics as scbench_scorer
 from benchmarks.zero_scrolls.calculate_metrics import calculate_metrics as zero_scrolls_scorer
 
 from kvpress import (
+    CachedKVzipPress,
+    NeedleFetchPress,
     AdaKVPress,
     BernoulliPress,
     BlockPress,
@@ -68,6 +71,7 @@ DATASET_REGISTRY = {
     "longbench-e": "Xnhyacinth/LongBench",
     "longbench-v2": "simonjegou/LongBench-v2",
     "needle_in_haystack": "alessiodevoto/paul_graham_essays",
+    "scbench": "microsoft/SCBench",
     # Datasets used to be used for decoding compression
     "aime25": "alessiodevoto/aime25",
     "aime2024": "xAlg-AI/att-hub-aime2024",
@@ -89,6 +93,7 @@ SCORER_REGISTRY = {
     "longbench-e": longbench_scorer_e,
     "longbench-v2": longbenchv2_scorer,
     "needle_in_haystack": needle_in_haystack_scorer,
+    "scbench": scbench_scorer,
     "aime25": aime25_scorer,
     "aime2024": aime2024_scorer,
     "aime2025": aime2025_scorer,
@@ -100,6 +105,34 @@ PRESS_REGISTRY = {
     "adakv_snapkv": AdaKVPress(SnapKVPress()),
     "bernoulli_compactor": BernoulliPress(press=CompactorPress()),
     "bernoulli_kvzip": BernoulliPress(press=KVzipPress()),
+    "needle_kvzip_t001": NeedleFetchPress(theta=0.01),
+    "needle_kvzip_t003": NeedleFetchPress(theta=0.03),
+    "needle_kvzip_t01": NeedleFetchPress(theta=0.1),
+    "needle_p_t001": NeedleFetchPress(theta=0.01, persist=True),
+    "needle_p_t003": NeedleFetchPress(theta=0.03, persist=True),
+    "needle_p_t01": NeedleFetchPress(theta=0.1, persist=True),
+    "needle_q001_d01_r1": NeedleFetchPress(theta=0.1, theta_question=0.01, persist=True, reserve=0.01),
+    "needle_q0003_d01_r2": NeedleFetchPress(theta=0.1, theta_question=0.003, persist=True, reserve=0.02),
+    "needle_q001_d003_r1": NeedleFetchPress(theta=0.03, theta_question=0.01, persist=True, reserve=0.01),
+    "needle_p_t003_r1": NeedleFetchPress(theta=0.03, persist=True, reserve=0.01),
+    "needle_s2b16": NeedleFetchPress(theta=0.1, theta_question=0.01, persist=True, reserve=0.01, bits=2, n_pairs=16),
+    "needle_s2b16_q003": NeedleFetchPress(theta=0.1, theta_question=0.003, persist=True, reserve=0.01, bits=2, n_pairs=16),
+    "needle_s2b32": NeedleFetchPress(theta=0.1, theta_question=0.01, persist=True, reserve=0.01, bits=2, n_pairs=32),
+    "needle_s2b16_e128": NeedleFetchPress(theta=0.1, theta_question=0.01, persist=True, reserve_entries=128, bits=2, n_pairs=16),
+    "needle_s2b32_e128": NeedleFetchPress(theta=0.1, theta_question=0.01, persist=True, reserve_entries=128, bits=2, n_pairs=32),
+    "needle_s2b16_m": NeedleFetchPress(theta=0.1, theta_question=0.01, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16),
+    "needle_s2b32_m": NeedleFetchPress(theta=0.1, theta_question=0.01, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=32),
+    "needle_s2b16_mq003": NeedleFetchPress(theta=0.1, theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16),
+    # cached KVzip scores: identical results, one scoring pass per context shared by all arms
+    "kvzip_c": CachedKVzipPress(),
+    "bernoulli_kvzip_c": BernoulliPress(press=CachedKVzipPress()),
+    "needle_final_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=0.1, theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16),
+    # ablation: sketch and reserve NOT charged, so the draw equals bernoulli_kvzip_c's at the same ratio
+    "needle_uncharged_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=0.1, theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16, charge_overhead=False),
+    # question-time fetch only: the decode trigger switched off (theta infinite), budget as needle_final_c
+    "needle_qonly_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=float("inf"), theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=16),
+    # 16x ablation: half the sketch (8 RoPE pairs, 0.9% of K+V) to leave more kept budget
+    "needle_p8_c": NeedleFetchPress(bern=BernoulliPress(press=CachedKVzipPress()), theta=0.1, theta_question=0.003, persist=True, reserve=0.01, reserve_entries=128, bits=2, n_pairs=8),
     "vkvwr_compactor": VKvWRPress(press=CompactorPress()),
     "vkvwr_kvzip": VKvWRPress(press=KVzipPress()),
     "block_keydiff": BlockPress(press=KeyDiffPress(), block_size=128),

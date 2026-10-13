@@ -1,0 +1,11 @@
+# Stage 1, SCBench vt on dgx (A100, as E3). no_press, kvzip and kvzip_bern s1-s3 are REUSED from
+# experiment3/results/S1n10; this job adds only the new arms on the same 10 contexts x 5 turns.
+dataset: scbench
+group: scbench
+tasks: [vt]
+n_contexts: 10
+no_press: false
+ratios: [0.875, 0.75, 0.9375, 0.5]
+arms: [compactor, compactor_bern_s1, compactor_bern_s2, compactor_bern_s3]
+extra:
+  - {press: kvzip_bern_nobias_s1, ratio: 0.875}

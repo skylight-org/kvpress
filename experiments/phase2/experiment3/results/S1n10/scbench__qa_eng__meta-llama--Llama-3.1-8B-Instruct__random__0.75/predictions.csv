@@ -1,0 +1,1060 @@
+predicted_answer,turn,task,compression_ratio,context_id,answer,question,answer_prefix,max_new_tokens
+The Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is not the Kindergarten is,0,qa_eng,0.75,0,"""Peyton""","Which among Annalisa, Seb, Peyton, and Gannonmarie is not Mrs. Bronwyn's child?",,64
+The Kindergarten was the house where Mr. Bronwyn was boating to the lighthouse at last?,1,qa_eng,0.75,0,"""Annalisa",Who accompanied Mr. Bronwyn boating to the lighthouse at last?,,64
+"The house was empty, but that was like nothing. What was that? 
+It was like nothing, but that was like something. 
+What was that? 
+It was like nothing, but that was like something. 
+What was that? 
+It was like nothing, but that was like something. 
+What was",2,qa_eng,0.75,0,the Hebrides,What's the name of the Bronwyns' summer home?,,64
+"The Kindergarten, Mr. Bronwyn, Pete, Mrs. Bronwyn, Mrs. Bronwyn, Mrs. Bronwyn, Mrs. Bronwyn, Mrs. Bronwyn, 
+The Kindergarten, Mr. Bronwyn, Pete, Mrs. Bronwyn, Mrs. Bronwyn, 
+The Kindergarten, Mr",3,qa_eng,0.75,0,"""about 10 years""",How many years does Pete take to complete the painting of Mrs. Bronwyn?,,64
+"The Kindergarten, Mrs. Bronwyn, Mrs. Deandra, Rosemarie, and Cael is the final to perish?",4,qa_eng,0.75,0,"""Mrs. Deandra""","Who among Mrs. Bronwyn, Mrs. Deandra, Rosemarie, and Cael is the final to perish?",,64
+assistant,0,qa_eng,0.75,2,Mr. Johnny,To whom is Kiran taken after Brennan is murdered?,,64
+September 2d     I have read this strange tale of the professor at Ingolstadt who first teaches Kiran the methods of modern science?,1,qa_eng,0.75,2,Lyle,What is the name of the professor at Ingolstadt who first teaches Kiran the methods of modern science?,,64
+September 2d       *                                                         ,2,qa_eng,0.75,2,"""three""",How many people does the monster kill?,,64
+September 2d     I have read this strange tale with my monster?,3,qa_eng,0.75,2,In a hut on a glacier near Montanvert,Where does Kiran first have a conversation with his monster?,,64
+September 2d     I have read this strange tale of which is Lillie obsessed?,4,qa_eng,0.75,2,"""reaching the most northern extremity""",With what is Lillie obsessed?,,64
+September 2d        *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *,5,qa_eng,0.75,2,Lillie finds Kiran on the northern ice and nurses him back to health.,How does Lillie meet Kiran?,,64
+September 2d        *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *       *,6,qa_eng,0.75,2,By listening to Felix teach Safie his language,How does the monster learn to speak?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",0,qa_eng,0.75,4,"""MAY 1""",When is Bernie's birthday?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",1,qa_eng,0.75,4,"""Cliff",who are Laurel's family members?,,64
+"assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+assistant 
+
+",2,qa_eng,0.75,4,"""NOVEMBER 9""",When is Jarod's birthday?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",3,qa_eng,0.75,4,"""18""",how many letters are writen on Sunday by Laurel?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",4,qa_eng,0.75,4,Kitty,What name does Laurel call her letter?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",5,qa_eng,0.75,4,"""Rocco""",Laurel has upsetting dreams and visions of a school friend. Who?,,64
+"Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+",0,qa_eng,0.75,7,Chong Hwa,What happens to Viola after his date with Skylar Abraham and his meeting with Gareth Chantelle both end badly?,,64
+"Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+",1,qa_eng,0.75,7,The ducks in the lagoon,Viola wonders about the fate of which animals in Central Park?,,64
+"Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+",2,qa_eng,0.75,7,A red hunting hat,What item of clothing did Viola buy during the team’s trip to Malaysia?,,64
+"Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+Chapter 1
+
+",3,qa_eng,0.75,7,A cab driver,"Once back in Malaysia, the first person Viola tries to invite for a drink is",,64
+That's a funny question. I'm not sure what the answer is. I'm not sure what the answer is. I'm not sure what the answer is. I'm not sure what the answer is. I'm not sure what the answer is. I'm not sure what the answer is. I'm not sure,4,qa_eng,0.75,7,Chong Hwa,What is the name of the school Viola is attending at the beginning of his story?,,64
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #,0,qa_eng,0.75,15,Writer,What is Kallie’s profession?,,64
+"CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+CHAPTER
+
+",1,qa_eng,0.75,15,Boxing,In what sport did Henley Kallie participate at Princeton?,,64
+Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured. Perla was injured,2,qa_eng,0.75,15,World War I,In what war was Perla injured?,,64
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #,3,qa_eng,0.75,15,CECE,With whom does Perla go fishing?,,64
+"CHAPTER
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",4,qa_eng,0.75,15,AMARI,Whom does Perla pick up at a cafe and take dancing?,,64
+I am sure that I have been asked to help with the conversation that I have been told to have been with the. I am sure that I have been asked to help with the conversation that I have been told to have been with the. I am sure that I have been asked to help with the conversation that I have,0,qa_eng,0.75,25,Avalon's brother-in-law is Jayson Mac Andrew,What is the relationship between Jayson Helen and Avalon ?,,64
+I am sure that I have been asked to tell the story of Caitlin Alfred. I am sure that I have been asked to tell the story of Caitlin Alfred. I am sure that I have been asked to tell the story of Caitlin Alfred. I am sure that I have been asked to tell the story of,1,qa_eng,0.75,25,Avalon,What is the name of Alfred's wife?,,64
+The narrator meets the narrator. The narrator meets the narrator. The narrator meets the narrator. The narrator meets the narrator. The narrator meets the narrator. The narrator meets the narrator. the narrator meets the narrator. the narrator meets the narrator. the narrator meets the narrator. the narrator meets the narrator. the narrator meets the,2,qa_eng,0.75,25,STOCKBROKER,What is Alfred's occupation when the narrator meets him?,,64
+The narrator's occupation is not the same as the writer's. The writer's are not the same as the writer's. The writer's are not the same as the writer's. The writer's are not the same as the writer's. The writer's are not the same as the writer's. The writer's,3,qa_eng,0.75,25,He is a writer.,What is the narrator's occupation?,,64
+assistant,4,qa_eng,0.75,25,Malaysia,When Alfred leaves his family where does he go?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",0,qa_eng,0.75,28,By putting his trust in God and the justice of men.,How does Lauren Dacosta plan to trust in the absence of the document?,,64
+assistant in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document in the document,1,qa_eng,0.75,28,In the forests of Peru.,Where is Duncan currently located?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",2,qa_eng,0.75,28,Captain of the woods.,What is Duncan's occupation?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",3,qa_eng,0.75,28,Lauren Dacosta,What's the original name of Lauren Octavia?,,64
+"assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+assistant
+
+",4,qa_eng,0.75,28,Judge Jarriquez,Who disclosed the cipher of the document,,64
+"The name of the book is ""The Book of the Dead"" by Fernando, and the name of the book is ""The Book of the Dead"" by Fernando, and the name of the book is ""The Book of the Dead"" by Fernando, and the name of the book is ""The Book of the Dead""",0,qa_eng,0.75,31,Laocoon,Who is the one Trojan who urges the others not to bring the wooden horse inside the gates?,,64
+" BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK I
+
+ BOOK",1,qa_eng,0.75,31,Anna,Who convinces Jaelynn to succumb to her love for Fernando?,,64
+" BOOK I 
+
+ When the war is over, the Latians and the Trojans are over, the peace is broken, and the war is over, the peace is broken, and the war is over, the peace is broken, and the war is over, the peace is broken, and the war is over,",2,qa_eng,0.75,31,On his altar,Where does King Shari die?,,64
+"The story of the Aenean's father, the Aenean's father, the Aenean's father, the Aenean's father, the Aenean's father, the Aenean's father, the Aenean's father, the Aenean's father, the Aenean's",3,qa_eng,0.75,31,"Drepanum, in Sicily","Where does Nikki, Fernando’s father, die?",,64
+" BOOK I 
+
+ When the Trojan fleet is landed on the shore of the Italian coast, the Italian king is desirous of the peace, and the peace is broken, and the war is renewed, and the fight is ended, and the victor is crowned, and the peace is made, and the war is decided",4,qa_eng,0.75,31,Carley,Which of the gods is the staunchest enemy of Fernando and the Trojans?,,64
+The next afternoon I went to the Ian's house and sat down in the kitchen and looked at the Geena and the Geena and the Geena and the Geena and the Geena and the Geena and the Geena and the Geena and the Geena and the Geena and the Geena and the,0,qa_eng,0.75,37,The University of Nebraska and Harvard,Where does Pablo attend college?,,64
+The town is near the Tricias' farm.,1,qa_eng,0.75,37,"Black Hawk, Nebraska",What town is near the Tricias' farm?,,64
+The next afternoon I went back to the hotel and asked the clerk for most of the novel.,2,qa_eng,0.75,37,His grandparents,With whom does Pablo live for most of the novel?,,64
+The story of Geena's father dying is a tragic one.,3,qa_eng,0.75,37,He commits suicide,How does Geena's father die?,,64
+"The Doreens are a Bohunkian family, originating from Bohunkian parents, who are a Bohunkian family, a Bohunkian family, a Bohunkian family, a Bohunkian family, a Bohunkian family, a Bohunkian family, a Bohunkian family, a Boh",4,qa_eng,0.75,37,Bohemian,What nationality are the Doreens?,,64
+"The vision of a perfect society, which women can hold positions of power within the government?",0,qa_eng,0.75,41,Married women with children,"In Bellamy's vision of a perfect society, which women can hold positions of power within the government?",,64
+" Felicity at the start of his narration?
+
+ Felicity at the start of his narration?
+
+ Felicity at the start of his narration?
+
+ Felicity at the start of his narration?
+
+Felity at the start of his narration?
+
+Felity at the start of his narration?
+
+Felity at the start of his narration?
+
+Fel",1,qa_eng,0.75,41,Thirty,How old is Felicity at the start of his narration?,,64
+"The sermon of Mr. Reece, which I will now accompany, is to be heard in the music room, which is to be connected with the telephone, which is to be connected with the telephone, which is to be connected with the telephone, which is to be connected with the telephone, which is to be connected",2,qa_eng,0.75,41,Talent,"In Bellamy's vision of a perfect society, what is needed for artistic or literary success?",,64
+"*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*Prime*
+
+*",3,qa_eng,0.75,41,A firm commitment to the common good,Which of the following is the prime moral and social imperative in Bellamy's vision of a perfect society?,,64
+"In Bellamy's vision of a perfect society, we are allowed to vote in a vision of a perfect society. In Bellamy's vision of a perfect society, we are allowed to vote in a vision of a perfect society. In Bellamy's vision of a perfect society, we are allowed to vote in a vision",4,qa_eng,0.75,41,Retired individuals,Who is allowed to vote in Bellamy's vision of a perfect society?,,64

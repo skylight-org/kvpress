@@ -1,0 +1,10 @@
+# Stage 1, LongBench part B (a40, same GPU type as E8): gov_report (summary, 512-token outputs), 50 samples each.
+dataset: longbench
+group: longbench
+tasks: [gov_report]
+fraction: 0.25
+no_press: true
+ratios: [0.875, 0.75, 0.9375, 0.5]
+arms: [kvzip, kvzip_bern_s1, kvzip_bern_s2, kvzip_bern_s3, compactor, compactor_bern_s1, compactor_bern_s2, compactor_bern_s3]
+extra:
+  - {press: kvzip_bern_nobias_s1, ratio: 0.875}

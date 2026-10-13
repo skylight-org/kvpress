@@ -1,0 +1,7 @@
+max_new_tokens,answer_prefix,predicted_answer,task,context_length,question,answer,compression_ratio
+120,Answer: The top 10 words that appear most often in the list are:,1. 1. 2. 3. 4. 5. 6. 7. 8. 9. 10.,cwe,32768,Question: What are the 10 most common words in the above list? ,"['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']",0.875
+120,Answer: The top 10 words that appear most often in the list are:,1. spending 2. 3. 4. 5. 6. 7. 8. 9. 10.,cwe,32768,Question: What are the 10 most common words in the above list? ,"['sympathy' 'didactic' 'tinkle' 'spending' 'criminal' 'confront'
+ 'hacienda' 'avocado' 'ecliptic' 'adrenaline']",0.875
+120,Answer: The top 10 words that appear most often in the list are:,1. the 2. and 3. to 4. of 5. a 6. in 7. that 8. is 9. for 10. with,cwe,32768,Question: What are the 10 most common words in the above list? ,"['crowded' 'nucleotidase' 'bubble' 'philosopher' 'operator' 'chamber'
+ 'accompanist' 'down' 'review' 'enjoyment']",0.875

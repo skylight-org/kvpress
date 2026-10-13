@@ -1,0 +1,30 @@
+# Stage 1 shard: one task, all arms x 4 ratios, 10 contexts (x5 queries).
+# Ratios are ordered most-informative-first so a truncated job still yields complete ratios.
+tasks: [qa_eng]
+n_contexts: 10
+runs:
+  - {press: no_press, ratio: 0.0}
+  - {press: kvzip,         ratio: 0.875}
+  - {press: kvzip_bern_s1, ratio: 0.875}
+  - {press: kvzip_bern_s2, ratio: 0.875}
+  - {press: kvzip_bern_s3, ratio: 0.875}
+  - {press: expected_attention, ratio: 0.875}
+  - {press: random,        ratio: 0.875}
+  - {press: kvzip,         ratio: 0.9375}
+  - {press: kvzip_bern_s1, ratio: 0.9375}
+  - {press: kvzip_bern_s2, ratio: 0.9375}
+  - {press: kvzip_bern_s3, ratio: 0.9375}
+  - {press: expected_attention, ratio: 0.9375}
+  - {press: random,        ratio: 0.9375}
+  - {press: kvzip,         ratio: 0.75}
+  - {press: kvzip_bern_s1, ratio: 0.75}
+  - {press: kvzip_bern_s2, ratio: 0.75}
+  - {press: kvzip_bern_s3, ratio: 0.75}
+  - {press: expected_attention, ratio: 0.75}
+  - {press: random,        ratio: 0.75}
+  - {press: kvzip,         ratio: 0.5}
+  - {press: kvzip_bern_s1, ratio: 0.5}
+  - {press: kvzip_bern_s2, ratio: 0.5}
+  - {press: kvzip_bern_s3, ratio: 0.5}
+  - {press: expected_attention, ratio: 0.5}
+  - {press: random,        ratio: 0.5}

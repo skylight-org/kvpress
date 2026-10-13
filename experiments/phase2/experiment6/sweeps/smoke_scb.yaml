@@ -1,0 +1,11 @@
+dataset: scbench
+group: smoke_scb
+model: meta-llama/Llama-3.1-8B-Instruct
+tasks: [prefix_suffix]
+n_samples: 1
+max_context_length: 130000
+ratios: [0.875]
+arms: [no_press, kvzip]
+arm_ratios:
+  no_press: [0.0]
+seeds: [1]

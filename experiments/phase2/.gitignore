@@ -1,0 +1,12 @@
+# The repo root ignores "results*/", which would drop every run's scores and predictions. They are
+# the point of committing this tree (see README §3), so re-include them here.
+!results/
+!results*/
+
+# Large regenerable intermediates (see README §4). Keep the repo to scripts, docs and per-run scores.
+__pycache__/
+*.pyc
+logs/
+*.parquet
+*.pt
+out/calib_cache*/

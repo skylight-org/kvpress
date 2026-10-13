@@ -1,0 +1,47 @@
+compression_ratio,max_new_tokens,task,question,answer,answer_prefix,context_length,predicted_answer
+0.875,120,cwe,Question: What are the 10 most common words in the above list? ,"['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']",Answer: The top 10 words that appear most often in the list are:,32768,"  
+1. **raffle**  
+2. **neon**  
+3. **missionary**  
+4. **mixture**  
+5. **testament**  
+6. **gulf**  
+7. **sail**  
+8. **wetland**  
+9. **butter**  
+10. **cottage**
+
+> ⚠️ **Note**: This answer is based on a detailed frequency count of the provided list. However, due to the length and complexity of the list, the actual top 10 must be determined by counting occurrences of"
+0.875,120,cwe,Question: What are the 10 most common words in the above list? ,"['sympathy' 'didactic' 'tinkle' 'spending' 'criminal' 'confront'
+ 'hacienda' 'avocado' 'ecliptic' 'adrenaline']",Answer: The top 10 words that appear most often in the list are:,32768,"  
+1. **hacienda**  
+2. **spending**  
+3. **tinkle**  
+4. **avocado**  
+5. **confront**  
+6. **advice**  
+7. **sympathy**  
+8. **criminal**  
+9. **governance**  
+10. **surgery**
+
+---
+
+✅ *Note: This list is based on frequency counting of the provided word list. Words like ""hacienda"", ""spending"", and ""tinkle"" appear multiple times, and ""confront"" and ""avocado"
+0.875,120,cwe,Question: What are the 10 most common words in the above list? ,"['crowded' 'nucleotidase' 'bubble' 'philosopher' 'operator' 'chamber'
+ 'accompanist' 'down' 'review' 'enjoyment']",Answer: The top 10 words that appear most often in the list are:,32768,"  
+1. **crowded**  
+2. **accompanist**  
+3. **operator**  
+4. **bubble**  
+5. **review**  
+6. **tune**  
+7. **elderberry**  
+8. **chamber**  
+9. **shower**  
+10. **down**
+
+---
+
+✅ *Note: This list is based on frequency counting of the provided word list. Words like ""crowded"", ""accompanist"", and ""operator"" appear multiple times, and ""bubble"" and ""review"" are also highly recurring. The exact"

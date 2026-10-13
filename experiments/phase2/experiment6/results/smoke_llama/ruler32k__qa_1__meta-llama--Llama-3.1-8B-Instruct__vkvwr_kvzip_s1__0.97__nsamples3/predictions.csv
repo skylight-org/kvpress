@@ -1,0 +1,10 @@
+max_new_tokens,answer_prefix,predicted_answer,task,context_length,question,answer,compression_ratio
+32,Answer:, Singing.,qa_1,32768,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What tradition were the Saint-Evroul monks known for? ",['singing' 'singing' 'singing'],0.96875
+32,Answer:, Normandy,qa_1,32768,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What part of France were the Normans located? ",['north' 'the north' 'north'],0.96875
+32,Answer:, The river Deabolis.,qa_1,32768,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What river was Petrela located by? ",['Deabolis' 'the river Deabolis' 'Deabolis'],0.96875

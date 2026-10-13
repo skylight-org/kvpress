@@ -1,0 +1,6 @@
+# Verify the score cache: identical predictions cached vs uncached (run twice; 2nd is a cache hit).
+tasks: [summary]
+n_contexts: 2
+runs:
+  - {press: kvzip,         ratio: 0.875}
+  - {press: kvzip_bern_s1, ratio: 0.875}

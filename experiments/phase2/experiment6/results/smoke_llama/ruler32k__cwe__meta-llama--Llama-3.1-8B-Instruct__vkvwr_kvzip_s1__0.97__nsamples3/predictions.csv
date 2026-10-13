@@ -1,0 +1,7 @@
+max_new_tokens,answer_prefix,predicted_answer,task,context_length,question,answer,compression_ratio
+120,Answer: The top 10 words that appear most often in the list are:,1. missionary 2. moan 3. contract 4. zippy 5. neon 6. slang 7. raffle 8. testy 9. horrible 10. horrible,cwe,32768,Question: What are the 10 most common words in the above list? ,"['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']",0.96875
+120,Answer: The top 10 words that appear most often in the list are:,1. the 2. and 3. to 4. a 5. of 6. in 7. that 8. is 9. for 10. with,cwe,32768,Question: What are the 10 most common words in the above list? ,"['sympathy' 'didactic' 'tinkle' 'spending' 'criminal' 'confront'
+ 'hacienda' 'avocado' 'ecliptic' 'adrenaline']",0.96875
+120,Answer: The top 10 words that appear most often in the list are:,1. the 2. and 3. to 4. a 5. of 6. in 7. that 8. is 9. for 10. with,cwe,32768,Question: What are the 10 most common words in the above list? ,"['crowded' 'nucleotidase' 'bubble' 'philosopher' 'operator' 'chamber'
+ 'accompanist' 'down' 'review' 'enjoyment']",0.96875

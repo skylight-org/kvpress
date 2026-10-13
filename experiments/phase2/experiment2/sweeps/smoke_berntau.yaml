@@ -1,0 +1,6 @@
+# Verify bern_tau with ALL repeat positions as calibration queries (N_CAL fix). Same 52 smoke samples.
+config: 4096
+samples_per_subtask: 4
+runs:
+  - {press: bern_tau_s1, ratio: 0.75}
+  - {press: bern_tau_s2, ratio: 0.75}

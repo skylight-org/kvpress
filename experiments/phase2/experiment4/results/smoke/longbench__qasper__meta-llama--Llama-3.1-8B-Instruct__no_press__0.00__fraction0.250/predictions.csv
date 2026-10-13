@@ -1,0 +1,20 @@
+all_classes,dataset,question,compression_ratio,answers,max_new_tokens,predicted_answer,answer_prefix,language,length,task,_id
+,qasper,"Question: Were any of these tasks evaluated in any previous work?
+
+",0.0,['Yes' 'Yes'],148, Yes.,Answer:,en,1464,qasper,6a78dbe4f8e30d35c13ea1f80e52df286f9e1f664f9c3d98
+,qasper,"Question: What datasets are used?
+
+",0.0,"['Custom dataset with user questions; set of documents, twitter posts and news articles, all related to finance.'
+ 'a self-collected financial intents dataset in Portuguese']",148," The Switchboard dataset, Twitter posts, news articles, and a set of 246,945 documents related to finance.",Answer:,en,13401,qasper,f27a64d129091a6c8973c001ff789b8f68955b8ff0ae70af
+,qasper,"Question: What metrics are used for evaluation?
+
+",0.0,"['Byte-Pair Encoding perplexity  (BPE PPL),\nBLEU-1,\nBLEU-4,\nROUGE-L,\npercentage of distinct unigram (D-1),\npercentage of distinct bigrams(D-2),\nuser matching accuracy(UMA),\nMean Reciprocal Rank(MRR)\nPairwise preference over baseline(PP)'
+ 'BLEU-1/4 and ROUGE-L, likelihood of generated recipes using identical input specifications but conditioned on ten different user profiles, user matching accuracy (UMA), Mean Reciprocal Rank (MRR), neural scoring model from BIBREF33 to measure recipe-level coherence'
+ ' Distinct-1/2, UMA = User Matching Accuracy, MRR\n= Mean Reciprocal Rank, PP = Pairwise preference over baseline (evaluated for 310 recipe pairs per model)']",148," BPE perplexity, BLEU-1/4, ROUGE-L, Distinct-1/2, BLEU-1, BLEU-4, user matching accuracy (UMA), Mean Reciprocal Rank (MRR), recipe-level coherence, and step entailment score.",Answer:,en,2673,qasper,86c75d2a9157cb601a49f8424fa1e6e90fcd724132490bbd
+,qasper,"Question: Is the data de-identified?
+
+",0.0,['Yes' 'Yes'],148, yes.,Answer:,en,4592,qasper,757c3e92861be1ad45a06d157bb10fe162bd2163bc3baa6c
+,qasper,"Question: What is te core component for KBQA?
+
+",0.0,"['answer questions by obtaining information from KB tuples '
+ 'hierarchical matching between questions and relations with residual learning']",148, Relation detection.,Answer:,en,4527,qasper,f028740d1aa46f5337578cc37bb55f6c8ac0864856b26096

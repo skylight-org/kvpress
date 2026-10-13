@@ -1,0 +1,34 @@
+[
+ {
+  "ctx": 0,
+  "task": "qasper",
+  "n": 4964,
+  "n_q": 19,
+  "n_cal": 512,
+  "answer": " the CE task in 2010 i2b2/VA. \n\nHowever"
+ },
+ {
+  "ctx": 1,
+  "task": "multifieldqa_en",
+  "n": 7663,
+  "n_q": 28,
+  "n_cal": 512,
+  "answer": " C-295, IL-214, Antonov An-148, BAe"
+ },
+ {
+  "ctx": 2,
+  "task": "hotpotqa",
+  "n": 6395,
+  "n_q": 30,
+  "n_cal": 512,
+  "answer": " Allan McNish. \n\nNote: The answer is based on Passage 6."
+ },
+ {
+  "ctx": 3,
+  "task": "passage_retrieval_en",
+  "n": 10490,
+  "n_q": 213,
+  "n_cal": 512,
+  "answer": " Paragraph 8. \n\nThe abstract discusses the industrialization and railroad development in the"
+ }
+]

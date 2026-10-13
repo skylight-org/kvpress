@@ -1,0 +1,9 @@
+{
+  "seconds": 597.1796646118164,
+  "peak_gb": 17.098629632,
+  "gpu": "NVIDIA A40",
+  "press": "kvzip",
+  "ratio": 0.875,
+  "task": "niah_multikey_2",
+  "model": "Qwen/Qwen3-4B-Instruct-2507"
+}

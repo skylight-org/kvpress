@@ -1,0 +1,181 @@
+model,task,arm,family,seed,ratio,acc,n,gpu,kept,kept_source
+Llama-3.1-8B,cwe,bernoulli_kvzip_s1,bernoulli,1,0.75,50.33,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,cwe,bernoulli_kvzip_s1,bernoulli,1,0.875,49.67,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,cwe,bernoulli_kvzip_s1,bernoulli,1,0.9375,20.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,cwe,bernoulli_kvzip_s2,bernoulli,2,0.75,55.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,cwe,bernoulli_kvzip_s2,bernoulli,2,0.875,44.67,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,cwe,bernoulli_kvzip_s2,bernoulli,2,0.9375,22.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,cwe,kvzip,kvzip,0,0.75,51.67,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,cwe,kvzip,kvzip,0,0.875,13.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,cwe,kvzip,kvzip,0,0.9375,0.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,cwe,no_press,no_press,0,0.0,43.0,30,NVIDIA L40S,1.0,budget
+Llama-3.1-8B,cwe,perhead_bern_kvzip_s1,perhead_bern,1,0.75,21.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,cwe,perhead_bern_kvzip_s1,perhead_bern,1,0.875,13.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,cwe,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,5.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.875,39.67,30,NVIDIA L40S,0.192083556010664,E5 measured
+Llama-3.1-8B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.9375,37.33,30,NVIDIA L40S,0.1418976382642333,E5 measured
+Llama-3.1-8B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.96875,34.0,30,NVIDIA L40S,0.1162410494953079,E5 measured
+Llama-3.1-8B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.984,27.0,30,NVIDIA L40S,0.0963380518157522,E5 measured
+Llama-3.1-8B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.995,16.67,30,NVIDIA L40S,0.0665505781337162,E5 measured
+Llama-3.1-8B,niah_multikey_2,bernoulli_kvzip_s1,bernoulli,1,0.75,100.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_multikey_2,bernoulli_kvzip_s1,bernoulli,1,0.875,100.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_multikey_2,bernoulli_kvzip_s1,bernoulli,1,0.9375,100.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_multikey_2,bernoulli_kvzip_s2,bernoulli,2,0.75,100.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_multikey_2,bernoulli_kvzip_s2,bernoulli,2,0.875,100.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_multikey_2,bernoulli_kvzip_s2,bernoulli,2,0.9375,96.67,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_multikey_2,kvzip,kvzip,0,0.75,100.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_multikey_2,kvzip,kvzip,0,0.875,100.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_multikey_2,kvzip,kvzip,0,0.9375,70.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_multikey_2,no_press,no_press,0,0.0,100.0,30,NVIDIA L40S,1.0,budget
+Llama-3.1-8B,niah_multikey_2,perhead_bern_kvzip_s1,perhead_bern,1,0.75,83.33,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_multikey_2,perhead_bern_kvzip_s1,perhead_bern,1,0.875,23.33,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_multikey_2,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,0.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.875,93.33,30,NVIDIA L40S,0.1855714095923721,E5 measured
+Llama-3.1-8B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.9375,90.0,30,NVIDIA L40S,0.142385857172366,E5 measured
+Llama-3.1-8B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.96875,86.67,30,NVIDIA L40S,0.11673486416614,E5 measured
+Llama-3.1-8B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.984,66.67,30,NVIDIA L40S,0.1004747350131142,E5 measured
+Llama-3.1-8B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.995,26.67,30,NVIDIA L40S,0.0687672860231399,E5 measured
+Llama-3.1-8B,niah_single_3,bernoulli_kvzip_s1,bernoulli,1,0.75,100.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_single_3,bernoulli_kvzip_s1,bernoulli,1,0.875,100.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_single_3,bernoulli_kvzip_s1,bernoulli,1,0.9375,76.67,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_single_3,bernoulli_kvzip_s2,bernoulli,2,0.75,100.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_single_3,bernoulli_kvzip_s2,bernoulli,2,0.875,100.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_single_3,bernoulli_kvzip_s2,bernoulli,2,0.9375,83.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_single_3,kvzip,kvzip,0,0.75,100.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_single_3,kvzip,kvzip,0,0.875,100.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_single_3,kvzip,kvzip,0,0.9375,100.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_single_3,no_press,no_press,0,0.0,100.0,30,NVIDIA L40S,1.0,budget
+Llama-3.1-8B,niah_single_3,perhead_bern_kvzip_s1,perhead_bern,1,0.75,6.67,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,niah_single_3,perhead_bern_kvzip_s1,perhead_bern,1,0.875,0.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,niah_single_3,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,0.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.875,70.0,30,NVIDIA L40S,0.2455739856553194,E5 measured
+Llama-3.1-8B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.9375,56.67,30,NVIDIA L40S,0.1960491330656767,E5 measured
+Llama-3.1-8B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.96875,16.67,30,NVIDIA L40S,0.1601384133666281,E5 measured
+Llama-3.1-8B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.984,6.67,30,NVIDIA L40S,0.1323395914698331,E5 measured
+Llama-3.1-8B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.995,0.0,30,NVIDIA L40S,0.0858462247542264,E5 measured
+Llama-3.1-8B,qa_1,bernoulli_kvzip_s1,bernoulli,1,0.75,76.67,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,qa_1,bernoulli_kvzip_s1,bernoulli,1,0.875,80.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,qa_1,bernoulli_kvzip_s1,bernoulli,1,0.9375,60.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,qa_1,bernoulli_kvzip_s2,bernoulli,2,0.75,83.33,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,qa_1,bernoulli_kvzip_s2,bernoulli,2,0.875,83.33,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,qa_1,bernoulli_kvzip_s2,bernoulli,2,0.9375,43.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,qa_1,kvzip,kvzip,0,0.75,76.67,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,qa_1,kvzip,kvzip,0,0.875,60.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,qa_1,kvzip,kvzip,0,0.9375,60.0,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,qa_1,no_press,no_press,0,0.0,83.33,30,NVIDIA L40S,1.0,budget
+Llama-3.1-8B,qa_1,perhead_bern_kvzip_s1,perhead_bern,1,0.75,60.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,qa_1,perhead_bern_kvzip_s1,perhead_bern,1,0.875,46.67,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,qa_1,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,33.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.875,76.67,30,NVIDIA L40S,0.19938218632323051,E5 mean of other tasks
+Llama-3.1-8B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.9375,56.67,30,NVIDIA L40S,0.1522887157197966,E5 mean of other tasks
+Llama-3.1-8B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.96875,60.0,30,NVIDIA L40S,0.1247118671739772,E5 mean of other tasks
+Llama-3.1-8B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.984,56.67,30,NVIDIA L40S,0.10491334138967244,E5 mean of other tasks
+Llama-3.1-8B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.995,60.0,30,NVIDIA L40S,0.07058864908700763,E5 mean of other tasks
+Llama-3.1-8B,vt,bernoulli_kvzip_s1,bernoulli,1,0.75,99.33,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,vt,bernoulli_kvzip_s1,bernoulli,1,0.875,100.0,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,vt,bernoulli_kvzip_s1,bernoulli,1,0.9375,99.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,vt,bernoulli_kvzip_s2,bernoulli,2,0.75,99.33,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,vt,bernoulli_kvzip_s2,bernoulli,2,0.875,99.33,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,vt,bernoulli_kvzip_s2,bernoulli,2,0.9375,99.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,vt,kvzip,kvzip,0,0.75,100.0,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,vt,kvzip,kvzip,0,0.875,96.67,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,vt,kvzip,kvzip,0,0.9375,97.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,vt,no_press,no_press,0,0.0,99.33,30,NVIDIA L40S,1.0,budget
+Llama-3.1-8B,vt,perhead_bern_kvzip_s1,perhead_bern,1,0.75,99.33,30,NVIDIA L40S,0.25,budget
+Llama-3.1-8B,vt,perhead_bern_kvzip_s1,perhead_bern,1,0.875,99.33,30,NVIDIA L40S,0.125,budget
+Llama-3.1-8B,vt,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,99.33,30,NVIDIA L40S,0.0625,budget
+Llama-3.1-8B,vt,vkvwr_kvzip_s1,vkvwr,1,0.875,99.33,30,NVIDIA L40S,0.1742997940345666,E5 measured
+Llama-3.1-8B,vt,vkvwr_kvzip_s1,vkvwr,1,0.9375,99.33,30,NVIDIA L40S,0.1288222343769104,E5 measured
+Llama-3.1-8B,vt,vkvwr_kvzip_s1,vkvwr,1,0.96875,99.33,30,NVIDIA L40S,0.1057331416678328,E5 measured
+Llama-3.1-8B,vt,vkvwr_kvzip_s1,vkvwr,1,0.984,100.0,30,NVIDIA L40S,0.0905009872599903,E5 measured
+Llama-3.1-8B,vt,vkvwr_kvzip_s1,vkvwr,1,0.995,99.33,30,NVIDIA L40S,0.061190507436948,E5 measured
+Qwen3-4B,cwe,bernoulli_kvzip_s1,bernoulli,1,0.75,78.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,cwe,bernoulli_kvzip_s1,bernoulli,1,0.875,62.33,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,cwe,bernoulli_kvzip_s1,bernoulli,1,0.9375,44.33,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,cwe,bernoulli_kvzip_s2,bernoulli,2,0.75,77.33,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,cwe,bernoulli_kvzip_s2,bernoulli,2,0.875,69.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,cwe,bernoulli_kvzip_s2,bernoulli,2,0.9375,49.33,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,cwe,kvzip,kvzip,0,0.75,80.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,cwe,kvzip,kvzip,0,0.875,62.33,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,cwe,kvzip,kvzip,0,0.9375,1.33,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,cwe,no_press,no_press,0,0.0,78.33,30,NVIDIA A100-SXM4-80GB,1.0,budget
+Qwen3-4B,cwe,perhead_bern_kvzip_s1,perhead_bern,1,0.75,71.33,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,cwe,perhead_bern_kvzip_s1,perhead_bern,1,0.875,53.33,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,cwe,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,40.67,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.875,72.33,30,NVIDIA A100-SXM4-80GB,0.2370377821733932,E5 measured
+Qwen3-4B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.9375,70.67,30,NVIDIA A100-SXM4-80GB,0.197132945496714,E5 measured
+Qwen3-4B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.96875,66.0,30,NVIDIA A100-SXM4-80GB,0.1747590413118188,E5 measured
+Qwen3-4B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.984,63.33,30,NVIDIA A100-SXM4-80GB,0.1495637361379274,E5 measured
+Qwen3-4B,cwe,vkvwr_kvzip_s1,vkvwr,1,0.995,50.33,30,NVIDIA A100-SXM4-80GB,0.0994452285612381,E5 measured
+Qwen3-4B,niah_multikey_2,bernoulli_kvzip_s1,bernoulli,1,0.75,100.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_multikey_2,bernoulli_kvzip_s1,bernoulli,1,0.875,100.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_multikey_2,bernoulli_kvzip_s1,bernoulli,1,0.9375,96.67,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_multikey_2,bernoulli_kvzip_s2,bernoulli,2,0.75,100.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_multikey_2,bernoulli_kvzip_s2,bernoulli,2,0.875,100.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_multikey_2,bernoulli_kvzip_s2,bernoulli,2,0.9375,96.67,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_multikey_2,kvzip,kvzip,0,0.75,100.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_multikey_2,kvzip,kvzip,0,0.875,73.33,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_multikey_2,kvzip,kvzip,0,0.9375,23.33,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_multikey_2,no_press,no_press,0,0.0,100.0,30,NVIDIA A100-SXM4-80GB,1.0,budget
+Qwen3-4B,niah_multikey_2,perhead_bern_kvzip_s1,perhead_bern,1,0.75,46.67,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_multikey_2,perhead_bern_kvzip_s1,perhead_bern,1,0.875,0.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_multikey_2,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,3.33,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.875,100.0,30,NVIDIA A100-SXM4-80GB,0.2108814371706606,E5 measured
+Qwen3-4B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.9375,96.67,30,NVIDIA A100-SXM4-80GB,0.1735803664408324,E5 measured
+Qwen3-4B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.96875,90.0,30,NVIDIA A100-SXM4-80GB,0.1527600010575046,E5 measured
+Qwen3-4B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.984,66.67,30,NVIDIA A100-SXM4-80GB,0.1335046413826579,E5 measured
+Qwen3-4B,niah_multikey_2,vkvwr_kvzip_s1,vkvwr,1,0.995,13.33,30,NVIDIA A100-SXM4-80GB,0.0949706729281847,E5 measured
+Qwen3-4B,niah_single_3,bernoulli_kvzip_s1,bernoulli,1,0.75,100.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_single_3,bernoulli_kvzip_s1,bernoulli,1,0.875,100.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_single_3,bernoulli_kvzip_s1,bernoulli,1,0.9375,20.0,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_single_3,bernoulli_kvzip_s2,bernoulli,2,0.75,100.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_single_3,bernoulli_kvzip_s2,bernoulli,2,0.875,100.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_single_3,bernoulli_kvzip_s2,bernoulli,2,0.9375,6.67,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_single_3,kvzip,kvzip,0,0.75,100.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_single_3,kvzip,kvzip,0,0.875,100.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_single_3,kvzip,kvzip,0,0.9375,100.0,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_single_3,no_press,no_press,0,0.0,100.0,30,NVIDIA A100-SXM4-80GB,1.0,budget
+Qwen3-4B,niah_single_3,perhead_bern_kvzip_s1,perhead_bern,1,0.75,0.0,30,NVIDIA A100-SXM4-80GB,0.25,budget
+Qwen3-4B,niah_single_3,perhead_bern_kvzip_s1,perhead_bern,1,0.875,0.0,30,NVIDIA A100-SXM4-80GB,0.125,budget
+Qwen3-4B,niah_single_3,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,0.0,30,NVIDIA A100-SXM4-80GB,0.0625,budget
+Qwen3-4B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.875,76.67,30,NVIDIA A100-SXM4-80GB,0.2910175903308262,E5 measured
+Qwen3-4B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.9375,53.33,30,NVIDIA A100-SXM4-80GB,0.2531043048760606,E5 measured
+Qwen3-4B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.96875,20.0,30,NVIDIA A100-SXM4-80GB,0.2193353647432969,E5 measured
+Qwen3-4B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.984,6.67,30,NVIDIA A100-SXM4-80GB,0.1838774085040587,E5 measured
+Qwen3-4B,niah_single_3,vkvwr_kvzip_s1,vkvwr,1,0.995,0.0,30,NVIDIA A100-SXM4-80GB,0.118568662500454,E5 measured
+Qwen3-4B,qa_1,bernoulli_kvzip_s1,bernoulli,1,0.75,66.67,30,NVIDIA A40,0.25,budget
+Qwen3-4B,qa_1,bernoulli_kvzip_s1,bernoulli,1,0.875,70.0,30,NVIDIA A40,0.125,budget
+Qwen3-4B,qa_1,bernoulli_kvzip_s1,bernoulli,1,0.9375,60.0,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,qa_1,bernoulli_kvzip_s2,bernoulli,2,0.75,73.33,30,NVIDIA A40,0.25,budget
+Qwen3-4B,qa_1,bernoulli_kvzip_s2,bernoulli,2,0.875,70.0,30,NVIDIA A40,0.125,budget
+Qwen3-4B,qa_1,bernoulli_kvzip_s2,bernoulli,2,0.9375,50.0,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,qa_1,kvzip,kvzip,0,0.75,63.33,30,NVIDIA A40,0.25,budget
+Qwen3-4B,qa_1,kvzip,kvzip,0,0.875,63.33,30,NVIDIA A40,0.125,budget
+Qwen3-4B,qa_1,kvzip,kvzip,0,0.9375,33.33,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,qa_1,no_press,no_press,0,0.0,70.0,30,NVIDIA A40,1.0,budget
+Qwen3-4B,qa_1,perhead_bern_kvzip_s1,perhead_bern,1,0.75,50.0,30,NVIDIA A40,0.25,budget
+Qwen3-4B,qa_1,perhead_bern_kvzip_s1,perhead_bern,1,0.875,33.33,30,NVIDIA A40,0.125,budget
+Qwen3-4B,qa_1,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,26.67,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.875,56.67,30,NVIDIA A40,0.23546397713705752,E5 mean of other tasks
+Qwen3-4B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.9375,76.67,30,NVIDIA A40,0.19698898392342928,E5 mean of other tasks
+Qwen3-4B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.96875,70.0,30,NVIDIA A40,0.1729504811820517,E5 mean of other tasks
+Qwen3-4B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.984,56.67,30,NVIDIA A40,0.14838263112354513,E5 mean of other tasks
+Qwen3-4B,qa_1,vkvwr_kvzip_s1,vkvwr,1,0.995,40.0,30,NVIDIA A40,0.10012958863389013,E5 mean of other tasks
+Qwen3-4B,vt,bernoulli_kvzip_s1,bernoulli,1,0.75,100.0,30,NVIDIA A40,0.25,budget
+Qwen3-4B,vt,bernoulli_kvzip_s1,bernoulli,1,0.875,99.33,30,NVIDIA A40,0.125,budget
+Qwen3-4B,vt,bernoulli_kvzip_s1,bernoulli,1,0.9375,99.33,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,vt,bernoulli_kvzip_s2,bernoulli,2,0.75,100.0,30,NVIDIA A40,0.25,budget
+Qwen3-4B,vt,bernoulli_kvzip_s2,bernoulli,2,0.875,100.0,30,NVIDIA A40,0.125,budget
+Qwen3-4B,vt,bernoulli_kvzip_s2,bernoulli,2,0.9375,99.33,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,vt,kvzip,kvzip,0,0.75,100.0,30,NVIDIA A40,0.25,budget
+Qwen3-4B,vt,kvzip,kvzip,0,0.875,100.0,30,NVIDIA A40,0.125,budget
+Qwen3-4B,vt,kvzip,kvzip,0,0.9375,100.0,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,vt,no_press,no_press,0,0.0,100.0,30,NVIDIA A40,1.0,budget
+Qwen3-4B,vt,perhead_bern_kvzip_s1,perhead_bern,1,0.75,99.33,30,NVIDIA A40,0.25,budget
+Qwen3-4B,vt,perhead_bern_kvzip_s1,perhead_bern,1,0.875,100.0,30,NVIDIA A40,0.125,budget
+Qwen3-4B,vt,perhead_bern_kvzip_s1,perhead_bern,1,0.9375,100.0,30,NVIDIA A40,0.0625,budget
+Qwen3-4B,vt,vkvwr_kvzip_s1,vkvwr,1,0.875,100.0,30,NVIDIA A40,0.2029190988733502,E5 measured
+Qwen3-4B,vt,vkvwr_kvzip_s1,vkvwr,1,0.9375,100.0,30,NVIDIA A40,0.1641383188801101,E5 measured
+Qwen3-4B,vt,vkvwr_kvzip_s1,vkvwr,1,0.96875,100.0,30,NVIDIA A40,0.1449475176155865,E5 measured
+Qwen3-4B,vt,vkvwr_kvzip_s1,vkvwr,1,0.984,100.0,30,NVIDIA A40,0.1265847384695365,E5 measured
+Qwen3-4B,vt,vkvwr_kvzip_s1,vkvwr,1,0.995,100.0,30,NVIDIA A40,0.0875337905456837,E5 measured

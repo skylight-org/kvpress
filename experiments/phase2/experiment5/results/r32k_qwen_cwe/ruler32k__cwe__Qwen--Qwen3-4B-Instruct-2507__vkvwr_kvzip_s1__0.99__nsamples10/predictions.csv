@@ -1,0 +1,31 @@
+max_new_tokens,context_length,task,answer,predicted_answer,compression_ratio,question,answer_prefix
+120,32768,cwe,"['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['sympathy' 'didactic' 'tinkle' 'spending' 'criminal' 'confront'
+ 'hacienda' 'avocado' 'ecliptic' 'adrenaline']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['crowded' 'nucleotidase' 'bubble' 'philosopher' 'operator' 'chamber'
+ 'accompanist' 'down' 'review' 'enjoyment']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['ford' 'encounter' 'exposition' 'bulb' 'sage' 'huge' 'ceramic' 'patch'
+ 'harmonise' 'cyclone']","  
+**bulb",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['sombrero' 'beak' 'collard' 'criterion' 'bartender' 'donut' 'marketing'
+ 'politician' 'headquarters' 'platinum']","  
+1. marketing",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['frustration' 'subdued' 'count' 'offer' 'utilize' 'embossing' 'turf'
+ 'gastropod' 'wetsuit' 'samovar']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['overview' 'boorish' 'snail' 'courage' 'distance' 'administration'
+ 'nectar' 'crook' 'spiffy' 'gamy']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['washtub' 'bark' 'lewd' 'cheesecake' 'jogging' 'humidity' 'bloomer'
+ 'pendulum' 'tattler' 'goldfish']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['rabbit' 'ball' 'headlight' 'vegetable' 'checkout' 'pupa' 'high' 'stamp'
+ 'monasticism' 'polish']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:
+120,32768,cwe,"['composite' 'illustration' 'creative' 'cord' 'cape' 'mango' 'aunt'
+ 'deranged' 'howitzer' 'chutney']","  
+1. **",0.995,Question: What are the 10 most common words in the above list? ,Answer: The top 10 words that appear most often in the list are:

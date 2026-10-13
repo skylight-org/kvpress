@@ -1,0 +1,16 @@
+# Smoke: self-tests T1-T6 + EVERY arm type once at 4x, 4 samples/subtask (52 samples/run).
+# Every code path that a long job will hit must be exercised here first.
+config: 4096
+samples_per_subtask: 4
+runs:
+  - {press: no_press,             ratio: 0.0}
+  - {press: kvzip,                ratio: 0.75}
+  - {press: kvzip_bern_s1,        ratio: 0.75}
+  - {press: kvzip_bern_s2,        ratio: 0.75}
+  - {press: kvzip_bern_nobias_s1, ratio: 0.75}
+  - {press: bern_tau_s1,          ratio: 0.75}
+  - {press: bern_tau_s2,          ratio: 0.75}
+  - {press: snapkv,               ratio: 0.75}
+  - {press: expected_attention,   ratio: 0.75}
+  - {press: streaming_llm,        ratio: 0.75}
+  - {press: random,               ratio: 0.75}

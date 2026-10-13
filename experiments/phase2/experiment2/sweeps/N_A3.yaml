@@ -1,0 +1,15 @@
+# Overnight A40 shard 3: P1 8x (s2,s3), then ALL of P3 bern_tau (one job: shared calibration cache).
+config: 4096
+samples_per_subtask: 60
+runs:
+  - {press: kvzip_bern_s2, ratio: 0.875}
+  - {press: kvzip_bern_s3, ratio: 0.875}
+  - {press: bern_tau_s1,   ratio: 0.75}
+  - {press: bern_tau_s1,   ratio: 0.5}
+  - {press: bern_tau_s1,   ratio: 0.875}
+  - {press: bern_tau_s2,   ratio: 0.5}
+  - {press: bern_tau_s2,   ratio: 0.75}
+  - {press: bern_tau_s2,   ratio: 0.875}
+  - {press: bern_tau_s3,   ratio: 0.5}
+  - {press: bern_tau_s3,   ratio: 0.75}
+  - {press: bern_tau_s3,   ratio: 0.875}

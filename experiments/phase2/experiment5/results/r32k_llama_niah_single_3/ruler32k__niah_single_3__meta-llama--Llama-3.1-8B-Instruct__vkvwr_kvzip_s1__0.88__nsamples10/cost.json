@@ -1,0 +1,9 @@
+{
+  "seconds": 221.0380985736847,
+  "peak_gb": 24.128154112,
+  "gpu": "NVIDIA L40S",
+  "press": "vkvwr_kvzip_s1",
+  "ratio": 0.875,
+  "task": "niah_single_3",
+  "model": "meta-llama/Llama-3.1-8B-Instruct"
+}

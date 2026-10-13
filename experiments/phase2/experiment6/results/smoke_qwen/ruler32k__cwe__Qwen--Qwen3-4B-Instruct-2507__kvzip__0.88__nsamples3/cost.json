@@ -1,0 +1,9 @@
+{
+  "seconds": 224.1091103553772,
+  "peak_gb": 18.20057856,
+  "gpu": "NVIDIA A40",
+  "press": "kvzip",
+  "ratio": 0.875,
+  "task": "cwe",
+  "model": "Qwen/Qwen3-4B-Instruct-2507"
+}

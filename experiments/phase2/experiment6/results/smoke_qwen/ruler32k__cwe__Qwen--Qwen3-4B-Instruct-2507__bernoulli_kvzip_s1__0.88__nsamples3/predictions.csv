@@ -1,0 +1,54 @@
+compression_ratio,max_new_tokens,task,question,answer,answer_prefix,context_length,predicted_answer
+0.875,120,cwe,Question: What are the 10 most common words in the above list? ,"['raffle' 'neon' 'mixture' 'ripple' 'slang' 'missionary' 'testament'
+ 'contract' 'moan' 'zippy']",Answer: The top 10 words that appear most often in the list are:,32768,"  
+1. **raffle**  
+2. **moan**  
+3. **neon**  
+4. **missionary**  
+5. **wetland**  
+6. **gland**  
+7. **mixture**  
+8. **testament**  
+9. **ripple**  
+10. **contract**
+
+---
+
+✅ **Explanation**:  
+To determine the 10 most common words, we count the frequency of each word across the 5999 entries. After analyzing the full list, the words that appear most frequently are:
+
+- **ra"
+0.875,120,cwe,Question: What are the 10 most common words in the above list? ,"['sympathy' 'didactic' 'tinkle' 'spending' 'criminal' 'confront'
+ 'hacienda' 'avocado' 'ecliptic' 'adrenaline']",Answer: The top 10 words that appear most often in the list are:,32768,"  
+1. **tinkle**  
+2. **hacienda**  
+3. **criminal**  
+4. **spending**  
+5. **advice**  
+6. **confront**  
+7. **didactic**  
+8. **tinkle** (repeated)  
+9. **ecliptic**  
+10. **avocado**
+
+Wait — there's a mistake. ""tinkle"" appears multiple times, and ""hacienda"" and ""criminal"" are also very frequent. Let's properly count the frequency of each word to determine the **"
+0.875,120,cwe,Question: What are the 10 most common words in the above list? ,"['crowded' 'nucleotidase' 'bubble' 'philosopher' 'operator' 'chamber'
+ 'accompanist' 'down' 'review' 'enjoyment']",Answer: The top 10 words that appear most often in the list are:,32768,"  
+1. **bubble**  
+2. **accompanist**  
+3. **operator**  
+4. **review**  
+5. **chamber**  
+6. **enjoyment**  
+7. **nucleotidase**  
+8. **down**  
+9. **tune**  
+10. **catholic**  
+
+Wait — this is incorrect. The word **""catholic""** does not appear in the list. This suggests a mistake in the answer.
+
+Let’s properly analyze the list to determine the **10 most common words**.
+
+---
+
+"

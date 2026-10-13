@@ -22,6 +22,8 @@ from benchmarks.dataset_loaders import (
     load_ruler_length_dataset,
 )
 from benchmarks.needle_in_haystack.utils import insert_needle_in_haystack
+from benchmarks.scbench.utils import flatten_multi_turns
+from benchmarks.scbench.utils import normalize_task as normalize_scbench_task
 from datasets import load_dataset, load_from_disk
 from evaluate_registry import DATASET_REGISTRY, PRESS_REGISTRY, SCORER_REGISTRY
 from fire import Fire
@@ -80,6 +82,13 @@ class EvaluationConfig:
     enable_micro_metrics: bool = False
     micro_metrics_max_records: Optional[int] = None
     micro_metrics_sampling_factor: float = 1.0
+    micro_metrics: Optional[str] = None  # comma-separated subset; default is all of them
+    # Per-head upstream error statistics -> head_stats.parquet (see kvpress/metric_logging/head_stats.py)
+    enable_head_stats: bool = False
+    head_stats_layer_stride: int = 1
+    head_stats_step_stride: int = 1
+    head_stats_question_stride: int = 1
+    head_stats_max_rows: Optional[int] = None
 
     # Model-specific parameters
     model_kwargs: Optional[Dict[str, Any]] = None
@@ -135,6 +144,11 @@ class EvaluationConfig:
 
         if self.dataset in (*RULER_CONFIG_SPLIT, *RULER_RAW_SPLIT, "loft"):
             assert self.data_dir is not None, f"data_dir must be set for {self.dataset}"
+
+        if self.dataset == "scbench":
+            # fails here rather than after the model is loaded, and normalizing the task once keeps its
+            # spelling out of the results directory name, so "vt" and "scbench_vt" resolve to one run
+            self.data_dir = normalize_scbench_task(self.data_dir)
 
     def get_results_dir(self, output_dir: Path) -> Path:
         """
@@ -278,19 +292,65 @@ class EvaluationRunner:
             return
         from kvpress.metric_logging import DEFAULT_MICRO_METRICS, MicroMetricLogger
 
+        if self.config.micro_metrics:
+            enabled = [m.strip() for m in self.config.micro_metrics.split(",") if m.strip()]
+            unknown = [m for m in enabled if m not in DEFAULT_MICRO_METRICS]
+            assert not unknown, f"unknown micro metrics {unknown}, expected some of {DEFAULT_MICRO_METRICS}"
+        else:
+            enabled = list(DEFAULT_MICRO_METRICS)
+
         MicroMetricLogger().configure_logging(
             log_path=str(results_dir),
-            enabled_metrics=list(DEFAULT_MICRO_METRICS),
+            enabled_metrics=enabled,
             max_records=self.config.micro_metrics_max_records,
             sampling_factor=self.config.micro_metrics_sampling_factor,
         )
         logger.info(
             "Micro-metric logging enabled (%s) → %s/micro_metrics.jsonl",
-            ", ".join(DEFAULT_MICRO_METRICS),
+            ", ".join(enabled),
             results_dir,
         )
 
+    def _configure_head_stats(self, results_dir: Path) -> None:
+        """Optionally enable per-head denominator / numerator / attention error statistics."""
+        if not self.config.enable_head_stats:
+            return
+        from kvpress.metric_logging import HeadStatsCollector
+
+        HeadStatsCollector().configure(
+            log_path=str(results_dir),
+            run_config=self._head_stats_run_config(),
+            layer_stride=self.config.head_stats_layer_stride,
+            step_stride=self.config.head_stats_step_stride,
+            question_stride=self.config.head_stats_question_stride,
+            max_rows=self.config.head_stats_max_rows,
+        )
+        logger.info("Per-head upstream error stats enabled -> %s/head_stats.parquet", results_dir)
+
+    def _head_stats_run_config(self) -> dict:
+        """Everything needed to interpret head_stats.parquet without its directory."""
+        import torch
+        import transformers
+
+        cfg = {k: v for k, v in vars(self.config).items() if not k.startswith("_")}
+        model_cfg = getattr(getattr(self.pipeline, "model", None), "config", None)
+        if model_cfg is not None:
+            cfg.update(
+                n_layers=getattr(model_cfg, "num_hidden_layers", None),
+                n_q_heads=getattr(model_cfg, "num_attention_heads", None),
+                n_kv_heads=getattr(model_cfg, "num_key_value_heads", None),
+                head_dim=getattr(model_cfg, "head_dim", None),
+                attn_implementation=getattr(model_cfg, "_attn_implementation", None),
+            )
+        cfg.update(torch_version=torch.__version__, transformers_version=transformers.__version__)
+        if torch.cuda.is_available():
+            cfg["gpu_name"] = torch.cuda.get_device_name(0)
+        return cfg
+
     def _flush_micro_metrics(self) -> None:
+        from kvpress.metric_logging import HeadStatsCollector
+
+        HeadStatsCollector().close()
         if not self.config.enable_micro_metrics:
             return
         from kvpress.metric_logging import MicroMetricLogger
@@ -433,6 +493,12 @@ class EvaluationRunner:
             df = load_loft_dataset(data_dir)
         elif dataset_name in AIME_CONFIGS:
             df = load_aime_dataset(dataset_name)
+        elif dataset_name == "scbench":
+            # scbench publishes its tasks as dataset configs, so the task, already normalized by the config,
+            # is passed as the config name and not as data_dir: a config can be resolved from a local cache
+            # without reaching the hub, which a data_dir cannot.
+            logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (config: {data_dir})")
+            df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir, split="test").to_pandas()
         else:
             logger.info(f"Loading dataset: {DATASET_REGISTRY[dataset_name]} (data_dir: {data_dir})")
             df = load_dataset(DATASET_REGISTRY[dataset_name], data_dir=data_dir, split="test").to_pandas()
@@ -460,6 +526,16 @@ class EvaluationRunner:
         if self.config.dataset == "needle_in_haystack":
             df = insert_needle_in_haystack(
                 df, self.pipeline.tokenizer, self.config.max_context_length, self.config.needle_depth
+            )
+
+        # scbench ships one shared context plus several follow-up turns per sample: expand it to one row per
+        # turn, after sampling, so that fraction selects whole contexts
+        if self.config.dataset == "scbench":
+            df = flatten_multi_turns(
+                df,
+                task=data_dir,
+                tokenizer=self.pipeline.tokenizer,
+                max_context_length=self.config.max_context_length,
             )
 
         if isinstance(self.press, FinchPress):
@@ -494,7 +570,12 @@ class EvaluationRunner:
             model_kwargs["quantization_config"] = FineGrainedFP8Config()
             logger.info("FP8 quantization enabled.")
 
-        if isinstance(self.press, ObservedAttentionPress):
+        if model_kwargs.get("attn_implementation"):
+            logger.info(
+                "attn_implementation '%s' requested explicitly; leaving it alone.",
+                model_kwargs["attn_implementation"],
+            )
+        elif isinstance(self.press, ObservedAttentionPress):
             model_kwargs["attn_implementation"] = "eager"
             logger.info("ObservedAttentionPress detected, setting attn_implementation to 'eager'.")
         elif isinstance(self.press, (BernoulliPress, VKvWRPress)):
@@ -647,6 +728,7 @@ class EvaluationRunner:
         self._setup_model_pipeline()
         self._load_and_prepare_dataset()
         self._configure_micro_metrics(results_dir)
+        self._configure_head_stats(results_dir)
 
         self._run_inference()
         self._save_results(predictions_filename)

@@ -1,0 +1,259 @@
+context_id,predicted_answer,turn,max_new_tokens,answer,question,compression_ratio,task,answer_prefix
+0,"VAR CTLFS = VAR HQTDP  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",0,128,"[""CTLFS"", ""VVUTI"", ""QBORE"", ""IHQFY"", ""JWJQC""]","Question: Find all variables that are assigned the value 22087 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 22087, they are: ",0.9375,vt,
+0,"VAR HNZYZ = VAR DJHTA  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",1,128,"[""NHPIA"", ""DSITT"", ""ROLJC"", ""JIAXN"", ""CPVLP""]","Question: Find all variables that are assigned the value 33762 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 33762, they are: ",0.9375,vt,
+0,"VAR HNZYZ = VAR DJHTA  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",2,128,"[""DJHTA"", ""HNZYZ"", ""BRWEV"", ""SDGAU"", ""UGDVG""]","Question: Find all variables that are assigned the value 92617 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 92617, they are: ",0.9375,vt,
+0,"VAR PZHIE = VAR BRWEV  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",3,128,"[""PZHIE"", ""UJCKV"", ""HQTDP"", ""USYVS"", ""AFCBD""]","Question: Find all variables that are assigned the value 19596 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 19596, they are: ",0.9375,vt,
+0,"VAR TMTZY = VAR KFWJP  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",4,128,"[""KFWJP"", ""TMTZY"", ""HQXNY"", ""LZJRW"", ""IJTOJ""]","Question: Find all variables that are assigned the value 28313 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 28313, they are: ",0.9375,vt,
+1,"VAR NJXBK = 76549 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",0,128,"[""NJXBK"", ""ORAIW"", ""KDHDD"", ""MFWHK"", ""TGSRO""]","Question: Find all variables that are assigned the value 76549 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 76549, they are: ",0.9375,vt,
+1,"VAR VIJLB = 33705 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",1,128,"[""VIJLB"", ""YHUFS"", ""THZTJ"", ""SCBVZ"", ""DNQDC""]","Question: Find all variables that are assigned the value 33705 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 33705, they are: ",0.9375,vt,
+1,"VAR CBCYN = 77364 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The",2,128,"[""CBCYN"", ""YXRHR"", ""AQIQY"", ""ACOIE"", ""CDUDB""]","Question: Find all variables that are assigned the value 77364 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 77364, they are: ",0.9375,vt,
+1,"VAR SYDOT = 83445 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The",3,128,"[""SYDOT"", ""PXYGE"", ""CWXUU"", ""ANYZV"", ""DXBAT""]","Question: Find all variables that are assigned the value 83445 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 83445, they are: ",0.9375,vt,
+1,"VAR OQWFT = VAR NJXBK  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and",4,128,"[""JXYCR"", ""OQWFT"", ""MYHHN"", ""PLESR"", ""PBKUT""]","Question: Find all variables that are assigned the value 88645 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 88645, they are: ",0.9375,vt,
+2,"VAR QNIKX = 12023 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",0,128,"[""QNIKX"", ""YLIUH"", ""NHEAI"", ""GCZFF"", ""WERUM""]","Question: Find all variables that are assigned the value 12023 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 12023, they are: ",0.9375,vt,
+2,"VAR RUAEL = 69796 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",1,128,"[""RUAEL"", ""YIHEY"", ""XCYEF"", ""ZYTNQ"", ""ATPAG""]","Question: Find all variables that are assigned the value 69796 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 69796, they are: ",0.9375,vt,
+2,"VAR DCTEM = VAR ZWASC  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",2,128,"[""DYWLR"", ""GQKFQ"", ""NDNRD"", ""ZWASC"", ""DCTEM""]","Question: Find all variables that are assigned the value 90073 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 90073, they are: ",0.9375,vt,
+2,"VAR QCCYW = VAR PNJOK  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",3,128,"[""PNJOK"", ""QCCYW"", ""OAECB"", ""ZZFAG"", ""JUDMU""]","Question: Find all variables that are assigned the value 74429 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 74429, they are: ",0.9375,vt,
+2,"VAR ECOUQ = 71627 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",4,128,"[""ECOUQ"", ""QUNEA"", ""ALDRD"", ""VPYPB"", ""LANFQ""]","Question: Find all variables that are assigned the value 71627 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 71627, they are: ",0.9375,vt,
+3,"VAR PJJHP = VAR ZWCPJ  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and",0,128,"[""ZWCPJ"", ""PJJHP"", ""BYOYO"", ""XMGDS"", ""EFXGQ""]","Question: Find all variables that are assigned the value 43848 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 43848, they are: ",0.9375,vt,
+3,"VAR GSSZH = VAR SLOYB  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",1,128,"[""SLOYB"", ""GSSZH"", ""RPULT"", ""SMWTW"", ""GIFCQ""]","Question: Find all variables that are assigned the value 47804 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 47804, they are: ",0.9375,vt,
+3,"VAR VWULN = VAR YMXZC  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and",2,128,"[""YMXZC"", ""VWULN"", ""RVSOL"", ""YTIBQ"", ""CEFWN""]","Question: Find all variables that are assigned the value 25379 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 25379, they are: ",0.9375,vt,
+3,VAR TFKIQ = 69664 VAR MOFDF = VAR TFKIQ  VAR GSSZH = VAR MOFDF  VAR RPULT = VAR GSSZH  VAR SMWTW = VAR RPULT  VAR YMXZC = VAR SMWTW  VAR VWULN = VAR YMXZC  VAR CTPON = VAR VWULN  VAR ANOBX = VAR CTPON  VAR YTIBQ = VAR ANOBX  VAR CEFWN = VAR YTIBQ  VAR YISRC = VAR CEFWN,3,128,"[""TFKIQ"", ""MOFDF"", ""IABIJ"", ""EXUWV"", ""YISRC""]","Question: Find all variables that are assigned the value 69664 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 69664, they are: ",0.9375,vt,
+3,"VAR ASOZB = 37766 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",4,128,"[""ASOZB"", ""MUMDN"", ""CTPON"", ""ANOBX"", ""FOQCT""]","Question: Find all variables that are assigned the value 37766 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 37766, they are: ",0.9375,vt,
+4,"VAR PGPVT = VAR JAPBF  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",0,128,"[""PSVUL"", ""JAPBF"", ""PGPVT"", ""RXBGK"", ""AZXWX""]","Question: Find all variables that are assigned the value 78099 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 78099, they are: ",0.9375,vt,
+4,"VAR PGPVT = VAR JAPBF  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",1,128,"[""PFQSE"", ""EWYUB"", ""IZTMW"", ""ITCYH"", ""ACBWM""]","Question: Find all variables that are assigned the value 46060 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 46060, they are: ",0.9375,vt,
+4,VAR UXDBM = 79122 VAR GIJRH = VAR UXDBM  VAR WTLRY = VAR GIJRH  VAR MJGCQ = VAR WTLRY  VAR EUIHC = VAR MJGCQ  VAR IZTMW = VAR EUIHC  VAR ITCYH = VAR IZTMW  VAR ACBWM = VAR ITCYH,2,128,"[""UXDBM"", ""GIJRH"", ""WTLRY"", ""MJGCQ"", ""EUIHC""]","Question: Find all variables that are assigned the value 79122 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 79122, they are: ",0.9375,vt,
+4,"VAR UIQCQ = 26087 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",3,128,"[""UIQCQ"", ""VIUIT"", ""ZVZYG"", ""AZDEM"", ""PHJXW""]","Question: Find all variables that are assigned the value 26087 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 26087, they are: ",0.9375,vt,
+4,"VAR BIVLK = 58868 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",4,128,"[""BIVLK"", ""ODFUD"", ""MCJMI"", ""ZCIMI"", ""LACGR""]","Question: Find all variables that are assigned the value 58868 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 58868, they are: ",0.9375,vt,
+5,"VAR CYUHU = 33225 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",0,128,"[""CYUHU"", ""PPKKD"", ""GFFDE"", ""KEWQH"", ""XSISJ""]","Question: Find all variables that are assigned the value 33225 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 33225, they are: ",0.9375,vt,
+5,"VAR LRDPM = 16643 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",1,128,"[""LRDPM"", ""UPKRY"", ""KFWOK"", ""LIGLS"", ""NBVPI""]","Question: Find all variables that are assigned the value 16643 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 16643, they are: ",0.9375,vt,
+5,"VAR SDBIA = 46727 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",2,128,"[""SDBIA"", ""UUJNF"", ""XRMXF"", ""BMECZ"", ""HNZZL""]","Question: Find all variables that are assigned the value 46727 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 46727, they are: ",0.9375,vt,
+5,"VAR FUZDO = 21005 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",3,128,"[""FUZDO"", ""LJWLZ"", ""RIECU"", ""HSCVQ"", ""GXIJV""]","Question: Find all variables that are assigned the value 21005 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 21005, they are: ",0.9375,vt,
+5,"VAR PCMRH = 75697 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",4,128,"[""PCMRH"", ""CLLRT"", ""OEHSE"", ""QNKDE"", ""RWWSD""]","Question: Find all variables that are assigned the value 75697 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 75697, they are: ",0.9375,vt,
+6,"VAR ELLYA = VAR DGRLK  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",0,128,"[""QZGGD"", ""NUWPR"", ""QJLPS"", ""MJHNG"", ""WIJRV""]","Question: Find all variables that are assigned the value 26029 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 26029, they are: ",0.9375,vt,
+6,"VAR ELLYA = VAR DGRLK  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",1,128,"[""DGRLK"", ""ELLYA"", ""NSILK"", ""UVBWW"", ""HPJKY""]","Question: Find all variables that are assigned the value 24226 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 24226, they are: ",0.9375,vt,
+6,"VAR AKKSV = VAR MJHNG  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",2,128,"[""KFXXO"", ""MPALA"", ""AKKSV"", ""USRDY"", ""TVUVM""]","Question: Find all variables that are assigned the value 73646 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 73646, they are: ",0.9375,vt,
+6,"VAR FWIAG = 70603 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",3,128,"[""FWIAG"", ""ASOBQ"", ""SVTXK"", ""OIZPS"", ""AESWG""]","Question: Find all variables that are assigned the value 70603 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 70603, they are: ",0.9375,vt,
+6,"VAR MFFPP = VAR APIUC  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",4,128,"[""APIUC"", ""MFFPP"", ""LVHVF"", ""KYEMF"", ""BUFNU""]","Question: Find all variables that are assigned the value 38731 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 38731, they are: ",0.9375,vt,
+7,"VAR CVVWK = VAR GPSOX  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",0,128,"[""CVVWK"", ""GPSOX"", ""WJXUS"", ""HZVYB"", ""SWJUZ""]","Question: Find all variables that are assigned the value 78926 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 78926, they are: ",0.9375,vt,
+7,"VAR STSCA = VAR VHPHQ  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",1,128,"[""VHPHQ"", ""STSCA"", ""AQNMQ"", ""JRJQH"", ""CMPWV""]","Question: Find all variables that are assigned the value 15997 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 15997, they are: ",0.9375,vt,
+7,"VAR JZJYW = 65506 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",2,128,"[""JZJYW"", ""PBNTS"", ""EGTSU"", ""EUIHZ"", ""BJHQM""]","Question: Find all variables that are assigned the value 65506 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 65506, they are: ",0.9375,vt,
+7,"VAR MBYNM = 88229 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",3,128,"[""MBYNM"", ""TKALT"", ""PWJVX"", ""MOWJR"", ""CWQEZ""]","Question: Find all variables that are assigned the value 88229 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 88229, they are: ",0.9375,vt,
+7,"VAR TKALT = VAR MBYNM  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",4,128,"[""BNORT"", ""TLTWA"", ""IVBNA"", ""ZOQRM"", ""EADSJ""]","Question: Find all variables that are assigned the value 59815 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 59815, they are: ",0.9375,vt,
+8,"VAR PFHDR = VAR PRECI  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",0,128,"[""EFLKT"", ""PFHDR"", ""PRECI"", ""OPOKT"", ""LANJG""]","Question: Find all variables that are assigned the value 52092 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 52092, they are: ",0.9375,vt,
+8,VAR RHR = 72539 VAR TCNLP = VAR RHR  VAR RQARG = VAR TCNLP  VAR PFHDR = VAR RQARG  VAR PRECI = VAR PFHDR  VAR WRVLJ = VAR PRECI  VAR FTHNS = VAR WRVLJ  VAR VPTHB = VAR FTHNS,1,128,"[""TCNLP"", ""RQARG"", ""SJHDL"", ""FTHNS"", ""VPTHB""]","Question: Find all variables that are assigned the value 72539 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 72539, they are: ",0.9375,vt,
+8,"VAR OHQLK = 76077 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",2,128,"[""OHQLK"", ""SMRIR"", ""CYODT"", ""WRVLJ"", ""SMFTA""]","Question: Find all variables that are assigned the value 76077 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 76077, they are: ",0.9375,vt,
+8,"VAR DGYVO = VAR ERMIM  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",3,128,"[""ERMIM"", ""DGYVO"", ""EJSMM"", ""WODCG"", ""ZLGSF""]","Question: Find all variables that are assigned the value 31817 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 31817, they are: ",0.9375,vt,
+8,"VAR XQTZA = 47861 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",4,128,"[""XQTZA"", ""BCIWH"", ""AQYGJ"", ""FGLJX"", ""FRCHY""]","Question: Find all variables that are assigned the value 47861 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 47861, they are: ",0.9375,vt,
+9,"VAR UVCDT = VAR MQAZQ  The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back",0,128,"[""MWYBF"", ""XBZIC"", ""MQAZQ"", ""EZANV"", ""UVCDT""]","Question: Find all variables that are assigned the value 23428 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 23428, they are: ",0.9375,vt,
+9,"VAR XDTTD = 53934 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",1,128,"[""XDTTD"", ""BKXOW"", ""EYVSS"", ""JRKVQ"", ""QKFIY""]","Question: Find all variables that are assigned the value 53934 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 53934, they are: ",0.9375,vt,
+9,"VAR WZATZ = 20258 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again",2,128,"[""WZATZ"", ""VJKKI"", ""FDCCR"", ""RZVGN"", ""RBZWP""]","Question: Find all variables that are assigned the value 20258 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 20258, they are: ",0.9375,vt,
+9,"VAR FAKXX = 67775 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",3,128,"[""BBMGP"", ""YQYEN"", ""DYADZ"", ""YFRNW"", ""LSCGW""]","Question: Find all variables that are assigned the value 67775 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 67775, they are: ",0.9375,vt,
+9,"VAR ELCLC = 91580 The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+ The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.
+",4,128,"[""ELCLC"", ""JKCZS"", ""FAKXX"", ""DHSNA"", ""FZYSU""]","Question: Find all variables that are assigned the value 91580 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 91580, they are: ",0.9375,vt,

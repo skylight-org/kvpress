@@ -1,0 +1,22 @@
+[
+ {
+  "task": "qasper",
+  "row": 160,
+  "n_ctx": 4964
+ },
+ {
+  "task": "multifieldqa_en",
+  "row": 112,
+  "n_ctx": 7663
+ },
+ {
+  "task": "hotpotqa",
+  "row": 136,
+  "n_ctx": 6395
+ },
+ {
+  "task": "passage_retrieval_en",
+  "row": 186,
+  "n_ctx": 10490
+ }
+]

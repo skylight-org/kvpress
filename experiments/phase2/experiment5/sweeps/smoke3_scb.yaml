@@ -1,0 +1,12 @@
+# Untested corner 2: SCBench at ~110k has never run in E5. One context, all four arms.
+group: smoke3
+dataset: scbench
+model: meta-llama/Llama-3.1-8B-Instruct
+tasks: [prefix_suffix]
+fraction: 0.01
+max_context_length: 130000
+ratios: [0.875]
+arms: [kvzip, bernoulli_kvzip_s1, perhead_bern_kvzip_s1, vkvwr_kvzip_s1]
+seeds: [1]
+max_new_tokens: 4
+layer_stride: 2

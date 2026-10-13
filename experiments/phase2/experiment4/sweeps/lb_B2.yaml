@@ -1,0 +1,10 @@
+# Stage 1, LongBench part B2 (a40): gov_report at 16x and 2x, run IN PARALLEL with lb_B (job 312117).
+# lb_B does 8x and 4x first (ratio-first order) and skips any run that already has a metrics.json,
+# so by the time it reaches 16x/2x (~7 h in) this job has finished them. Same arms, same output group.
+dataset: longbench
+group: longbench
+tasks: [gov_report]
+fraction: 0.25
+no_press: false
+ratios: [0.9375, 0.5]
+arms: [kvzip, kvzip_bern_s1, kvzip_bern_s2, kvzip_bern_s3, compactor, compactor_bern_s1, compactor_bern_s2, compactor_bern_s3]

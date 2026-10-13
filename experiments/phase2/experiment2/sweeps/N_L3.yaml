@@ -1,0 +1,7 @@
+# Overnight L40S shard: streaming_llm baseline (P2).
+config: 4096
+samples_per_subtask: 60
+runs:
+  - {press: streaming_llm, ratio: 0.5}
+  - {press: streaming_llm, ratio: 0.75}
+  - {press: streaming_llm, ratio: 0.875}

@@ -1,0 +1,11 @@
+context_length,answer_prefix,max_new_tokens,predicted_answer,answer,task,question,compression_ratio
+32768,The special magic number for inquisitive-normalisation mentioned in the provided text is,128,: 490215,['4902158'],niah_multikey_2,What is the special magic number for inquisitive-normalisation mentioned in the provided text? ,0.9375
+32768,The special magic number for unable-ginseng mentioned in the provided text is,128,: 922513,['9225134'],niah_multikey_2,What is the special magic number for unable-ginseng mentioned in the provided text? ,0.9375
+32768,The special magic number for enchanting-snow mentioned in the provided text is,128, 9659039,['9659039'],niah_multikey_2,What is the special magic number for enchanting-snow mentioned in the provided text? ,0.9375
+32768,The special magic number for absorbed-billion mentioned in the provided text is,128,: 590653,['5906538'],niah_multikey_2,What is the special magic number for absorbed-billion mentioned in the provided text? ,0.9375
+32768,The special magic number for internal-vault mentioned in the provided text is,128,: 756442,['7564428'],niah_multikey_2,What is the special magic number for internal-vault mentioned in the provided text? ,0.9375
+32768,The special magic number for super-corporatism mentioned in the provided text is,128, 9304746,['9304746'],niah_multikey_2,What is the special magic number for super-corporatism mentioned in the provided text? ,0.9375
+32768,The special magic number for poised-cranberry mentioned in the provided text is,128, 6857286,['6857286'],niah_multikey_2,What is the special magic number for poised-cranberry mentioned in the provided text? ,0.9375
+32768,The special magic number for jaded-throne mentioned in the provided text is,128, 2390120,['2390120'],niah_multikey_2,What is the special magic number for jaded-throne mentioned in the provided text? ,0.9375
+32768,The special magic number for longing-prompt mentioned in the provided text is,128,: 688147,['6881472'],niah_multikey_2,What is the special magic number for longing-prompt mentioned in the provided text? ,0.9375
+32768,The special magic number for obscene-recovery mentioned in the provided text is,128,: 834233,['8342333'],niah_multikey_2,What is the special magic number for obscene-recovery mentioned in the provided text? ,0.9375

@@ -1,0 +1,6 @@
+{
+ "seconds": 451.89094042778015,
+ "peak_gpu_gb": 32.967833088,
+ "n_contexts": 10,
+ "gpu": "NVIDIA A100-SXM4-80GB"
+}

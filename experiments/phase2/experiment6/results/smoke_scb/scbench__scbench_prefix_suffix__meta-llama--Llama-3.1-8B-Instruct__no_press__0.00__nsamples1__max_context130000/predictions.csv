@@ -1,0 +1,32 @@
+compression_ratio,task,predicted_answer,question,context_id,turn,max_new_tokens,answer_prefix,answer
+0.0,scbench_prefix_suffix,"After searching through the list of words, I found the word that has both the prefix ""s-IVU"" and the suffix ""hcKDW"".
+
+The word is: ""s-IVUhcKDW"" is not in the list, but ""s-IVUhcKDW"" is not a valid word. However, I found a word that has the prefix ""s-IVU"" and the suffix ""hcKDW"" is not present, but ""s-IVUhcKDW"" is not a valid word. However, I found a word that has the prefix ""s-IVU"" and the suffix ""hcKDW"" is not present, but ""s-IVUhcKDW"" is not","Given prefix = ""s-IVU""
+suffix = ""hcKDW""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,0,150,,['s-IVU^jkIcWHHzfjlhxKhcKDW']
+0.0,scbench_prefix_suffix,"After searching through the list, I found the word that has both the prefix ""_gdfO"" and the suffix ""RNPQO"":
+
+""SRNPQORNPQO""
+
+This word is in the dictionary.","Given prefix = ""_gdfO""
+suffix = ""RNPQO""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,1,150,,['_gdfOZRlr+vmZoXIUcJjRNPQO']
+0.0,scbench_prefix_suffix,"The word in the dictionary that has both the prefix ""KEcFQ"" and the suffix ""ccLxD"" is ""KEcFQccLxD"".","Given prefix = ""KEcFQ""
+suffix = ""ccLxD""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,2,150,,['KEcFQno-zDLFSvbCQGJmccLxD']
+0.0,scbench_prefix_suffix,"The word in the dictionary that has both the prefix ""Ss^_T"" and the suffix ""wOEQB"" is ""sS^_TnYmGwRwOEQB"".","Given prefix = ""Ss^_T""
+suffix = ""wOEQB""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,3,150,,['Ss^_Tn_ygrWomKPVgazMwOEQB']
+0.0,scbench_prefix_suffix,"The word in the dictionary that has both the prefix ""LIAuD"" and the suffix ""EPmqQ"" is ""LIAuDEPmqQ"".","Given prefix = ""LIAuD""
+suffix = ""EPmqQ""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",83,4,150,,['LIAuDRHrCk+WA+wpfZDDEPmqQ']

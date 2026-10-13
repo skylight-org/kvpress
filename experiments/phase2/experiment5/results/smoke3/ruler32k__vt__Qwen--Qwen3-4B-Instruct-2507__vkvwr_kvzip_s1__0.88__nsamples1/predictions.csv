@@ -1,0 +1,2 @@
+predicted_answer,context_length,answer,compression_ratio,max_new_tokens,task,answer_prefix,question
+ YRRXQ,32768,['YRRXQ' 'MUIFO' 'YBIXT' 'SRUZL' 'GGHCI'],0.875,30,vt,"Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assgined the value 81295, they are: ",Question: Find all variables that are assigned the value 81295 in the text above. 

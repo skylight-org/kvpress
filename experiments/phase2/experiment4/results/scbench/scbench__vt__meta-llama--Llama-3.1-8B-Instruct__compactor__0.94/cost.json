@@ -1,0 +1,7 @@
+{
+ "seconds": 451.61301350593567,
+ "peak_gpu_gb": 36.013839872,
+ "n_contexts": 10,
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "cholesky_fallbacks": 10
+}

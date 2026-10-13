@@ -1,0 +1,25 @@
+dataset: longbench
+data_dir: gov_report
+model: meta-llama/Llama-3.1-8B-Instruct
+device: null
+press_name: compactor_bern_s2
+compression_ratio: 0.875
+key_channel_compression_ratio: null
+fraction: 0.25
+max_new_tokens: null
+max_context_length: null
+query_aware: false
+needle_depth: null
+compression_interval: null
+target_size: null
+hidden_states_buffer_size: null
+output_dir: /home/rethinkingai-self/23b1835/phase2/experiment4/results/longbench
+log_level: INFO
+model_kwargs: {}
+press_init_command: CompactorBernPress(press=SeededCompactorPress(compression_ratio=0.875,
+  sink_size_start=8, sink_size_end=4, chunk_size=256, sketch_dimension=48, blending=None,
+  _leverage_press=FallbackLeverageScorePress(compression_ratio=0.875, sketch_dimension=48,
+  n_fallback=0), _non_causal_press=NonCausalAttnPress(compression_ratio=0.875, chunk_size=256)),
+  seed=2, force_topk=False)
+seed: 42
+fp8: false

@@ -65,13 +65,17 @@ def add_attention_bias(bias, query, key, attention_mask):
         Additive attention mask with shape broadcastable to (bsz, num_heads, q_len, k_len).
     """
     q_len, k_len = query.shape[2], key.shape[2]
-    bsz, num_key_value_heads, ctx_len = bias.shape
+    bsz, num_key_value_heads, ctx_len = bias.shape[0], bias.shape[1], bias.shape[-1]
     if ctx_len > k_len:
         raise ValueError(f"attention_bias covers {ctx_len} keys but only {k_len} are present (stale bias?)")
 
-    num_groups = query.shape[1] // num_key_value_heads
     full = torch.zeros((bsz, query.shape[1], q_len, k_len), dtype=query.dtype, device=query.device)
-    full[..., :ctx_len] = bias.repeat_interleave(num_groups, dim=1)[:, :, None, :].to(query.dtype)
+    if bias.dim() == 4:
+        # already per query head and per query position: [bsz, num_heads, q_len, ctx_len]
+        full[..., :ctx_len] = bias.to(query.dtype)
+    else:
+        num_groups = query.shape[1] // num_key_value_heads
+        full[..., :ctx_len] = bias.repeat_interleave(num_groups, dim=1)[:, :, None, :].to(query.dtype)
 
     if attention_mask is None:
         # SDPA only applies causal masking when no mask is given, so once a mask is passed the causal structure
@@ -124,6 +128,7 @@ def attention_patch(func):
 
         full_kv = get_full_kv(metadata, layer_idx)
         original_attention_mask = attention_mask
+        restore_keys = None
         dense_key = None
         dense_value = None
         sparsify_source = None
@@ -137,10 +142,21 @@ def attention_patch(func):
             and query.shape[2] != key.shape[2]
         )
 
-        if apply_vkvwr:
+        needle_state = None if metadata is None else metadata.get("needle", {}).get(layer_idx)
+        if needle_state is not None and query.shape[2] != key.shape[2]:
+            # NeedleFetchPress: Bernoulli bias plus per-query fetched needles, one bias row per query.
+            if module.config._attn_implementation != "sdpa":
+                raise ValueError("needle fetch bias is only supported with attn_implementation='sdpa'")
+            from kvpress.presses.needle_fetch_press import needle_decode_bias
+
+            scaling = kwargs.get("scaling") or getattr(module, "scaling", None) or query.shape[-1] ** -0.5
+            bias4 = needle_decode_bias(query, key, needle_state, scaling)  # [bsz, H, q_len, ctx]
+            attention_mask = add_attention_bias(bias4, query, key, attention_mask)
+            sparsify_source = "needle_bias"
+        elif apply_vkvwr:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("vkvwr decode bias is only supported with attn_implementation='sdpa'")
-            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity
+            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity, want_head_stats
             from kvpress.presses.vkvwr_press import decode_attention_bias
 
             bias = decode_attention_bias(query, key, vkvwr_state)
@@ -151,12 +167,20 @@ def attention_patch(func):
                 k_len=key.shape[2],
                 source="vkvwr_bias",
             )
+            if want_head_stats(layer_idx):
+                from kvpress.metric_logging import record_head_stats
+
+                record_head_stats(
+                    module=module, query=query, key=key, value=value,
+                    attention_mask=original_attention_mask, kwargs=kwargs,
+                    layer_idx=layer_idx, source="vkvwr_bias", ctx_len=bias.shape[-1], bias=bias,
+                )
             attention_mask = add_attention_bias(bias, query, key, attention_mask)
             sparsify_source = "vkvwr_bias"
         elif attention_bias is not None:
             if module.config._attn_implementation != "sdpa":
                 raise ValueError("attention_bias is only supported with attn_implementation='sdpa'")
-            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity
+            from kvpress.metric_logging import bias_sparsity, maybe_log_sparsity, want_head_stats
 
             maybe_log_sparsity(
                 bias_sparsity(attention_bias),
@@ -165,14 +189,25 @@ def attention_patch(func):
                 k_len=key.shape[2],
                 source="attention_bias",
             )
+            if want_head_stats(layer_idx):
+                from kvpress.metric_logging import record_head_stats
+
+                record_head_stats(
+                    module=module, query=query, key=key, value=value,
+                    attention_mask=original_attention_mask, kwargs=kwargs,
+                    layer_idx=layer_idx, source="attention_bias",
+                    ctx_len=attention_bias.shape[-1], bias=attention_bias,
+                )
             attention_mask = add_attention_bias(attention_bias, query, key, attention_mask)
             sparsify_source = "attention_bias"
         elif getattr(module, "masked_key_indices", None) is not None:
             # Decoding: build fake keys k s.t. exp(<q, k>) = 0
             from kvpress.metric_logging import (
+                head_stats_enabled,
                 masked_key_sparsity,
                 maybe_log_sparsity,
                 want_attention_output_error,
+                want_head_stats,
             )
 
             bsz, num_heads, seq_len, head_dim = query.shape
@@ -194,6 +229,38 @@ def attention_patch(func):
             )
             if want_attention_output_error():
                 dense_key = key.clone()
+
+            # Per-head statistics must be taken from the REAL keys. The fake-key write below goes
+            # straight into the KV cache tensor (DynamicLayer.update returns the cache's own
+            # storage), so after it there is nothing left to compare against.
+            if want_head_stats(layer_idx):
+                from kvpress.metric_logging import record_head_stats
+                from kvpress.metric_logging.head_stats import keep_mask_from_indices
+
+                ctx_len_meta = None if metadata is None else metadata.get("ctx_len", {}).get(layer_idx)
+                ctx_len_hs = int(ctx_len_meta) if ctx_len_meta is not None else int(seq_indices.max()) + 1
+                record_head_stats(
+                    module=module, query=query, key=key, value=value,
+                    attention_mask=original_attention_mask, kwargs=kwargs,
+                    layer_idx=layer_idx, source="masked_keys", ctx_len=ctx_len_hs,
+                    keep_mask=keep_mask_from_indices(
+                        module.masked_key_indices, bsz=bsz, n_kv_heads=num_key_value_heads,
+                        ctx_len=ctx_len_hs, device=key.device,
+                    ),
+                )
+
+            # The write below goes into the KV cache's own storage (DynamicLayer.update returns it),
+            # so the real keys at these positions are destroyed for every LATER forward too, not just
+            # this one. Measurements that need a dense reference must put them back afterwards. The
+            # restore is output-neutral: search_hyperplane reads only the query, and the fake keys are
+            # recomputed and rewritten unconditionally on every call.
+            if head_stats_enabled():
+                restore_keys = (
+                    batch_indices,
+                    head_indices,
+                    seq_indices,
+                    key[batch_indices, head_indices, seq_indices].clone(),
+                )
 
             # Build a fake key k per key group such that for every query q, exp(<q, k>) = 0
             q = query.view(bsz, num_key_value_heads, num_groups, seq_len, head_dim)
@@ -228,6 +295,17 @@ def attention_patch(func):
         if "cu_seq_lens_k" in kwargs:
             kwargs["cu_seq_lens_k"][-1] = key.shape[-2]
 
+        try:
+            return _run(module, query, key, value, attention_mask, dropout, kwargs,
+                        sparsify_source, original_attention_mask, dense_key, dense_value, layer_idx)
+        finally:
+            if restore_keys is not None:
+                b_i, h_i, s_i, saved = restore_keys
+                key[b_i, h_i, s_i] = saved
+                del restore_keys, saved
+
+    def _run(module, query, key, value, attention_mask, dropout, kwargs,
+             sparsify_source, original_attention_mask, dense_key, dense_value, layer_idx):
         if sparsify_source is not None:
             from kvpress.metric_logging import maybe_log_attention_output_error, want_attention_output_error
 

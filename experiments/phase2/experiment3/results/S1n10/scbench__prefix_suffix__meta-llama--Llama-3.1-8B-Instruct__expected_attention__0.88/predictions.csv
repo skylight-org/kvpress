@@ -1,0 +1,251 @@
+answer,context_id,predicted_answer,max_new_tokens,turn,compression_ratio,answer_prefix,question,task
+_TmwCWPliaoDImvXiOvic+KJB,0,"The word in the dictionary that has both the prefix and the suffix is ""c+KJB"".",64,0,0.875,,"Given prefix = ""_TmwC""
+suffix = ""c+KJB""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
++hVce--_DsdvGHJSvDSxrOtsm,0,"The word in the dictionary that has both the prefix and the suffix is ""prefix"".",64,1,0.875,,"Given prefix = ""+hVce""
+suffix = ""rOtsm""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+LBlPUIsjuZYbsHkx^fkUzVdkS,0,"The word in the dictionary that has both the prefix and the suffix is ""LBlPUzVdkS"".",64,2,0.875,,"Given prefix = ""LBlPU""
+suffix = ""zVdkS""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+RviB-YiaAUgc_nSFCgaamszHq,0,"The word in the dictionary that has both the prefix and the suffix is ""RviBmszHq"".",64,3,0.875,,"Given prefix = ""RviB-""
+suffix = ""mszHq""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+kTqWXSWpGAlpNJNdeLUymkfXA,0,"The word in the dictionary that has both the prefix and the suffix is ""kTqWXmkfXA"".",64,4,0.875,,"Given prefix = ""kTqWX""
+suffix = ""mkfXA""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+oiYQOeACcZgq+WnQ_Wbd^JFrX,1,"The word in the dictionary that has both the prefix and the suffix is ""oiYQO^JFrX"".",64,0,0.875,,"Given prefix = ""oiYQO""
+suffix = ""^JFrX""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+GEsStfHKHFqtftduiE-^yfHyg,1,"The word in the dictionary that has both the prefix and the suffix is ""GEsStyfHyg"".",64,1,0.875,,"Given prefix = ""GEsSt""
+suffix = ""yfHyg""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+JrjYQSPPrF+iJtXVvGz-sScsy,1,"The word in the dictionary that has both the prefix and the suffix is ""JrjYQsScsy"".",64,2,0.875,,"Given prefix = ""JrjYQ""
+suffix = ""sScsy""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+FGZnWIwURsgrwiaKNcCeLIHbb,1,"The word in the dictionary that has both the prefix and the suffix is ""FGZnWLIHbb"".",64,3,0.875,,"Given prefix = ""FGZnW""
+suffix = ""LIHbb""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+ajyPSooYdnOiAYs_wuvYQncHl,1,"The word in the dictionary that has both the prefix and the suffix is ""ajyPSQncHl"".",64,4,0.875,,"Given prefix = ""ajyPS""
+suffix = ""QncHl""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+NR_FSRzmgGPPXKazZQyxDqIPV,2,"The word in the dictionary that has both the prefix and the suffix is ""NR_FS_DqIPV"".",64,0,0.875,,"Given prefix = ""NR_FS""
+suffix = ""DqIPV""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+IFOLKw_YHYtYQYLmLAIL-VAvU,2,"The word in the dictionary that has both the prefix and the suffix is ""IFOLK-VAvU"".",64,1,0.875,,"Given prefix = ""IFOLK""
+suffix = ""-VAvU""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+++FefHSabauRun+RzVjObjTSn,2,"The word in the dictionary that has both the prefix and the suffix is ""++FefbjTSn"".",64,2,0.875,,"Given prefix = ""++Fef""
+suffix = ""bjTSn""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+-FQEcUApJVQBTuaNNyNZaqNdi,2,"The word in the dictionary that has both the prefix and the suffix is ""prefix"".",64,3,0.875,,"Given prefix = ""-FQEc""
+suffix = ""aqNdi""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+drKrlHKEl^+mOCXLvwhLWgrik,2,"The word in the dictionary that has both the prefix and the suffix is ""drKrlWgrik"".",64,4,0.875,,"Given prefix = ""drKrl""
+suffix = ""Wgrik""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+^ZmVBDcLFSFFDkc-kXpgzeqFp,3,"The word in the dictionary that has both the prefix and the suffix is ""zeqFp"".",64,0,0.875,,"Given prefix = ""^ZmVB""
+suffix = ""zeqFp""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+cgRBhmeuc+gJnN+ICOQc^J+NI,3,"The word in the dictionary that has both the prefix and the suffix is ""cgRBh^J+NI"".",64,1,0.875,,"Given prefix = ""cgRBh""
+suffix = ""^J+NI""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+bqB^QyzuABxKxFSczECGUtNGN,3,"The word in the dictionary that has both the prefix and the suffix is ""bqB^QUtNGN"".",64,2,0.875,,"Given prefix = ""bqB^Q""
+suffix = ""UtNGN""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+HbsEkZoklqWW-S+UJjkBCeJ_f,3,"The word in the dictionary that has both the prefix and the suffix is ""HbsEkCeJ_f"".",64,3,0.875,,"Given prefix = ""HbsEk""
+suffix = ""CeJ_f""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+EtOvRyyCU^oprrnrEvomqxIIa,3,"The word in the dictionary that has both the prefix and the suffix is ""EtOvRqxIIa"".",64,4,0.875,,"Given prefix = ""EtOvR""
+suffix = ""qxIIa""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+BPDNkNfjFcZyHUtpAtcWuGCBO,4,"The word in the dictionary that has both the prefix and the suffix is ""BPDNk_uGCBO"".",64,0,0.875,,"Given prefix = ""BPDNk""
+suffix = ""uGCBO""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+eG_TLpiyQM-zSZUgKs+ZeOh-I,4,"The word in the dictionary that has both the prefix and the suffix is ""eG_TL_eOh-I"".",64,1,0.875,,"Given prefix = ""eG_TL""
+suffix = ""eOh-I""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+kgIPeYcIrCGiPmtFAed-Gfpgf,4,"The word in the dictionary that has both the prefix and the suffix is ""kgIPeGfpgf"".",64,2,0.875,,"Given prefix = ""kgIPe""
+suffix = ""Gfpgf""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+OwufnXb^vro-uVnzHOLNyOdXc,4,"The word in the dictionary that has both the prefix and the suffix is ""Owufn_yOdXc"".",64,3,0.875,,"Given prefix = ""Owufn""
+suffix = ""yOdXc""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+LNxjrcUTDt^alSEawkkKlSN^E,4,"The word in the dictionary that has both the prefix and the suffix is ""lSN^E"".",64,4,0.875,,"Given prefix = ""LNxjr""
+suffix = ""lSN^E""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+yObWxXANUq^sYolUk-qazPcFN,5,"The word in the dictionary that has both the prefix and the suffix is ""yObWxzPcFN"".",64,0,0.875,,"Given prefix = ""yObWx""
+suffix = ""zPcFN""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+B^hpcsmieefFIxiqOYdVDvUtp,5,"The word in the dictionary that has both the prefix and the suffix is ""B^hpcDvUtp"".",64,1,0.875,,"Given prefix = ""B^hpc""
+suffix = ""DvUtp""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+sPd-Al-iXgcun+krrZTLfaBTA,5,"The word in the dictionary that has both the prefix and the suffix is ""sPd-AfaBTA"".",64,2,0.875,,"Given prefix = ""sPd-A""
+suffix = ""faBTA""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+tfPiwEeZRniQLrcqDvKxYquqE,5,"The word in the dictionary that has both the prefix and the suffix is ""tfPiwYquqE"".",64,3,0.875,,"Given prefix = ""tfPiw""
+suffix = ""YquqE""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+ZsHj-KelKD+zgiBI_uIFSZXHv,5,"The word in the dictionary that has both the prefix and the suffix is ""ZsHj-SZXHv"".",64,4,0.875,,"Given prefix = ""ZsHj-""
+suffix = ""SZXHv""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+XoYhhrnAxIsmSkzUkoswdKeTW,6,"The word in the dictionary that has both the prefix and the suffix is ""XoYhh_dKeTW"".",64,0,0.875,,"Given prefix = ""XoYhh""
+suffix = ""dKeTW""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+kllapeVcR_rNxeMxDWqrgUZdP,6,"The word in the dictionary that has both the prefix and the suffix is ""kllapgUZdP"".",64,1,0.875,,"Given prefix = ""kllap""
+suffix = ""gUZdP""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+I_OEAllHVSNQrA-bcmfhDJrbp,6,"The word in the dictionary that has both the prefix and the suffix is ""I_OEA_DJrbp"".",64,2,0.875,,"Given prefix = ""I_OEA""
+suffix = ""DJrbp""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+XVFoDnFxHH_sce-xyaIF-zmRu,6,"The word in the dictionary that has both the prefix and the suffix is ""XVFoD-zmRu"".",64,3,0.875,,"Given prefix = ""XVFoD""
+suffix = ""-zmRu""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+XjwGHbSrfIxno+VpSSOHmupAO,6,"The word in the dictionary that has both the prefix and the suffix is ""XjwGHmupAO"".",64,4,0.875,,"Given prefix = ""XjwGH""
+suffix = ""mupAO""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+pxKtqGVOTZeR-OGxbibLHSfaM,7,"The word in the dictionary that has both the prefix and the suffix is ""prefixesuffix"".",64,0,0.875,,"Given prefix = ""pxKtq""
+suffix = ""HSfaM""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+zi_CWEFIouFiSVMIWDMr^yift,7,"The word in the dictionary that has both the prefix and the suffix is ""zi_CW^yift"".",64,1,0.875,,"Given prefix = ""zi_CW""
+suffix = ""^yift""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+KF_^catThmrooQJNca+RbTraU,7,"The word in the dictionary that has both the prefix and the suffix is ""KF_^c_bTraU"".",64,2,0.875,,"Given prefix = ""KF_^c""
+suffix = ""bTraU""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+LeJnAAgbzqyR+qf+cDvQjOAfF,7,"The word in the dictionary that has both the prefix and the suffix is ""LeJnA_jOAfF"".",64,3,0.875,,"Given prefix = ""LeJnA""
+suffix = ""jOAfF""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+eBcEJyX-wbmNAillsiAjURULF,7,"The word in the dictionary that has both the prefix and the suffix is ""eBcEJURULF"".",64,4,0.875,,"Given prefix = ""eBcEJ""
+suffix = ""URULF""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+iJsjIETcADbYFkExEZ-lBDYwA,8,"The word in the dictionary that has both the prefix and the suffix is ""iJsjI"".",64,0,0.875,,"Given prefix = ""iJsjI""
+suffix = ""BDYwA""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+FDMDKkyUxeW^R+XZYyJloWkQl,8,"The word in the dictionary that has both the prefix and the suffix is ""FDMDKoWkQl"".",64,1,0.875,,"Given prefix = ""FDMDK""
+suffix = ""oWkQl""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+ltAfYjeEPvpJLfU_f^iP^SaZA,8,"The word in the dictionary that has both the prefix and the suffix is ""ltAfY^SaZA"".",64,2,0.875,,"Given prefix = ""ltAfY""
+suffix = ""^SaZA""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+SpeKXNPdaMldwnQBoNkjs-tGn,8,"The word in the dictionary that has both the prefix and the suffix is ""SpeKXs-tGn"".",64,3,0.875,,"Given prefix = ""SpeKX""
+suffix = ""s-tGn""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+HWhSEHSBJkqvfxBOTwMI_R_m_,8,"The word in the dictionary that has both the prefix and the suffix is ""HWhSE_R_m_"".",64,4,0.875,,"Given prefix = ""HWhSE""
+suffix = ""_R_m_""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+lps+PiOavdzbXB+gWtxsgXuVc,9,"The word in the dictionary that has both the prefix and the suffix is ""lps+PgXuVc"".",64,0,0.875,,"Given prefix = ""lps+P""
+suffix = ""gXuVc""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+i^SEglXRxPJyLcDaFHqhAtuQZ,9,"The word in the dictionary that has both the prefix and the suffix is ""i^SEgAtuQZ"".",64,1,0.875,,"Given prefix = ""i^SEg""
+suffix = ""AtuQZ""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+a^^LZrthDWPpxA+tsE-NBXzFk,9,"The word in the dictionary that has both the prefix and the suffix is ""a^^LZBXzFk"".",64,2,0.875,,"Given prefix = ""a^^LZ""
+suffix = ""BXzFk""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+cVLiHxPWeOpStnnERVVSVzdWb,9,"The word in the dictionary that has both the prefix and the suffix is ""cVLiH_VzdWb"".",64,3,0.875,,"Given prefix = ""cVLiH""
+suffix = ""VzdWb""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix
+wFdut+MYJdPHwzyCoGk-LuEq^,9,"The word in the dictionary that has both the prefix and the suffix is ""wFdutLuEq^"".",64,4,0.875,,"Given prefix = ""wFdut""
+suffix = ""LuEq^""
+
+What is the word in the dictionary that has both the prefix and the suffix?
+",prefix_suffix

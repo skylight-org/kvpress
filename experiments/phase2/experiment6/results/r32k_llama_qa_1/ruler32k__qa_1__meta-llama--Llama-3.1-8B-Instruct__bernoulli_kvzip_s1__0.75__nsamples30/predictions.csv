@@ -1,0 +1,100 @@
+answer_prefix,answer,predicted_answer,compression_ratio,context_length,task,max_new_tokens,question
+Answer:,['singing' 'singing' 'singing'], Singing,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What tradition were the Saint-Evroul monks known for? "
+Answer:,['north' 'the north' 'north'], Normandy,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What part of France were the Normans located? "
+Answer:,['Deabolis' 'the river Deabolis' 'Deabolis'], The river Deabolis.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What river was Petrela located by? "
+Answer:,"['random access machines' 'random access machines'
+ 'random access machines']", A random access machine.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is an example of a machine model that deviates from a generally accepted multi-tape Turing machine? "
+Answer:,"['how graphs are encoded as binary strings'
+ 'how graphs are encoded as binary strings'
+ 'how graphs are encoded as binary strings']", how graphs are encoded as binary strings.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What encoding decision needs to be made in order to determine an exact definition of the formal language? "
+Answer:,"['computational problems' 'computational problems'
+ 'computational problems']", The question of whether P equals NP.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What does computational complexity theory most specifically seek to answer?  "
+Answer:,['Conrad of Montferrat' 'Conrad of Montferrat' 'Conrad of Montferrat'], Conrad of Montferrat,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Who was Guy's Rival? "
+Answer:,['complexity resources' 'complexity resources' 'complexity'], computational resources,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Time and space are both examples of what type of resource? "
+Answer:,['Complexity measures' 'complexity measures' 'complexity'], complexity measure,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Decision tree is an example of what type of measure? "
+Answer:,['Modern English' 'Modern English' 'Modern English'], It eventually evolved into Modern English.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What was the Anglo-Norman language's final form? "
+Answer:,['Berengaria' 'Berengaria' 'Berengaria'], Berengaria,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Who was Richard's fiancee? "
+Answer:,"['the most efficient algorithm' 'the most efficient algorithm'
+ 'the most efficient algorithm solving a given problem']", the most efficient algorithm solving a given problem.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Classification of resources is contingent on determining the upper and lower bounds of minimum time required by what?   "
+Answer:,['time' 'non-deterministic time' 'non-deterministic time'], Non-deterministic time.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the most critical resource in the analysis of computational problems associated with non-deterministic Turing machines? "
+Answer:,['Romanesque' 'Romanesque' 'Romanesque'], A unique Romanesque idiom.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the Norman architecture idiom? "
+Answer:,"['all possible algorithms' 'all possible algorithms'
+ 'all possible algorithms']", PSPACE,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the colloquial phrase used to convey the continuum of algorithms with unlimited availability irrespective of time?  "
+Answer:,['time' 'time complexity' 'time complexity'], Time.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is one common example of a critical complexity measure? "
+Answer:,['the Welsh' 'the Welsh' 'the Welsh'], The Welsh.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Who was Ralph in charge of being at war with? "
+Answer:,"['A probabilistic Turing machine' 'probabilistic'
+ 'probabilistic Turing machine']", Probabilistic Turing machine,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the term used to identify a deterministic Turing machine that has additional random bits? "
+Answer:,['Sicily' 'Sicily' 'Kingdom of Sicily'], The Kingdom of Sicily.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What place had the Norman Arab architectural style? "
+Answer:,['Isaac Komnenos' 'Isaac' 'Isaac Komnenos'], Isaac Komnenos,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Who ruled Cyprus in 1191? "
+Answer:,['yes' 'yes' 'yes'], yes,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What will the output be for a member of the language of a decision problem? "
+Answer:,['fighting horsemen' 'fighting horsemen' 'fighting horsemen'], Fighting horsemen.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What was one of the Norman's major exports? "
+Answer:,['the Turing machine' 'the Turing machine' 'Turing machine'], The Turing machine.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What is the most commonplace model utilized in complexity theory? "
+Answer:,"[""Latin monastery at Sant'Eufemia."" ""a Latin monastery at Sant'Eufemia""
+ ""Sant'Eufemia""]", Sant'Eufemia,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What monastery did the Saint-Evroul monks establish in Italy? "
+Answer:,['a storm' 'a storm' 'a storm'], A storm.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What ruined Richard's plans to reach Acre? "
+Answer:,['William of Montreuil' 'William of Montreuil' 'William of Montreuil'], William of Montreuil,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Who was in charge of the papal army in the War of Barbastro? "
+Answer:,['dukes' 'the dukes' 'dukes'], The Normans,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: Who used the church to unify themselves? "
+Answer:,['1191' '1191' '1191'], 1191,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What year did the storm hit Richard's fleet? "
+Answer:,['yes' 'yes' 'yes'], accept,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: What answer denotes that an algorithm has accepted an input string? "
+Answer:,"['the integer factorization problem' 'integer factorization'
+ 'integer factorization problem']", The integer factorization problem.,0.75,32768,qa_1,32,"Answer the question based on the given documents. Only give me the answer and do not output any other words.
+
+Question: In addition to the traveling salesman problem, what is another example of a function problem? "

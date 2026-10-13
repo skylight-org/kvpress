@@ -1,0 +1,11 @@
+model_full,model,task,vkvwr_attn,ph_attn,extrapolated,ph_wins_attn
+Llama-3.1-8B-Instruct,Llama-3.1-8B,cwe,0.053758146730815845,0.034699313,False,True
+Llama-3.1-8B-Instruct,Llama-3.1-8B,niah_multikey_2,0.05415599613734126,0.038817592,False,True
+Llama-3.1-8B-Instruct,Llama-3.1-8B,niah_single_3,0.07526976512209856,0.04874643,False,True
+Llama-3.1-8B-Instruct,Llama-3.1-8B,scbench_prefix_suffix,0.027419959518368165,0.020154856,False,True
+Llama-3.1-8B-Instruct,Llama-3.1-8B,vt,0.019038554167302296,0.0139805535,False,True
+Qwen3-4B-Instruct-2507,Qwen3-4B,cwe,0.04046004730338094,0.020913586,False,True
+Qwen3-4B-Instruct-2507,Qwen3-4B,niah_multikey_2,0.03802985915702573,0.021554973,False,True
+Qwen3-4B-Instruct-2507,Qwen3-4B,niah_single_3,0.05546482006578293,0.03549326,False,True
+Qwen3-4B-Instruct-2507,Qwen3-4B,scbench_prefix_suffix,0.012213255689558047,0.004946183,False,True
+Qwen3-4B-Instruct-2507,Qwen3-4B,vt,0.022789248682716205,0.011211229,False,True

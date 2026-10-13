@@ -1,0 +1,10 @@
+# Overnight A40 shard 1: P1 2x Bernoulli, then P4 no-bias at 4x.  Controls (kvzip/no_press/random) already valid in results/P1.
+config: 4096
+samples_per_subtask: 60
+runs:
+  - {press: kvzip_bern_s1,        ratio: 0.5}
+  - {press: kvzip_bern_s2,        ratio: 0.5}
+  - {press: kvzip_bern_s3,        ratio: 0.5}
+  - {press: kvzip_bern_nobias_s1, ratio: 0.75}
+  - {press: kvzip_bern_nobias_s2, ratio: 0.75}
+  - {press: kvzip_bern_nobias_s3, ratio: 0.75}
